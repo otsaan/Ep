@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToProfessorTable extends Migration {
+class AddForeignKeysToProfessorsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,9 @@ class AddForeignKeysToProfessorTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('professor', function(Blueprint $table)
+		Schema::table('professors', function(Blueprint $table)
 		{
-			$table->foreign('professor_id', 'fk_professor_user1')->references('user_id')->on('user')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('professor_id', 'fk_professor_user1')->references('user_id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -26,7 +26,7 @@ class AddForeignKeysToProfessorTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('professor', function(Blueprint $table)
+		Schema::table('professors', function(Blueprint $table)
 		{
 			$table->dropForeign('fk_professor_user1');
 		});

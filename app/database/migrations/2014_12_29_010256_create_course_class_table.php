@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateCourseBelongsClassTable extends Migration {
+class CreateCourseClassTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateCourseBelongsClassTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('course_belongs_class', function(Blueprint $table)
+		Schema::create('course_class', function(Blueprint $table)
 		{
 			$table->integer('course_id')->index('fk_course_has_class_course1_idx');
 			$table->integer('class_id')->index('fk_course_has_class_class1_idx');
@@ -28,7 +28,7 @@ class CreateCourseBelongsClassTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('course_belongs_class');
+		Schema::drop('course_class');
 	}
 
 }

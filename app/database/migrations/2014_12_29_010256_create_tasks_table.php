@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateTaskTable extends Migration {
+class CreateTasksTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,12 @@ class CreateTaskTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('task', function(Blueprint $table)
+		Schema::create('tasks', function(Blueprint $table)
 		{
 			$table->integer('task_id', true);
 			$table->text('description', 65535)->nullable();
 			$table->integer('professor_id')->index('fk_task_professor1_idx');
-			$table->string('created_at', 45);
+			$table->dateTime('created_at')->default('CURRENT_TIMESTAMP(6)');
 			$table->string('due_date', 45)->nullable();
 		});
 	}
@@ -30,7 +30,7 @@ class CreateTaskTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('task');
+		Schema::drop('tasks');
 	}
 
 }
