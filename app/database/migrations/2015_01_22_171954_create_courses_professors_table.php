@@ -16,7 +16,6 @@ class CreateCoursesProfessorsTable extends Migration {
 		{
 			$table->integer('course_id', true);
 			$table->integer('professor_id')->index('FK_courses_professors_professor_id');
-			$table->primary(['course_id','professor_id']);
 		});
 	}
 

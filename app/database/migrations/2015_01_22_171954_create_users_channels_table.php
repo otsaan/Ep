@@ -16,7 +16,6 @@ class CreateUsersChannelsTable extends Migration {
 		{
 			$table->integer('channel_id', true);
 			$table->integer('user_id')->index('FK_users_channels_user_id');
-			$table->primary(['channel_id','user_id']);
 		});
 	}
 
