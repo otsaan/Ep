@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateCourseTable extends Migration {
+class CreateUsersChannelsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,10 @@ class CreateCourseTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('course', function(Blueprint $table)
+		Schema::create('users_channels', function(Blueprint $table)
 		{
-			$table->integer('course_id', true);
-			$table->string('name');
-			$table->string('abbreviation', 20);
+			$table->integer('channel_id', true);
+			$table->integer('user_id')->index('FK_users_channels_user_id');
 		});
 	}
 
@@ -28,7 +27,7 @@ class CreateCourseTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('course');
+		Schema::drop('users_channels');
 	}
 
 }

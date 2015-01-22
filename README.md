@@ -1,4 +1,3 @@
 Ep-2.0
-======
-
-We are back.
+=====
+Ep is a mini social network for students and their professors.
