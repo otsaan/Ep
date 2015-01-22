@@ -14,8 +14,8 @@ class AddForeignKeysToCommentsTable extends Migration {
 	{
 		Schema::table('comments', function(Blueprint $table)
 		{
-			$table->foreign('post_id', 'fk_comment_post1')->references('post_id')->on('posts')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-			$table->foreign('user_id', 'fk_comment_user1')->references('user_id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('post_id', 'FK_comments_post_id')->references('id')->on('posts')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('user_id', 'FK_comments_user_id')->references('id')->on('users')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToCommentsTable extends Migration {
 	{
 		Schema::table('comments', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_comment_post1');
-			$table->dropForeign('fk_comment_user1');
+			$table->dropForeign('FK_comments_post_id');
+			$table->dropForeign('FK_comments_user_id');
 		});
 	}
 

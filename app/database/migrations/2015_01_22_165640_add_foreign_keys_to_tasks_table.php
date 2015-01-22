@@ -14,7 +14,8 @@ class AddForeignKeysToTasksTable extends Migration {
 	{
 		Schema::table('tasks', function(Blueprint $table)
 		{
-			$table->foreign('professor_id', 'fk_task_professor1')->references('professor_id')->on('professors')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('channel_id', 'FK_tasks_channel_id')->references('id')->on('channels')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('professor_id', 'FK_tasks_professors_professor_id')->references('id')->on('professors')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
@@ -28,7 +29,8 @@ class AddForeignKeysToTasksTable extends Migration {
 	{
 		Schema::table('tasks', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_task_professor1');
+			$table->dropForeign('FK_tasks_channel_id');
+			$table->dropForeign('FK_tasks_professors_professor_id');
 		});
 	}
 

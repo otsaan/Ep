@@ -14,10 +14,9 @@ class CreateGraduatesTable extends Migration {
 	{
 		Schema::create('graduates', function(Blueprint $table)
 		{
-			$table->integer('graduate_id')->index('fk_graduated_user1_idx');
-			$table->integer('class_id')->index('fk_graduate_class1_idx');
-			$table->dateTime('graduation_year');
-			$table->string('current_job', 45)->nullable();
+			$table->bigInteger('id', true);
+			$table->date('graduation_year')->nullable();
+			$table->string('job', 45)->nullable();
 		});
 	}
 

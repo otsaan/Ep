@@ -14,12 +14,11 @@ class CreateAttachmentsTable extends Migration {
 	{
 		Schema::create('attachments', function(Blueprint $table)
 		{
-			$table->integer('attachment_id', true);
-			$table->string('file_type');
-			$table->string('link');
-			$table->integer('comment_id')->nullable()->index('fk_attachment_comment1_idx');
-			$table->integer('post_id')->nullable()->index('fk_attachment_post1_idx');
-			$table->integer('task_id')->nullable()->index('fk_attachment_task1_idx');
+			$table->integer('id', true);
+			$table->string('path')->nullable();
+			$table->string('file_type', 25)->nullable();
+			$table->integer('attachable_id')->nullable();
+			$table->string('attachable_type', 20)->nullable();
 		});
 	}
 

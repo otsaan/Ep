@@ -14,11 +14,12 @@ class CreateCommentsTable extends Migration {
 	{
 		Schema::create('comments', function(Blueprint $table)
 		{
-			$table->integer('id_comment', true);
+			$table->integer('id', true);
 			$table->text('content', 65535)->nullable();
-			$table->integer('post_id')->index('fk_comment_post1_idx');
-			$table->integer('user_id')->nullable()->index('fk_comment_user1_idx');
-			$table->dateTime('created_at')->default('CURRENT_TIMESTAMP(6)');
+			$table->timestamps();
+			$table->dateTime('deleted_at')->default('0000-00-00 00:00:00');
+			$table->integer('user_id')->index('FK_comments_user_id');
+			$table->integer('post_id')->index('FK_comments_post_id');
 		});
 	}
 

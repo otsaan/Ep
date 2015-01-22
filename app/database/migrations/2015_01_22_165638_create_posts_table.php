@@ -14,12 +14,12 @@ class CreatePostsTable extends Migration {
 	{
 		Schema::create('posts', function(Blueprint $table)
 		{
-			$table->integer('post_id')->primary();
-			$table->integer('user_id')->nullable()->index('fk_posts_users1_idx');
+			$table->integer('id', true);
 			$table->text('content', 65535)->nullable();
-			$table->integer('course_id')->nullable()->index('fk_post_course1_idx');
-			$table->dateTime('created_at')->default('CURRENT_TIMESTAMP(6)');
-			$table->string('feed', 45)->nullable();
+			$table->timestamps();
+			$table->dateTime('deleted_at')->default('0000-00-00 00:00:00');
+			$table->integer('channel_id')->nullable()->index('FK_posts_channel_id');
+			$table->integer('user_id')->nullable()->index('FK_posts_user_id');
 		});
 	}
 
