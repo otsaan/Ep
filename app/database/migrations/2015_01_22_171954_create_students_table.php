@@ -14,8 +14,11 @@ class CreateStudentsTable extends Migration {
 	{
 		Schema::create('students', function(Blueprint $table)
 		{
-			$table->integer('id', true);
-			$table->string('cne', 15)->nullable();
+			$table->engine = 'InnoDB';
+
+			$table->increments('id');
+			$table->string('cne', 10)->nullable();
+			$table->timestamps();
 		});
 	}
 

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateAttachmentsTable extends Migration {
+class CreateCourseProfessorTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,17 +12,16 @@ class CreateAttachmentsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('attachments', function(Blueprint $table)
+		Schema::create('course_professor', function(Blueprint $table)
 		{
 			$table->engine = 'InnoDB';
 
 			$table->increments('id');
-			$table->string('path')->nullable();
-			$table->string('file_type', 25)->nullable();
-			$table->integer('attachable_id')->nullable();
-			$table->string('attachable_type', 20)->nullable();
+			$table->integer('course_id')->unsigned();
+			$table->integer('professor_id')->unsigned();
 			$table->timestamps();
 		});
+
 	}
 
 
@@ -33,7 +32,7 @@ class CreateAttachmentsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('attachments');
+		Schema::drop('course_professor');
 	}
 
 }

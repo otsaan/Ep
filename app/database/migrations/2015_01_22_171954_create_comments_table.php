@@ -14,12 +14,13 @@ class CreateCommentsTable extends Migration {
 	{
 		Schema::create('comments', function(Blueprint $table)
 		{
-			$table->integer('id', true);
-			$table->text('content', 65535)->nullable();
+			$table->engine = 'InnoDB';
+
+			$table->increments('id');
+			$table->text('content')->nullable();
+			$table->integer('user_id')->unsigned();
+			$table->integer('post_id')->unsigned();
 			$table->timestamps();
-			$table->dateTime('deleted_at')->default('0000-00-00 00:00:00');
-			$table->integer('user_id')->index('FK_comments_user_id');
-			$table->integer('post_id')->index('FK_comments_post_id');
 		});
 	}
 

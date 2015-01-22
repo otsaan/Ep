@@ -14,9 +14,12 @@ class CreateGraduatesTable extends Migration {
 	{
 		Schema::create('graduates', function(Blueprint $table)
 		{
-			$table->bigInteger('id', true);
+			$table->engine = 'InnoDB';
+
+			$table->increments('id');
 			$table->date('graduation_year')->nullable();
 			$table->string('job', 45)->nullable();
+			$table->timestamps();
 		});
 	}
 

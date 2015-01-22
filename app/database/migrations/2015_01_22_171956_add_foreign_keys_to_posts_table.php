@@ -14,8 +14,8 @@ class AddForeignKeysToPostsTable extends Migration {
 	{
 		Schema::table('posts', function(Blueprint $table)
 		{
-			$table->foreign('user_id', 'FK_posts_user_id')->references('id')->on('users')->onUpdate('RESTRICT')->onDelete('RESTRICT');
-			$table->foreign('channel_id', 'FK_posts_channel_id')->references('id')->on('channels')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+			$table->foreign('channel_id')->references('id')->on('channels')->onDelete('cascade');
 		});
 	}
 
@@ -29,8 +29,8 @@ class AddForeignKeysToPostsTable extends Migration {
 	{
 		Schema::table('posts', function(Blueprint $table)
 		{
-			$table->dropForeign('FK_posts_user_id');
-			$table->dropForeign('FK_posts_channel_id');
+			$table->dropForeign('posts_user_id_foreign');
+			$table->dropForeign('posts_channel_id_foreign');
 		});
 	}
 

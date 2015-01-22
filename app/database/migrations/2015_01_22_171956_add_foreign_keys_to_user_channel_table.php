@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToTasksTable extends Migration {
+class AddForeignKeysToUserChannelTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,10 @@ class AddForeignKeysToTasksTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('tasks', function(Blueprint $table)
+		Schema::table('user_channel', function(Blueprint $table)
 		{
+			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 			$table->foreign('channel_id')->references('id')->on('channels')->onDelete('cascade');
-			$table->foreign('professor_id')->references('id')->on('professors')->onDelete('cascade');
 		});
 	}
 
@@ -27,10 +27,10 @@ class AddForeignKeysToTasksTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('tasks', function(Blueprint $table)
+		Schema::table('user_channel', function(Blueprint $table)
 		{
-			$table->dropForeign('tasks_channel_id_foreign');
-			$table->dropForeign('tasks_professor_id_foreign');
+			$table->dropForeign('user_channel_user_id_foreign');
+			$table->dropForeign('user_channel_channel_id_foreign');
 		});
 	}
 

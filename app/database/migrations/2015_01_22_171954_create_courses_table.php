@@ -14,8 +14,10 @@ class CreateCoursesTable extends Migration {
 	{
 		Schema::create('courses', function(Blueprint $table)
 		{
-			$table->integer('id', true);
-			$table->text('course_description', 65535)->nullable();
+			$table->engine = 'InnoDB';
+
+			$table->increments('id');
+			$table->text('description')->nullable();
 		});
 	}
 

@@ -14,12 +14,13 @@ class CreateChannelsTable extends Migration {
 	{
 		Schema::create('channels', function(Blueprint $table)
 		{
-			$table->integer('id', true);
+			$table->engine = 'InnoDB';
+
+			$table->increments('id');
 			$table->string('name', 45)->nullable();
 			$table->string('photo')->nullable();
-			$table->timestamps();
-			$table->dateTime('deleted_at')->default('0000-00-00 00:00:00');
 			$table->boolean('public')->nullable();
+			$table->timestamps();
 		});
 	}
 

@@ -14,7 +14,9 @@ class CreateProfessorsTable extends Migration {
 	{
 		Schema::create('professors', function(Blueprint $table)
 		{
-			$table->integer('id', true);
+			$table->engine = 'InnoDB';
+
+			$table->increments('id');
 		});
 	}
 

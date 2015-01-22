@@ -14,14 +14,16 @@ class CreateTasksTable extends Migration {
 	{
 		Schema::create('tasks', function(Blueprint $table)
 		{
-			$table->integer('id', true);
-			$table->text('description', 65535)->nullable();
-			$table->timestamps();
-			$table->dateTime('deleted_at')->default('0000-00-00 00:00:00');
+			$table->engine = 'InnoDB';
+
+			$table->increments('id');
+			$table->text('description')->nullable();
 			$table->dateTime('due_date')->nullable();
-			$table->integer('professor_id')->index('FK_tasks_professors_professor_id');
-			$table->integer('channel_id')->index('FK_tasks_channel_id');
+			$table->integer('professor_id')->unsigned();
+			$table->integer('channel_id')->unsigned();
+			$table->timestamps();
 		});
+
 	}
 
 
