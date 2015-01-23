@@ -10,7 +10,8 @@
 	"require-dev": {
 		"way/generators": "~2.0",
 		"xethron/migrations-generator": "dev-master",
-		"fzaninotto/faker": "1.5.*@dev"
+		"fzaninotto/faker": "1.5.*@dev",
+        "barryvdh/laravel-ide-helper": "~1.11"
 	},
 	"autoload": {
 		"classmap": [

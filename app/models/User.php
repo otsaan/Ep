@@ -9,8 +9,6 @@ class User extends Eloquent {
 
 
     use UserTrait, RemindableTrait;
-    protected $table = 'users';
-
 
     protected $hidden = array('password', 'remember_token');
     protected $fillable = array('*');
@@ -20,6 +18,7 @@ class User extends Eloquent {
     {
         return $this->morphTo();
     }
+
 
     public function comments()
     {
@@ -35,6 +34,5 @@ class User extends Eloquent {
     {
         return $this->belongsToMany('Channel');
     }
-
 
 }
