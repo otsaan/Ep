@@ -30,5 +30,8 @@ class User extends Eloquent {
         return $this->morphTo();
     }
 
+	public function channels() {
+        return $this->belongsToMany('Channel');
+    }
    
 }
