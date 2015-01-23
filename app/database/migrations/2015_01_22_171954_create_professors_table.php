@@ -17,6 +17,7 @@ class CreateProfessorsTable extends Migration {
 			$table->engine = 'InnoDB';
 
 			$table->increments('id');
+			$table->timestamps();
 		});
 	}
 
