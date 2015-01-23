@@ -1,0 +1,9 @@
+<?php
+
+
+class Graduate extends Eloquent {
+
+    public function users() {
+        return $this->morphMany('User','is');
+    }
+}
