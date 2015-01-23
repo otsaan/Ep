@@ -24,8 +24,11 @@ class User extends Eloquent {
 	 */
 	protected $hidden = array('password', 'remember_token');
 	protected $fillable = array('*');
+
+
     public function is () {
         return $this->morphTo();
     }
 
+   
 }

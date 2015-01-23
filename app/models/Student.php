@@ -11,6 +11,6 @@ class Student extends Eloquent {
     protected $fillable = [];
 
     public function users() {
-        return $this->morphMany('User','is');
+        return $this->morphOne('User','is');
     }
 } 
