@@ -10,7 +10,7 @@
 class Professor extends Eloquent {
     protected $fillable = [];
 
-    public function users() {
+    public function user() {
         return $this->morphOne('User','is');
     }
 } 
