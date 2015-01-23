@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: otm
@@ -7,6 +8,7 @@
  */
 
 class Student extends Eloquent {
+    protected $fillable = [];
 
     public function users() {
         return $this->morphMany('User','is');

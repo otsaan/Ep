@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateProfessorsTable extends Migration {
+class AddUniqueIndexToUsersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,9 @@ class CreateProfessorsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('professors', function(Blueprint $table)
+		Schema::table('users', function(Blueprint $table)
 		{
-			$table->engine = 'InnoDB';
-
-			$table->increments('id');
-			$table->timestamps();
+			$table->unique(array('is_id', 'is_type'));
 		});
 	}
 
@@ -29,7 +26,10 @@ class CreateProfessorsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('professors');
+		Schema::table('users', function(Blueprint $table)
+		{
+			$table->dropUnique('users_is_id_is_type_unique');
+		});
 	}
 
 }

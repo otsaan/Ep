@@ -7,6 +7,11 @@
 	"require": {
 		"laravel/framework": "4.2.*"
 	},
+	"require-dev": {
+		"way/generators": "~2.0",
+		"xethron/migrations-generator": "dev-master",
+		"fzaninotto/faker": "1.5.*@dev"
+	},
 	"autoload": {
 		"classmap": [
 			"app/commands",
@@ -33,9 +38,5 @@
 	"config": {
 		"preferred-install": "dist"
 	},
-	"minimum-stability": "stable",
-	"require-dev": {
-		"way/generators": "~2.0",
-		"xethron/migrations-generator": "dev-master"
-	}
+	"minimum-stability": "stable"
 }
