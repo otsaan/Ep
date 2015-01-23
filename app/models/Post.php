@@ -1,13 +1,15 @@
 <?php
 
 class Post extends \Eloquent {
-	protected $fillable = [];
+    protected $fillable = [];
 
-    public function user() {
-        return $this->hasOne('User');
+    public function user()
+    {
+        return $this->belongsTo('User');
     }
 
-    public function comments() {
+    public function comments()
+    {
         return $this->hasMany("Comment");
     }
 }

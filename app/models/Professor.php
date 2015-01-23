@@ -1,17 +1,17 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: otm
- * Date: 22/01/15
- * Time: 22:47
- */
 
 class Professor extends Eloquent {
     protected $fillable = [];
 
-    public function user() {
-        return $this->morphOne('User','is');
+    public function user()
+    {
+        return $this->morphOne('User', 'is');
     }
-} 
+
+    public function courses()
+    {
+        return $this->belongsToMany();
+    }
+}
 

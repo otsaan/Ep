@@ -8,27 +8,33 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 class User extends Eloquent {
 
 
-	use UserTrait, RemindableTrait;
-
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'users';
-
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = array('password', 'remember_token');
-	protected $fillable = array('*');
+    use UserTrait, RemindableTrait;
+    protected $table = 'users';
 
 
-    public function is () {
+    protected $hidden = array('password', 'remember_token');
+    protected $fillable = array('*');
+
+
+    public function is()
+    {
         return $this->morphTo();
     }
 
-   
+    public function comments()
+    {
+        return $this->hasMany('Comment');
+    }
+
+    public function posts()
+    {
+        return $this->hasMany('Post');
+    }
+
+    public function channels()
+    {
+        return $this->belongsToMany('Channel');
+    }
+
+
 }

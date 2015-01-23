@@ -1,10 +1,11 @@
 <?php
 
 class Graduate extends Eloquent {
-	protected $fillable = [];
+    protected $fillable = [];
 
 
-    public function users() {
-        return $this->morphOne('User','is');
+    public function user()
+    {
+        return $this->morphOne('User', 'is');
     }
 }
