@@ -2,8 +2,8 @@
     <!-- Messages: style can be found in dropdown.less-->
     <li class="dropdown messages-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-envelope"></i>
-            <span class="label label-success">4</span>
+            <i class="ion ion-ios-email-outline"></i>
+            <span class="label bg-blue">4</span>
         </a>
         <ul class="dropdown-menu">
             <li class="header">You have 4 messages</li>
@@ -78,8 +78,8 @@
     <!-- Notifications: style can be found in dropdown.less -->
     <li class="dropdown notifications-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-warning"></i>
-            <span class="label label-warning">10</span>
+            <i class="ion ion-ios-information-outline"></i>
+            <span class="label bg-dark-gray">10</span>
         </a>
         <ul class="dropdown-menu">
             <li class="header">You have 10 notifications</li>
@@ -120,8 +120,8 @@
     <!-- Tasks: style can be found in dropdown.less -->
     <li class="dropdown tasks-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-tasks"></i>
-            <span class="label label-danger">9</span>
+            <i class="ion ion-ios-list-outline"></i>
+            <span class="label bg-dark-gray">9</span>
         </a>
         <ul class="dropdown-menu">
             <li class="header">You have 9 tasks</li>
@@ -190,7 +190,7 @@
     <!-- User Account: style can be found in dropdown.less -->
     <li class="dropdown user user-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="glyphicon glyphicon-user"></i>
+            <i class="ion ion-ios-person"></i>
             <span>Jane Doe <i class="caret"></i></span>
         </a>
         <ul class="dropdown-menu">
