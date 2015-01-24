@@ -2,10 +2,15 @@
 
 
 class Student extends Eloquent {
-    protected $fillable = [];
+
+    protected $guarded = array('id');
+    protected $hidded = array('created_at','updated_at');
+
 
     public function user()
     {
         return $this->morphOne('User', 'is');
     }
+
+
 } 
