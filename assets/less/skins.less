@@ -1,0 +1,82 @@
+
+/*
+    Skin Black
+    --------
+*/
+
+/* skin-black navbar */
+.skin-black .navbar {
+    .navbar-variant(#fff; #333; #999; #fff);
+}
+/* skin-black logo */
+.skin-black .logo {
+    .logo-variant(@sidebar-bg);
+}
+/* skin-black content header */
+.skin-black .right-side > .content-header {
+    background: transparent;
+    box-shadow: none;
+}
+/* Skin-red user panel */
+.skin-black .user-panel {
+
+    > .image > img {
+        border: 1px solid #444;
+    }
+
+    > .info, > .info > a {
+        color: #eee;
+    }
+}
+
+/* skin-black sidebar */
+.skin-black {
+    .sidebar {
+
+    }
+    // the menu
+    .sidebar > .sidebar-menu > li {
+
+        &:first-of-type {
+
+        }
+        > a {
+            margin-right: 1px;
+        }
+        //Hover and active states
+        > a:hover, &.active > a {
+            color: #f6f6f6;
+            background: @sidebar-cyan;
+        }
+
+        > .treeview-menu {
+            margin: 0 0;
+            background: #171C28;
+            > li > a:hover {
+                background: @sidebar-submenu;
+            }
+        }
+    }
+
+    // Sidebar color
+    .left-side {
+        background: @sidebar-bg;
+    }
+
+    .sidebar a {
+        color: #eee;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    // skin blue treeview-menu
+    .treeview-menu {
+        > li {
+            > a {color: #ccc;}
+            &.active > a, > a:hover {
+                color: #fff;
+            }
+        }
+    }
+
+}
