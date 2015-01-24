@@ -1,18 +1,33 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
+use Ep\Factory\UserFactory;
 
 Route::get('/', function()
 {
+
+/*
+    --------- UserFactory Tests---------
+        run 'composoer dump-autoload' to load UserFactory class
+
+    UserFactory::createStudent([
+        'first_name' => 'student',
+        'last_name' => 'student',
+        'cne' => '11762398'
+    ]);
+
+    UserFactory::createGraduate([
+        'first_name' => 'graduate',
+        'last_name' => 'graduate',
+        'graduation_year' => '2000',
+        'job' => 'CEO'
+    ]);
+
+    UserFactory::createProfessor([
+        'first_name' => 'Professor',
+        'last_name' => 'Professor'
+    ]);
+
+    -------------------------------------
+*/
 	return View::make('index');
 });
 
