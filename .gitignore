@@ -9,3 +9,6 @@ composer.lock
 Thumbs.db
 .idea/
 
+# General CodeKit files to ignore
+config.codekit
+/min d
