@@ -1,7 +1,9 @@
 <?php
 
 class Post extends \Eloquent {
-    protected $fillable = [];
+
+    protected $guarded = array('id');
+    protected $hidded = array('created_at','updated_at');
 
     public function user()
     {
@@ -11,5 +13,15 @@ class Post extends \Eloquent {
     public function comments()
     {
         return $this->hasMany("Comment");
+    }
+
+    public function channel()
+    {
+        return $this->belongsTo('Channel');
+    }
+
+    public function attachments()
+    {
+        return $this->morphMany('Attachment','attachable');
     }
 }

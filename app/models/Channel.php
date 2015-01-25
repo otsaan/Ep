@@ -1,9 +1,13 @@
 <?php
 
 class Channel extends Eloquent {
-    protected $fillable = [];
 
-    public function users() {
+    protected $guarded = array('id');
+    protected $hidded = array('created_at','updated_at');
+
+
+    public function users()
+    {
         return $this->belongsToMany('User');
     }
 
@@ -16,4 +20,9 @@ class Channel extends Eloquent {
     {
         return $this->hasMany('Task');
     }
+
+    public function comments() {
+        return $this->hasManyThrough('Comment','Post');
+    }
+
 } 
