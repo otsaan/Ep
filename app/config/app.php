@@ -124,6 +124,7 @@ return array(
 		'Way\Generators\GeneratorsServiceProvider',
 		'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+		'Laracasts\Commander\CommanderServiceProvider',
 	),
 
 	/*
