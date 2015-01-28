@@ -124,7 +124,9 @@ return array(
 		'Way\Generators\GeneratorsServiceProvider',
 		'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
-		'Laracasts\Commander\CommanderServiceProvider',
+        'Laracasts\Validation\ValidationServiceProvider',
+        'Laracasts\Commander\CommanderServiceProvider',
+        'Laracasts\Flash\FlashServiceProvider',
 	),
 
 	/*
@@ -191,6 +193,7 @@ return array(
 		'URL'               => 'Illuminate\Support\Facades\URL',
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
+        'Flash'             => 'Laracasts\Flash\Flash',
 
 	),
 
