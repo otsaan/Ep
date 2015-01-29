@@ -34,11 +34,11 @@
         </div>
         <div class="form-group">
             {{Form::label('etudiant','Etudiant') }}
-            {{ Form::radio('is_type','etudiant','true') }}
+            {{ Form::radio('is_type','Student','true') }}
             {{Form::label('professeur','Professeur') }}
-            {{ Form::radio('is_type','professeur') }}
+            {{ Form::radio('is_type','Professor') }}
             {{Form::label('laureat','Lauréat') }}
-            {{ Form::radio('is_type','laureat') }}
+            {{ Form::radio('is_type','Graduate') }}
         </div>
         <div class="form-group">
             {{ Form::password('password',['class'=>'form-control','placeholder'=>'password']) }}
