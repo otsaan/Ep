@@ -1,6 +1,5 @@
 <?php namespace Ep\Users;
 
-use Ep\Factory\UserFactory;
 use User;
 
 class UserRepository {
@@ -19,17 +18,6 @@ class UserRepository {
     public function save(User $user)
     {
 
-        switch ($user->is_type) {
-            case 'Student':
-                $user = $this->userFactory->createProfessor($user->getAttributes());
-                break;
-            case 'Professor':
-                $user = $this->userFactory->createProfessor($user->getAttributes());
-                break;
-            case 'Graduate':
-                $user = $this->userFactory->createGraduate($user->getAttributes());
-                break;
-        }
-        return $user;
+        return $user->save();
     }
 } 
