@@ -13,30 +13,46 @@
 </head>
 <body class="bg-black">
 
+@include('components.partials.errors')
+
 <div class="form-box" id="login-box">
+
     <div class="header">Sign up</div>
-    <form action="../../index.html" method="post">
-        <div class="body bg-gray">
-            <div class="form-group">
-                <input type="text" name="name" class="form-control" placeholder="Full name"/>
-            </div>
-            <div class="form-group">
-                <input type="text" name="userid" class="form-control" placeholder="User ID"/>
-            </div>
-            <div class="form-group">
-                <input type="password" name="password" class="form-control" placeholder="Password"/>
-            </div>
-            <div class="form-group">
-                <input type="password" name="password2" class="form-control" placeholder="Retype password"/>
-            </div>
+    {{ Form::open(['route' => 'register_path'])}}
+    <div class="body bg-gray">
+        <div class="form-group">
+            {{ Form::text('first_name',null,['class'=>'form-control','placeholder'=>'Prenom']) }}
         </div>
-        <div class="footer">
-
-            <button type="submit" class="btn bg-olive btn-block">Sign me up</button>
-
-            <a href="login.html" class="text-center">I already have an account</a>
+        <div class="form-group">
+            {{ Form::text('last_name',null,['class'=>'form-control','placeholder'=>'Nom']) }}
         </div>
-    </form>
+        <div class="form-group">
+            {{ Form::email('email',null,['class'=>'form-control','placeholder'=>'Email']) }}
+        </div>
+        <div class="form-group">
+            {{ Form::text('username',null,['class'=>'form-control','placeholder'=>'Username']) }}
+        </div>
+        <div class="form-group">
+            {{Form::label('etudiant','Etudiant') }}
+            {{ Form::radio('is_type','etudiant','true') }}
+            {{Form::label('professeur','Professeur') }}
+            {{ Form::radio('is_type','professeur') }}
+            {{Form::label('laureat','Lauréat') }}
+            {{ Form::radio('is_type','laureat') }}
+        </div>
+        <div class="form-group">
+            {{ Form::password('password',['class'=>'form-control','placeholder'=>'password']) }}
+        </div>
+        <div class="form-group">
+            {{ Form::password('password_confirmation',['class'=>'form-control','placeholder'=>'confirmation']) }}
+        </div>
+    </div>
+    <div class="footer">
+        {{ Form::submit('Sign me up',['class'=>'btn bg-olive btn-block']) }}
+
+        <a href="login.html" class="text-center">I already have an account</a>
+    </div>
+    {{ Form::Close() }}
 </div>
 
 {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js') }}
