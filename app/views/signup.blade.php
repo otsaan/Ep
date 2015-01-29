@@ -50,7 +50,7 @@
     <div class="footer">
         {{ Form::submit('Sign me up',['class'=>'btn bg-olive btn-block']) }}
 
-        <a href="login.html" class="text-center">I already have an account</a>
+        <a href="login" class="text-center">I already have an account</a>
     </div>
     {{ Form::Close() }}
 </div>

@@ -8,10 +8,6 @@ class PagesController extends \BaseController {
         $this->beforeFilter('auth');
     }
 
-    public function home()
-    {
-        return View::make('index');
-    }
 
     /**
      * Display a listing of the resource.
@@ -21,7 +17,7 @@ class PagesController extends \BaseController {
      */
     public function index()
     {
-        //
+        return View::make('index');
     }
 
     /**

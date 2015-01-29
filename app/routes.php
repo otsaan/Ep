@@ -3,8 +3,14 @@ use Ep\Factory\UserFactory;
 
 Route::get('/', [
     'as' => 'home',
-    'uses' => "pagesController@home"
+    'uses' => "sessionsController@index"
 ]);
+Route::get('timeline', [
+    'as' => 'timeline',
+    'uses' => "pagesController@index"
+]);
+
+
 /*function()
 {
 
@@ -33,11 +39,26 @@ Route::get('/', [
 return View::make('index');
 });*/
 
+/*
+ * SignIn
+ */
+Route::get('/login',  [
+    'as'=>'login_path',
+    'uses'=>'sessionsController@index'
+]);
+Route::get('/signout',  [
+    'as'=>'signout_path',
+    'uses'=>'sessionsController@destroy'
+]);
+Route::post('/login', [
+    'as'=>'login_path',
+    'uses'=>'sessionsController@store'
+]);
 
-Route::get('/login', function () {
-    return View::make('login');
-});
 
+/*
+ * Signup
+ */
 Route::get('/signup', [
     'as' => 'register_path',
     'uses' => 'RegistrationController@index'
