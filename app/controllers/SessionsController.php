@@ -8,7 +8,7 @@ class SessionsController extends \BaseController {
     function __construct(SignInForm $signInForm)
     {
         $this->signInForm=$signInForm;
-        $this->forgetBeforeFilter('',['except'=>'destroy']);
+        $this->BeforeFilter('guest',['except'=>'destroy']);
     }
 
     public function index(){
@@ -30,7 +30,7 @@ class SessionsController extends \BaseController {
         if(Auth::attempt($formData))
         {
             Flash::message('welcome back');
-            return Redirect::home();
+            return Redirect::intended('timeline');
         }else{
             return Redirect::back();
         }
