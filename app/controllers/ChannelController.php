@@ -1,9 +1,28 @@
 <?php
 
-use Ep\Posts\PublishPostCommand;
+class ChannelController extends BaseController {
 
-class PostController extends BaseController {
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{
+		$posts = Channel::findOrFail(1)->posts()->orderBy('created_at','desc')->get();
 
+		return View::make('channels.feed', compact('posts'));
+	}
+
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+	public function create()
+	{
+        return View::make('channels.create');
+	}
 
 	/**
 	 * Store a newly created resource in storage.
@@ -12,22 +31,18 @@ class PostController extends BaseController {
 	 */
 	public function store()
 	{
-		$data = Input::only('post-content','channelId','userId');
-        $command = new PublishPostCommand($data['post-content'], $data['channelId'], $data['userId']);
-		$this->commandBus->execute($command);
-
-		return Redirect::route('getFeed');
+		//
 	}
 
 	/**
-	 * Show single post
+	 * Display the specified resource.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function show($id)
 	{
-        //
+        return View::make('users.show');
 	}
 
 	/**
@@ -38,7 +53,7 @@ class PostController extends BaseController {
 	 */
 	public function edit($id)
 	{
-        //
+        return View::make('users.edit');
 	}
 
 	/**

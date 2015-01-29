@@ -2,6 +2,7 @@
 
 use Laracasts\Commander\CommandHandler;
 use Laracasts\Commander\Events\EventDispatcher;
+use Post;
 
 class PublishPostCommandHandler implements CommandHandler {
 
@@ -22,9 +23,8 @@ class PublishPostCommandHandler implements CommandHandler {
      */
     public function handle($command)
     {
-        $post = $this->post->publish($command->content);
+        $post = $this->post->publish($command->content, $command->channelId, $command->userId);
+        $this->dispatcher->dispatch($post->releaseEvents());
 
-        $event = new PostWasPublished($post);
-        $this->dispatcher->dispatch($event);
     }
 }

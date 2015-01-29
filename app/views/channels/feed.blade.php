@@ -21,8 +21,8 @@
 
 					<div class="summary">
 
-						<a>{{ $post->user->first_name . " " . $post->user->last_name }}</a> added <a>2 new images</a>
-						<div class="date">3 days ago</div>
+						<a>{{ $post->user->present()->fullName() }}</a> added <a>2 new images</a>
+						<div class="date">{{ $post->present()->recentTime() }}</div>
 					</div>
 
 					<div class="extra text">
@@ -47,7 +47,7 @@
 					</div>
 
 					<!-- all comments associated with this post -->
-					@foreach ($post->has('comments')->get()->all() as $comment)
+					@foreach ($post->has('comments')->orderBy('created_at','desc')->get()->all() as $comment)
 						<div class="ui comments">
 							<div class="comment">
 

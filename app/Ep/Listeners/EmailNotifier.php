@@ -4,8 +4,8 @@ use Laracasts\Commander\Events\EventListener;
 
 class EmailNotifier extends EventListener{
 
-    public function handle()
+    public function handle($event)
     {
-        echo "hhhh";
+        echo "Email notifier triggered! <br>";
     }
 }

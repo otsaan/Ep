@@ -1,13 +1,13 @@
 <?php
 
+use Ep\Posts\PostWasPublished;
 use Laracasts\Commander\Events\EventGenerator;
 use Laracasts\Presenter\Contracts\PresentableInterface;
 use Laracasts\Presenter\PresentableTrait;
 
-class Post extends \Eloquent implements  PresentableInterface {
+class Post extends \Eloquent implements PresentableInterface {
 
-    use EventGenerator;
-    use PresentableTrait;
+    use EventGenerator, PresentableTrait;
 
     protected $presenter = 'Ep\Posts\PostPresenter';
 
@@ -34,14 +34,21 @@ class Post extends \Eloquent implements  PresentableInterface {
         return $this->morphMany('Attachment','attachable');
     }
 
-    public function publish($content)
+    public function publish($content, $channelId, $userId)
     {
-        dd($content);
+        // get the channel and the user related to this post
+        $channel = Channel::findOrFail($channelId);
+        $user = User::findOrFail($userId);
+
+        // set them
         $this->content = $content;
-        //$this->save();
-        dd("post saved");
-        $event = new PostWasPublished($content);
-        $this->raise($event);
+        $this->channel()->associate($channel);
+        $this->user()->associate($user);
+
+        // then save the post
+        $this->save();
+
+        $this->raise(new PostWasPublished($this));
 
         return $this;
     }

@@ -65,7 +65,7 @@ textarea#reply {
 }
 
 .ui.feed > .event > .label + .content {
-	//padding-right: 1.25em;
+	padding-right: 1.25em;
 }
 
 .ui.comments {
@@ -74,5 +74,18 @@ textarea#reply {
 
 .ui.comments > .comment > .content {
 	padding : 0 15px 0 0;
+}
+
+.reply-container {
+	display:inline-block;
+	position:relative;
+	width: 100%;
+
+}
+
+.reply-button {
+	position:absolute;
+	bottom:10px;
+	right:10px;
 }
 

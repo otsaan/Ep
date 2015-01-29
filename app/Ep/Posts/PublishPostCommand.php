@@ -2,11 +2,16 @@
 
 class PublishPostCommand {
 
-    private $content;
+    public $content;
+    public $channelId;
+    public $userId;
 
-    function __construct($content)
+    function __construct($content, $channelId, $userId)
     {
         $this->content = $content;
+        $this->channelId = $channelId;
+        $this->userId = $userId;
     }
+
 
 }

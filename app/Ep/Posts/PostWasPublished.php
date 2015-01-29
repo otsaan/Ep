@@ -3,7 +3,7 @@
 
 class PostWasPublished {
 
-    private $post;
+    public $post;
 
     function __construct($post)
     {

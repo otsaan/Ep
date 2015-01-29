@@ -1,9 +1,8 @@
 <?php
-use Ep\Factory\UserFactory;
+
 
 App::bind('Laracasts\Commander\CommandTranslator','Laracasts\Commander\BasicCommandTranslator');
-Route::get('/store','PostController@store');
-Event::listen('Ep.Posts.PostWasPublished','EmailNotifier');
+Event::listen('Ep.Posts.PostWasPublished','Ep\Listeners\EmailNotifier');
 
 
 
@@ -27,36 +26,21 @@ Route::post('/signup', [
     'uses' => 'RegistrationController@store'
 ]);
 
-Route::get('/home', function()
-{
+// GET showing all post on a channel (feed)
+Route::get('/feed', [
+    'as' => 'getFeed',
+    'uses' => 'ChannelController@index'
+]);
 
-    /*
-        --------- UserFactory Tests---------
-            run 'composoer dump-autoload' to load UserFactory class
+// POST for creating a new channel
+Route::post('/channel/create', [
+    'as' => 'postChannel',
+    'uses' => 'ChannelController@store'
+]);
 
-        UserFactory::createStudent([
-            'first_name' => 'student',
-            'last_name' => 'student',
-            'cne' => '11762398'
-        ]);
-
-        UserFactory::createGraduate([
-            'first_name' => 'graduate',
-            'last_name' => 'graduate',
-            'graduation_year' => '2000',
-            'job' => 'CEO'
-        ]);
-
-        UserFactory::createProfessor([
-            'first_name' => 'Professor',
-            'last_name' => 'Professor'
-        ]);
-
-        -------------------------------------
-    */
-    $posts = Channel::findOrFail(4)->posts;
-
-
-    return View::make('channels.feed', compact('posts'));
-});
+// POST create a new post
+Route::post('/feed', [
+    'as' => 'postFeed',
+    'uses' => 'PostController@store'
+]);
 

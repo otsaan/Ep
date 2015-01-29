@@ -1,13 +1,11 @@
-<?php namespace Ep\Posts;
+<?php namespace Ep\Users;
 
 use Laracasts\Presenter\Presenter;
 
-class PostPresenter extends Presenter {
+class UserPresenter extends Presenter {
 
     public function fullName()
     {
         return $this->first_name . ' ' . $this->last_name;
     }
-
-
 }

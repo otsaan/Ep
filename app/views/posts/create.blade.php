@@ -5,18 +5,22 @@
 		<h3 class="box-title">Post</h3>
 	</div>
 
-	<div class="box-body">
-		<form action="#" method="post">
-			<div>
-				<textarea rows="5" placeholder="Message"></textarea>
-			</div>
-		</form>
-	</div>
+	{{--Publish new post form --}}
+	{{ Form::open(['route' => 'postFeed']) }}
 
-	<div class="box-footer clearfix no-border">
-		<button class="btn btn-default pull-right">Publier
-		<button class="btn btn-default pull-right" style="margin-right:5px"> <i class="fa fa-paperclip"></i>
-		<button class="btn btn-default pull-left">Cancel
-	</div>
+		<div class="box-body">
+			{{ Form::textarea('post-content', null, ['placeholder' => 'Say something','rows' => '5']) }}
+		</div>
+
+		<div class="box-footer clearfix no-border">
+
+			{{ Form::button('Publier', array('class' => 'btn btn-default pull-right','type' => 'submit')); }}
+			<button class="btn btn-default pull-right" style="margin-right:5px"> <i class="fa fa-paperclip"></i>
+			<button class="btn btn-default pull-left">Cancel
+			{{ Form::hidden('channelId', 1); }}
+			{{ Form::hidden('userId', 8); }}
+		</div>
+
+	{{ Form::close() }}
 
 </div><!-- /.box -->
