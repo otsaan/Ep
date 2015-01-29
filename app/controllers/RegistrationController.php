@@ -1,11 +1,11 @@
 <?php
 use Ep\Forms\RegistrationForm;
 use Ep\Registration\RegisterUserCommand;
-use Ep\Core\CommandBus;
+use Laracasts\Commander\CommanderTrait;
 
 class RegistrationController extends \BaseController {
 
-    use CommandBus;
+    use CommanderTrait;
 
     private $registrationForm;
 
@@ -51,17 +51,13 @@ class RegistrationController extends \BaseController {
         //before we do any thing we validate
         $this->registrationForm->validate(Input::all());
 
-        extract(Input::all());
-
-        $user = $this->execute(
-            new RegisterUserCommand($is_type, $email, $first_name, $last_name, $password, $username)
-        );
+        $user= $this->execute('\Ep\Registration\RegisterUserCommand');
 
         Auth::login($user);
 
         Flash::overlay("wilcome aboard");
 
-        return Redirect::home();
+        return Redirect::route('index');
 
     }
 
