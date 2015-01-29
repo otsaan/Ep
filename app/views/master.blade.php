@@ -36,11 +36,9 @@
 
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
-
                 <div class="navbar-right">
                     @include('components.navbar')
                 </div>
-
             </nav>
 
         </header>
@@ -60,7 +58,22 @@
 
                 <!-- Main content -->
                 <section class="content">
-                    @include('components.content')
+                    <!-- Main row -->
+                    <div class="row">
+                        <!-- Left col -->
+                        <section class="col-lg-8">
+
+                            @include('posts.create')
+                            @yield('feed')
+
+                        </section><!-- /.Left col -->
+
+                        <!-- right col -->
+                        <section class="col-lg-4">
+
+                        </section><!-- right col -->
+
+                    </div>
                 </section><!-- /.content -->
 
             </aside><!-- /.right-side -->
