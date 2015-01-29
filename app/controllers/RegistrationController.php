@@ -51,13 +51,13 @@ class RegistrationController extends \BaseController {
         //before we do any thing we validate
         $this->registrationForm->validate(Input::all());
 
-       $user= $this->execute('\Ep\Registration\RegisterUserCommand');
+        $user= $this->execute('\Ep\Registration\RegisterUserCommand');
 
         Auth::login($user);
 
         Flash::overlay("wilcome aboard");
 
-        return Redirect::home();
+        return Redirect::route('index');
 
     }
 
