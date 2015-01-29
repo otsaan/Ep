@@ -21,7 +21,7 @@ class UserRepository {
 
         switch ($user->is_type) {
             case 'Student':
-                $user = $this->userFactory->createProfessor($user->getAttributes());
+                $user = $this->userFactory->createStudent($user->getAttributes());
                 break;
             case 'Professor':
                 $user = $this->userFactory->createProfessor($user->getAttributes());
