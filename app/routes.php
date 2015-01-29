@@ -1,10 +1,13 @@
 <?php
 use Ep\Factory\UserFactory;
 
-Route::get('/', function()
+Route::get('/', [
+    'as' => 'home',
+    'uses' => "pagesController@home"
+]);
+/*function()
 {
 
-/*
     --------- UserFactory Tests---------
         run 'composoer dump-autoload' to load UserFactory class
 
@@ -27,16 +30,18 @@ Route::get('/', function()
     ]);
 
     -------------------------------------
-*/
-	return View::make('index');
-});
+return View::make('index');
+});*/
 
-Route::get('/login', function()
-{
+
+Route::get('/login', function () {
     return View::make('login');
 });
 
-Route::get('/signup', function()
-{
-    return View::make('signup');
-});
+Route::get('/signup', [
+    'as' => 'register_path',
+    'uses' => 'RegistrationController@index'
+]);
+Route::post('/signup', [
+
+]);
