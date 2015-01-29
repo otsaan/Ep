@@ -5,7 +5,7 @@ class PagesController extends \BaseController {
 
     function __construct()
     {
-        $this->afterFilter('auth');
+        $this->beforeFilter('auth');
     }
 
     public function home()

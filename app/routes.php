@@ -43,5 +43,6 @@ Route::get('/signup', [
     'uses' => 'RegistrationController@index'
 ]);
 Route::post('/signup', [
-
+    'as' => 'register_path',
+    'uses' => 'RegistrationController@store'
 ]);
