@@ -11,7 +11,7 @@
             <div class="content">
 
                 <!-- username  -->
-                <a class="author">{{ $comment->user->present()->fullName() }}</a>
+                <a class="author">{{ link_to("@{$comment->user->username}", $comment->user->present()->fullName(), $comment->user->username) }}</a>
                 {{--<a class="author">{{ $comment->user->id }}</a>--}}
 
                 <!-- comment date  -->

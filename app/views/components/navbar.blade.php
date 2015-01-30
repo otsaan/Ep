@@ -225,7 +225,7 @@
                         }
                     ?>  
                     <div class="btn btn-default btn-flat">
-                    {{ link_to("{$user->username}", "Profile") }}
+                    {{ link_to("@{$user->username}", "Profile", $user->username) }}
                     </div>
                 </div>
                 <div class="pull-right">

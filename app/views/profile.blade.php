@@ -1,14 +1,6 @@
 @extends('master')
 
 @section('feed')
-    <?php
-        if (Auth::check())
-        {
-            $id = Auth::user()->id;
-            $user = User::find($id);
-        }
-    ?> 
-
     <h1>{{ $user->username }}'s profile</h1>
     <div class="col-md-12">
 
