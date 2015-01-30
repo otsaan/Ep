@@ -63,7 +63,6 @@
                         <!-- Left col -->
                         <section class="col-lg-8">
 
-                            @include('posts.create')
                             @yield('feed')
 
                         </section><!-- /.Left col -->

@@ -15,10 +15,10 @@
 		<div class="box-footer clearfix no-border">
 
 			{{ Form::button('Publier', array('class' => 'btn btn-default pull-right','type' => 'submit')); }}
-			<button class="btn btn-default pull-right" style="margin-right:5px"> <i class="fa fa-paperclip"></i>
-			<button class="btn btn-default pull-left">Cancel
-			{{ Form::hidden('channelId', 1); }}
-			{{ Form::hidden('userId', 8); }}
+			<button class="btn btn-default pull-right" style="margin-right:5px"> <i class="fa fa-paperclip"></i></button>
+			<button class="btn btn-default pull-left">Cancel</button>
+			{{ Form::hidden('channelId', $channelId); }}
+			{{ Form::hidden('userId', $connectedUserId); }}
 		</div>
 
 	{{ Form::close() }}

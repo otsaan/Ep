@@ -2,7 +2,9 @@
 
 
 App::bind('Laracasts\Commander\CommandTranslator','Laracasts\Commander\BasicCommandTranslator');
-Event::listen('Ep.Posts.PostWasPublished','Ep\Listeners\EmailNotifier');
+
+// Example of a notifier who listens to all event and echo a simple message
+Event::listen('Ep.*','Ep\Listeners\Notifier');
 
 
 
@@ -26,21 +28,27 @@ Route::post('/signup', [
     'uses' => 'RegistrationController@store'
 ]);
 
-// GET showing all post on a channel (feed)
+// POST for creating a new channel
+Route::post('/channels', [
+    'as' => 'postChannel',
+    'uses' => 'ChannelController@store'
+]);
+
+// GET showing all posts on a channel (feed)
 Route::get('/feed', [
     'as' => 'getFeed',
     'uses' => 'ChannelController@index'
-]);
-
-// POST for creating a new channel
-Route::post('/channel/create', [
-    'as' => 'postChannel',
-    'uses' => 'ChannelController@store'
 ]);
 
 // POST create a new post
 Route::post('/feed', [
     'as' => 'postFeed',
     'uses' => 'PostController@store'
+]);
+
+// POST create a new comment
+Route::post('/comments', [
+    'as' => 'postComment',
+    'uses' => 'CommentController@store'
 ]);
 

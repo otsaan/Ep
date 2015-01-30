@@ -9,9 +9,11 @@ class ChannelController extends BaseController {
 	 */
 	public function index()
 	{
-		$posts = Channel::findOrFail(1)->posts()->orderBy('created_at','desc')->get();
+		$channelId = 1;
+		$connectedUserId = Auth::id();
+		$posts = Channel::findOrFail($channelId)->posts()->orderBy('created_at','desc')->get();
 
-		return View::make('channels.feed', compact('posts'));
+		return View::make('channels.feed', compact('posts', 'connectedUserId', 'channelId'));
 	}
 
 	/**
