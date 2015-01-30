@@ -690,8 +690,9 @@ body > .header .logo .icon {
   clear: both;
 }
 .user-panel > .image > img {
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
+  border-radius: 0.25rem;
 }
 .user-panel > .info {
   font-weight: 600;
@@ -750,7 +751,7 @@ body > .header .logo .icon {
     left: 0px;
   }
 }
-/* 
+/*
     Dropdown menus
 ----------------------------
 */
@@ -2549,6 +2550,7 @@ Component: timeline
 /* skin-black navbar */
 .skin-black .navbar {
   background-color: #ffffff;
+  border-bottom: 1px solid #dddddd;
 }
 .skin-black .navbar .nav a {
   color: #333333;
@@ -2561,6 +2563,7 @@ Component: timeline
 .skin-black .navbar .nav .open > a:focus {
   background: #ffffff;
   color: #999999;
+  border-bottom: 1px solid #dddddd;
 }
 .skin-black .navbar .navbar-right > .nav {
   margin-right: 10px;

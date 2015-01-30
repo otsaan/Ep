@@ -21,7 +21,8 @@ class Channel extends Eloquent {
         return $this->hasMany('Task');
     }
 
-    public function comments() {
+    public function comments()
+    {
         return $this->hasManyThrough('Comment','Post');
     }
 

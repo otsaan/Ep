@@ -69,7 +69,7 @@ class UserFactory {
         $user->first_name = isset($attributes['first_name']) ? $attributes['first_name'] : null;
         $user->last_name = isset($attributes['last_name']) ? $attributes['last_name'] : null;
         $user->email = isset($attributes['email']) ? $attributes['email'] : null;
-        $user->password = isset($attributes['password']) ? $attributes['password'] : null;
+        //$user->password = isset($attributes['password']) ? $attributes['password'] : null;
         $user->username = isset($attributes['username']) ? $attributes['username'] : null;
         $user->birthdate = isset($attributes['birthdate']) ? $attributes['birthdate'] : null;
         $user->phone = isset($attributes['phone']) ? $attributes['phone'] : null;
