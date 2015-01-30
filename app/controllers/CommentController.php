@@ -14,6 +14,7 @@ class CommentController  extends BaseController {
 	public function store()
 	{
 		$data = Input::only('reply-content','postId','userId');
+
 		$command = new PublishCommentCommand($data['reply-content'], $data['postId'], $data['userId']);
 		$this->commandBus->execute($command);
 

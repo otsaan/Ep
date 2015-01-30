@@ -18,7 +18,7 @@
 			<button class="btn btn-default pull-right" style="margin-right:5px"> <i class="fa fa-paperclip"></i></button>
 			<button class="btn btn-default pull-left">Cancel</button>
 			{{ Form::hidden('channelId', $channelId); }}
-			{{ Form::hidden('userId', $connectedUserId); }}
+			{{ Form::hidden('userId', $userId); }}
 		</div>
 
 	{{ Form::close() }}

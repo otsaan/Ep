@@ -11,7 +11,7 @@
 
 
                 <div class="summary">
-                    <a>{{ $post->user->present()->fullName() }}</a> added <a>2 new images</a>
+                    <a>{{ $post->user->present()->fullName() }}</a>
                     <div class="date">{{ $post->present()->recentTime() }}</div>
                 </div>
 
@@ -19,10 +19,10 @@
                     {{ $post->content }}
                 </div>
 
-                <div class="extra images">
-                    <a><img src="img/avatar2.png"></a>
-                    <a><img src="img/avatar2.png"></a>
-                </div>
+                {{--<div class="extra images">--}}
+                    {{--<a><img src="img/avatar2.png"></a>--}}
+                    {{--<a><img src="img/avatar2.png"></a>--}}
+                {{--</div>--}}
 
                 <div class="meta">
 
@@ -39,7 +39,7 @@
                 @include('comments.show', array('post' => $post))
 
                 <!-- reply form -->
-                @include('comments.create', array('postId' => $post->id, 'userId' => 40))
+                @include('comments.create', array('postId' => $post->id, 'userId' => $userId))
 
 
             </div>
