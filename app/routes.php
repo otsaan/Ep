@@ -16,10 +16,6 @@ Event::listen('Ep.*','Ep\Listeners\Notifier');
         'uses' => "pagesController@index"
     ]);
 
-    Route::get('/', [
-        'as' => 'home',
-        'uses' => "pagesController@home"
-    ]);
     /*=======================================*/
 
 
@@ -86,3 +82,10 @@ Event::listen('Ep.*','Ep\Listeners\Notifier');
         'uses' => 'CommentController@store'
     ]);
     /* ======================================= */
+
+    // Show profile
+    /* ======================================= */
+    Route::get('/{username}', [
+        'as' => 'profile',
+        'uses' => 'UserController@show'
+    ]);
