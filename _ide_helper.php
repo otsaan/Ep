@@ -1,7 +1,7 @@
 <?php
 /**
  * An helper file for Laravel 4, to provide autocomplete information to your IDE
- * Generated for Laravel 4.2.16 on 2015-01-23.
+ * Generated for Laravel 4.2.16 on 2015-01-30.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -3681,7 +3681,7 @@ namespace {
          * @static 
          */
         public static function eagerLoadRelations($models){
-            return \Illuminate\Database\Eloquent\Builder->eagerLoadRelations($models);
+            return \Illuminate\Database\Eloquent\Builder::eagerLoadRelations($models);
         }
         
         /**
@@ -12289,6 +12289,66 @@ namespace {
          */
         public static function getNames(){
             return \Illuminate\View\Factory::getNames();
+        }
+        
+    }
+
+
+    class Flash extends \Laracasts\Flash\Flash{
+        
+        /**
+         * 
+         *
+         * @param $message
+         * @param $title
+         * @static 
+         */
+        public static function success($message){
+            return \Laracasts\Flash\FlashNotifier::success($message);
+        }
+        
+        /**
+         * 
+         *
+         * @param $message
+         * @param $title
+         * @static 
+         */
+        public static function error($message){
+            return \Laracasts\Flash\FlashNotifier::error($message);
+        }
+        
+        /**
+         * 
+         *
+         * @param $message
+         * @param $title
+         * @static 
+         */
+        public static function warning($message){
+            return \Laracasts\Flash\FlashNotifier::warning($message);
+        }
+        
+        /**
+         * 
+         *
+         * @param $message
+         * @param $title
+         * @static 
+         */
+        public static function overlay($message, $title = 'Notice'){
+            return \Laracasts\Flash\FlashNotifier::overlay($message, $title);
+        }
+        
+        /**
+         * 
+         *
+         * @param $message
+         * @param string $level
+         * @static 
+         */
+        public static function message($message, $level = 'info', $title = 'Notice'){
+            return \Laracasts\Flash\FlashNotifier::message($message, $level, $title);
         }
         
     }
