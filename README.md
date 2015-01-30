@@ -1,5 +1,4 @@
 ##Ep-2.0 (under development)
-=====
 Ep is a mini social network buit with [Laravel](http://laravel.com), allowing students to interact with their professors and graduates through what we call "channels", each channel contains its proper posts and members
 
 ###Configuration

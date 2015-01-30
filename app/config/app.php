@@ -124,7 +124,7 @@ return array(
 		'Way\Generators\GeneratorsServiceProvider',
 		'Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
-        'Laracasts\Validation\ValidationServiceProvider',
+		'Laracasts\Validation\ValidationServiceProvider',
         'Laracasts\Commander\CommanderServiceProvider',
         'Laracasts\Flash\FlashServiceProvider',
 	),
