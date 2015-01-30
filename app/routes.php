@@ -67,7 +67,7 @@ Route::post('/comments', [
 /* ======================================= */
 // Show profile
 /* ======================================= */
-Route::get('/{username}', [
+Route::get('@{username}', [
     'as' => 'profile',
     'uses' => 'UserController@show'
 ]);
@@ -75,6 +75,11 @@ Route::get('/{username}', [
 // reset password
 /* ======================================= */
 Route::controller('password', 'RemindersController');
-
-
-
+/* ======================================= */
+// 404 not found
+/* ======================================= */
+App::missing(function($exception)
+{
+    return Response::view('missing', array(), 404);
+    // App::abort(404);
+});
