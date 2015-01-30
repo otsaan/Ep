@@ -21,11 +21,11 @@ class PostController extends BaseController {
 	 */
 	public function store()
 	{
-		$input = Input::only('post-content', 'channelId', 'userId');
+		$input = Input::only('post-content', 'channelId');
 
 		$this->publishPostForm->validate($input);
 
-		$command = new PublishPostCommand($input['post-content'], $input['channelId'], $input['userId']);
+		$command = new PublishPostCommand($input['post-content'], $input['channelId'], Auth::id());
 		$this->commandBus->execute($command);
 
 		return Redirect::route('getFeed');

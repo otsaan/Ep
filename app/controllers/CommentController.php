@@ -21,11 +21,11 @@ class CommentController  extends BaseController {
 	 */
 	public function store()
 	{
-		$input = Input::only('reply-content','postId','userId');
+		$input = Input::only('reply-content','postId');
 
 		$this->publishCommentForm->validate($input);
 
-		$command = new PublishCommentCommand($input['reply-content'], $input['postId'], $input['userId']);
+		$command = new PublishCommentCommand($input['reply-content'], $input['postId'], Auth::id());
 		$this->commandBus->execute($command);
 
 		return Redirect::route('getFeed');

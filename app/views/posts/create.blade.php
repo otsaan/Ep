@@ -24,10 +24,9 @@
 		<div class="box-footer clearfix no-border">
 
 			{{ Form::button('Publier', array('class' => 'btn btn-default pull-right','type' => 'submit')); }}
-			<button class="btn btn-default pull-right" style="margin-right:5px"> <i class="fa fa-paperclip"></i></button>
-			<button class="btn btn-default pull-left">Cancel</button>
+			<div type="file" class="btn btn-default pull-right" style="margin-right:5px"> <i class="fa fa-paperclip"></i></div>
+			{{ Form::reset('Cancel', ['class' => 'btn btn-default pull-left']) }}
 			{{ Form::hidden('channelId', $channelId); }}
-			{{ Form::hidden('userId', $userId); }}
 		</div>
 
 	{{ Form::close() }}
