@@ -217,7 +217,16 @@
             <!-- Menu Footer-->
             <li class="user-footer">
                 <div class="pull-left">
-                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                    <?php
+                        if (Auth::check())
+                        {
+                            $id = Auth::user()->id;
+                            $user = User::find($id);
+                        }
+                    ?>  
+                    <div class="btn btn-default btn-flat">
+                    {{ link_to("{$user->username}", "Profile") }}
+                    </div>
                 </div>
                 <div class="pull-right">
                     <a href="signout" class="btn btn-default btn-flat">Sign out</a>

@@ -21,10 +21,10 @@
     {{ Form::open(['route' => 'register_path'])}}
     <div class="body bg-gray">
         <div class="form-group">
-            {{ Form::text('first_name',null,['class'=>'form-control','placeholder'=>'Prenom']) }}
+            {{ Form::text('first_name',null,['class'=>'form-control','placeholder'=>'Nom']) }}
         </div>
         <div class="form-group">
-            {{ Form::text('last_name',null,['class'=>'form-control','placeholder'=>'Nom']) }}
+            {{ Form::text('last_name',null,['class'=>'form-control','placeholder'=>'Prenom']) }}
         </div>
         <div class="form-group">
             {{ Form::email('email',null,['class'=>'form-control','placeholder'=>'Email']) }}
