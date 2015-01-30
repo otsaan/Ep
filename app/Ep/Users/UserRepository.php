@@ -5,7 +5,8 @@ use User;
 class UserRepository
 {
 
-    /*
+    /**
+     *
      * persiste a user and the equivalent userType : Students or Professor...
      */
     public function save(User $user)
@@ -28,5 +29,16 @@ class UserRepository
                 break;
         }
         return $user;
+    }
+
+    /**
+     * Fetch a user by their username.
+     *
+     * @param $username
+     * @return mixed
+     */
+    public function findByUsername($username)
+    {
+        return User::with('posts')->whereUsername($username)->first();;
     }
 } 
