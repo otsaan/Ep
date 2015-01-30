@@ -57,7 +57,7 @@ class RegistrationController extends \BaseController {
 
         Flash::overlay("wilcome aboard");
 
-        return Redirect::route('index');
+        return Redirect::intended('timeline');
 
     }
 
