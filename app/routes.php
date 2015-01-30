@@ -67,6 +67,7 @@ Event::listen('Ep.*','Ep\Listeners\Notifier');
     // GET showing all posts on a channel (feed)
     /* ======================================= */
     Route::get('/feed', [
+        'before' => 'auth',
         'as' => 'getFeed',
         'uses' => 'ChannelController@index'
     ]);
