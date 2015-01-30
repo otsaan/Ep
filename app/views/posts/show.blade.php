@@ -11,7 +11,7 @@
 
 
                 <div class="summary">
-                    <a>{{ $post->user->present()->fullName() }}</a>
+                    <a> {{ link_to("@{$post->user->username}", $post->user->present()->fullName(), $post->user->username) }}
                     <div class="date">{{ $post->present()->recentTime() }}</div>
                 </div>
 

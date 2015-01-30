@@ -1,8 +1,22 @@
 <?php
 
+use Ep\Users\UserRepository;
+
 class UserController extends \BaseController {
 
 	/**
+     * @var UserRepository
+     */
+    protected $userRepository;
+    /**
+     * @param UserRepository $userRepository
+     */
+    function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
+    /**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
@@ -38,13 +52,13 @@ class UserController extends \BaseController {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param  $username
+	 * @return mixed
 	 */
-	public function show($id)
+	public function show($username)
 	{
-		
-		return View::make('profile');
+        $user = $this->userRepository->findByUsername($username);
+		return View::make('profile')->withUser($user);
 	}
 
 
