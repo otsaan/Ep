@@ -57,8 +57,10 @@ class UserController extends \BaseController {
 	 */
 	public function show($username)
 	{
-        $user = $this->userRepository->findByUsername($username);
-		return View::make('profile')->withUser($user);
+        if($user = $this->userRepository->findByUsername($username)) {
+			return View::make('profile')->withUser($user);
+        }
+        return App::abort(404);
 	}
 
 
