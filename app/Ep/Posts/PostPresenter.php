@@ -19,7 +19,7 @@ class PostPresenter extends Presenter {
 
     public function commentsCount()
     {
-        $count = $this->entity->has('comments')->orderBy('created_at','desc')->get()->count();
+        $count = $this->entity->comments()->orderBy('created_at','asc')->count();
 
         if ($count > 1) {
             $output = '<i class="ion ion-android-chat"></i>&nbsp;' . $count . '&nbsp;Commentaires';
