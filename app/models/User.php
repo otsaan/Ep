@@ -8,7 +8,7 @@ use Laracasts\Commander\Events\EventGenerator;
 use Ep\Registration\Events\UserRegistered;
 
 
-class User extends Eloquent implements UserInterface {
+class User extends Eloquent implements UserInterface,RemindableInterface {
 
 
     use UserTrait, RemindableTrait, EventGenerator;

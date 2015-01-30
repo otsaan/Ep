@@ -10,7 +10,6 @@ Route::get('timeline', [
     'uses' => "pagesController@index"
 ]);
 
-
 /*function()
 {
 
@@ -68,3 +67,9 @@ Route::post('/signup', [
     'as' => 'register_path',
     'uses' => 'RegistrationController@store'
 ]);
+
+/*
+ * reset passaword
+ */
+
+Route: Route::controller('password', 'RemindersController');
