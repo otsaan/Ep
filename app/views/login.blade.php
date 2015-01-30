@@ -30,7 +30,7 @@
             </div>
             <div class="footer">
                 {{ Form::Submit('Login',['class'=>'btn bg-olive btn-block']) }}
-                <p><a href="recovery">I forgot my password</a></p>
+                <p><a href="password/remind">I forgot my password</a></p>
 
                 <a href="signup" class="text-center">Register a new membership</a>
             </div>

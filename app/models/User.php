@@ -10,8 +10,8 @@ use Laracasts\Presenter\Contracts\PresentableInterface;
 use Laracasts\Presenter\PresentableTrait;
 
 
-class User extends Eloquent implements UserInterface, PresentableInterface {
 
+class User extends Eloquent implements UserInterface,RemindableInterface,PresentableInterface {
 
     use UserTrait, RemindableTrait, EventGenerator, PresentableTrait;
 
