@@ -12,6 +12,10 @@
         {{ HTML::style('css/datepicker/datepicker3.css') }}
         <!-- Theme style -->
         {{ HTML::style('css/style.css') }}
+        {{ HTML::style('css/semantic/feed.css') }}
+        {{ HTML::style('css/semantic/comment.css') }}
+        {{ HTML::style('css/semantic/button.css') }}
+        {{ HTML::style('css/custom.css') }}
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,11 +36,9 @@
 
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
-
                 <div class="navbar-right">
                     @include('components.navbar')
                 </div>
-
             </nav>
 
         </header>
@@ -54,14 +56,23 @@
             <!-- Right side column. Contains the navbar and content of the page -->
             <aside class="right-side">
 
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1>Home<small>Posts</small></h1>
-                </section>
-
                 <!-- Main content -->
                 <section class="content">
-                    @include('components.content')
+                    <!-- Main row -->
+                    <div class="row">
+                        <!-- Left col -->
+                        <section class="col-lg-8">
+
+                            @yield('feed')
+
+                        </section><!-- /.Left col -->
+
+                        <!-- right col -->
+                        <section class="col-lg-4">
+
+                        </section><!-- right col -->
+
+                    </div>
                 </section><!-- /.content -->
 
             </aside><!-- /.right-side -->
@@ -69,13 +80,20 @@
         </div><!-- ./wrapper -->
 
 
-        {{ HTML::script('//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js') }}
+
+        {{ HTML::script('http://code.jquery.com/jquery-2.1.0.min.js') }}
+        {{ HTML::script('js/jquery.textarea_autosize.min.js') }}
+        <script>
+            $('textarea.js-auto-size').textareaAutoSize();
+        </script>
         {{ HTML::script('//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js') }}
         {{ HTML::script('//code.jquery.com/ui/1.11.1/jquery-ui.min.js') }}
+
         <!-- datepicker -->
         {{ HTML::script('js/plugins/datepicker/bootstrap-datepicker.js') }}
 
         <!-- App js -->
         {{ HTML::script('js/app.js') }}
+
     </body>
 </html>

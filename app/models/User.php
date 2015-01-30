@@ -6,15 +6,19 @@ use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Laracasts\Commander\Events\EventGenerator;
 use Ep\Registration\Events\UserRegistered;
+use Laracasts\Presenter\Contracts\PresentableInterface;
+use Laracasts\Presenter\PresentableTrait;
 
 
-class User extends Eloquent implements UserInterface {
+class User extends Eloquent implements UserInterface, PresentableInterface {
 
 
-    use UserTrait, RemindableTrait, EventGenerator;
+    use UserTrait, RemindableTrait, EventGenerator, PresentableTrait;
 
     //protected $hidden = array('password', 'remember_token');
     protected $fillable = array('username', 'email', 'password', 'is_type', 'first_name', 'last_name');
+
+    protected $presenter = 'Ep\Users\UserPresenter';
 
     /*
      * Hash the password
