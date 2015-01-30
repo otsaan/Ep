@@ -15,6 +15,7 @@
         {{ HTML::style('css/semantic/feed.css') }}
         {{ HTML::style('css/semantic/comment.css') }}
         {{ HTML::style('css/semantic/button.css') }}
+        {{ HTML::style('css/semantic/message.css') }}
         {{ HTML::style('css/custom.css') }}
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

@@ -9,7 +9,16 @@
 	{{ Form::open(['route' => 'postFeed']) }}
 
 		<div class="box-body">
-			{{ Form::textarea('post-content', null, ['placeholder' => 'Say something','rows' => '5']) }}
+
+			@if ($errors->has('post-content'))
+				@foreach ($errors->all() as $error)
+					<div class="ui small negative message">
+						<p>{{ $error }}</p>
+					</div>
+				@endforeach
+			@endif
+
+			{{ Form::textarea('post-content', null, ['placeholder' => 'Say something','rows' => 5, 'required' => true]) }}
 		</div>
 
 		<div class="box-footer clearfix no-border">

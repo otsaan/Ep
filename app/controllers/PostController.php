@@ -1,9 +1,18 @@
 <?php
 
+use Ep\Forms\PublishPostForm;
 use Ep\Posts\PublishPostCommand;
+use Laracasts\Commander\DefaultCommandBus;
 
 class PostController extends BaseController {
 
+	protected $publishPostForm;
+
+	function __construct(PublishPostForm $publishPostForm, DefaultCommandBus $commandBus)
+	{
+		parent::__construct($commandBus);
+		$this->publishPostForm = $publishPostForm;
+	}
 
 	/**
 	 * Store a newly created resource in storage.
@@ -12,8 +21,11 @@ class PostController extends BaseController {
 	 */
 	public function store()
 	{
-		$data = Input::only('post-content','channelId','userId');
-        $command = new PublishPostCommand($data['post-content'], $data['channelId'], $data['userId']);
+		$input = Input::only('post-content', 'channelId', 'userId');
+
+		$this->publishPostForm->validate($input);
+
+		$command = new PublishPostCommand($input['post-content'], $input['channelId'], $input['userId']);
 		$this->commandBus->execute($command);
 
 		return Redirect::route('getFeed');

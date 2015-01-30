@@ -1,10 +1,18 @@
 <?php
 
 use Ep\Comments\PublishCommentCommand;
+use Ep\Forms\PublishCommentForm;
+use Laracasts\Commander\DefaultCommandBus;
 
 class CommentController  extends BaseController {
 
+	protected $publishCommentForm;
 
+	function __construct(PublishCommentForm $publishCommentForm, DefaultCommandBus $commandBus)
+	{
+		parent::__construct($commandBus);
+		$this->publishCommentForm = $publishCommentForm;
+	}
 
 	/**
 	 * Store a newly created resource in storage.
@@ -13,9 +21,11 @@ class CommentController  extends BaseController {
 	 */
 	public function store()
 	{
-		$data = Input::only('reply-content','postId','userId');
+		$input = Input::only('reply-content','postId','userId');
 
-		$command = new PublishCommentCommand($data['reply-content'], $data['postId'], $data['userId']);
+		$this->publishCommentForm->validate($input);
+
+		$command = new PublishCommentCommand($input['reply-content'], $input['postId'], $input['userId']);
 		$this->commandBus->execute($command);
 
 		return Redirect::route('getFeed');
