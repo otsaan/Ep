@@ -9,16 +9,24 @@
 	{{ Form::open(['route' => 'postFeed']) }}
 
 		<div class="box-body">
-			{{ Form::textarea('post-content', null, ['placeholder' => 'Say something','rows' => '5']) }}
+
+			@if ($errors->has('post-content'))
+				@foreach ($errors->all() as $error)
+					<div class="ui small negative message">
+						<p>{{ $error }}</p>
+					</div>
+				@endforeach
+			@endif
+
+			{{ Form::textarea('post-content', null, ['placeholder' => 'Say something','rows' => 5, 'required' => true]) }}
 		</div>
 
 		<div class="box-footer clearfix no-border">
 
 			{{ Form::button('Publier', array('class' => 'btn btn-default pull-right','type' => 'submit')); }}
-			<button class="btn btn-default pull-right" style="margin-right:5px"> <i class="fa fa-paperclip"></i></button>
-			<button class="btn btn-default pull-left">Cancel</button>
+			<div type="file" class="btn btn-default pull-right" style="margin-right:5px"> <i class="fa fa-paperclip"></i></div>
+			{{ Form::reset('Cancel', ['class' => 'btn btn-default pull-left']) }}
 			{{ Form::hidden('channelId', $channelId); }}
-			{{ Form::hidden('userId', $userId); }}
 		</div>
 
 	{{ Form::close() }}

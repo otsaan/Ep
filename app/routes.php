@@ -68,6 +68,7 @@ Route::post('/comments', [
 // Show profile
 /* ======================================= */
 Route::get('/{username}', [
+    'before' => 'auth',
     'as' => 'profile',
     'uses' => 'UserController@show'
 ]);
