@@ -13,7 +13,7 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
         <li class="active">
-            <a href="index.html">
+            <a href="/feed">
                 <i class="ion ion-ios-home-outline"></i> <span>Home</span>
             </a>
         </li>
