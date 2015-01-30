@@ -1,43 +1,36 @@
 <?php namespace Ep\Posts;
 
+use Ep\Core\TimeabableTrait;
 use Laracasts\Presenter\Presenter;
 
 class PostPresenter extends Presenter {
 
+    use TimeabableTrait;
 
     public function recentTime()
     {
-        return $this->time_elapsed_string($this->updated_at);
+        return $this->time_elapsed_string($this->entity->updated_at);
     }
 
+    public function allComments()
+    {
+        return $this->entity->comments()->orderBy('created_at','asc')->get();
+    }
 
-    private function time_elapsed_string($datetime, $full = false) {
-        $now = new \DateTime;
-        $ago = new \DateTime($datetime);
-        $diff = $now->diff($ago);
+    public function commentsCount()
+    {
+        $count = $this->entity->has('comments')->orderBy('created_at','desc')->get()->count();
 
-        $diff->w = floor($diff->d / 7);
-        $diff->d -= $diff->w * 7;
-
-        $string = array(
-            'y' => 'year',
-            'm' => 'month',
-            'w' => 'week',
-            'd' => 'day',
-            'h' => 'hour',
-            'i' => 'minute',
-            's' => 'second',
-        );
-        foreach ($string as $k => &$v) {
-            if ($diff->$k) {
-                $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
-            } else {
-                unset($string[$k]);
-            }
+        if ($count > 1) {
+            $output = '<i class="ion ion-android-chat"></i>&nbsp;' . $count . '&nbsp;Commentaires';
+        } else if ($count == 1) {
+            $output =  '<i class="ion ion-android-chat"></i>&nbsp;' . $count . '&nbsp;Commentaire';
+        } else {
+            $output = "";
         }
 
-        if (!$full) $string = array_slice($string, 0, 1);
-        return $string ? implode(', ', $string) . ' ago' : 'just now';
+        return $output;
     }
+
 
 }
