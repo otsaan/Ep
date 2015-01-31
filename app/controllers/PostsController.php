@@ -37,6 +37,7 @@ class PostsController extends BaseController {
 	 */
 	public function all()
 	{
+		// $posts is an instance of the Paginator class
 		$posts = Post::with('comments.user')->orderBy('created_at', 'desc')->paginate(10);
 
 		return View::make('posts.all', compact('posts'));
@@ -60,19 +61,20 @@ class PostsController extends BaseController {
 	}
 
 	/**
-	 * Show single post
+	 * Show detailed single post
 	 * GET channels/{channels}/posts/{posts}
-	 * @param  int  $id
+	 * @param $channelId
+	 * @param $postId
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($channelId, $postId)
 	{
         return "nothing here from PostsController@show";
 	}
 
 	/**
-	 * Show the form for editing the specified resource.
-	 *
+	 * Show the form for editing the specified resource. (OPTIONAL)
+	 * * GET channels/{channels}/posts/{posts}/edit
 	 * @param  int  $id
 	 * @return Response
 	 */
@@ -83,7 +85,7 @@ class PostsController extends BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 *
+	 * * PUT channels/{channels}/posts/{posts}
 	 * @param  int  $id
 	 * @return Response
 	 */
@@ -94,7 +96,7 @@ class PostsController extends BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 *
+	 * * DELETE channels/{channels}/posts/{posts}
 	 * @param  int  $id
 	 * @return Response
 	 */
