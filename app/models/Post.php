@@ -4,10 +4,11 @@ use Ep\Posts\PostWasPublished;
 use Laracasts\Commander\Events\EventGenerator;
 use Laracasts\Presenter\Contracts\PresentableInterface;
 use Laracasts\Presenter\PresentableTrait;
+use Conner\Likeable\LikeableTrait;
 
 class Post extends \Eloquent implements PresentableInterface {
+    use EventGenerator, PresentableTrait, LikeableTrait;
 
-    use EventGenerator, PresentableTrait;
 
     protected $presenter = 'Ep\Posts\PostPresenter';
 
