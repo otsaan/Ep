@@ -12,7 +12,7 @@ class PagesController extends \BaseController {
 
     public function index()
     {
-        return Redirect::route('getFeed');
+        return Redirect::action('PostsController@all');
     }
 
 

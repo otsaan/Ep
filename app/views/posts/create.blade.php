@@ -6,7 +6,7 @@
 	</div>
 
 	{{--Publish new post form --}}
-	{{ Form::open(['route' => 'postFeed']) }}
+	{{ Form::open(['action' => array('PostsController@store', $channelId)]) }}
 
 		<div class="box-body">
 
@@ -26,7 +26,6 @@
 			{{ Form::button('Publier', array('class' => 'btn btn-default pull-right','type' => 'submit')); }}
 			<div type="file" class="btn btn-default pull-right" style="margin-right:5px"> <i class="fa fa-paperclip"></i></div>
 			{{ Form::reset('Cancel', ['class' => 'btn btn-default pull-left']) }}
-			{{ Form::hidden('channelId', $channelId); }}
 		</div>
 
 	{{ Form::close() }}

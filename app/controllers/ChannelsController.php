@@ -1,6 +1,6 @@
 <?php
 
-class ChannelController extends BaseController {
+class ChannelsController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,11 +9,7 @@ class ChannelController extends BaseController {
 	 */
 	public function index()
 	{
-		$channelId = 1;
-		$userId = Auth::id();
-		$posts = Channel::findOrFail($channelId)->posts()->orderBy('created_at','desc')->get();
-
-		return View::make('channels.feed', compact('posts', 'userId', 'channelId'));
+		return "list of all channels and their descriptions only (without posts)";
 	}
 
 	/**
@@ -23,7 +19,8 @@ class ChannelController extends BaseController {
 	 */
 	public function create()
 	{
-        return View::make('channels.create');
+		return "nothing here from ChannelsController@create";
+        //return View::make('channels.create');
 	}
 
 	/**
@@ -33,7 +30,7 @@ class ChannelController extends BaseController {
 	 */
 	public function store()
 	{
-		//
+		return "nothing here from ChannelsController@store";
 	}
 
 	/**
@@ -44,7 +41,7 @@ class ChannelController extends BaseController {
 	 */
 	public function show($id)
 	{
-        return View::make('users.show');
+		return "nothing here from ChannelsController@show";
 	}
 
 	/**
@@ -55,7 +52,7 @@ class ChannelController extends BaseController {
 	 */
 	public function edit($id)
 	{
-        return View::make('users.edit');
+		return "nothing here from ChannelsController@edit";
 	}
 
 	/**
@@ -66,7 +63,7 @@ class ChannelController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		return "nothing here from ChannelsController@update";
 	}
 
 	/**
@@ -77,7 +74,7 @@ class ChannelController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		return "nothing here from ChannelsController@destroy";
 	}
 
 }

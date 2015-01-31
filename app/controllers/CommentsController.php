@@ -4,7 +4,7 @@ use Ep\Comments\PublishCommentCommand;
 use Ep\Forms\PublishCommentForm;
 use Laracasts\Commander\DefaultCommandBus;
 
-class CommentController  extends BaseController {
+class CommentsController  extends BaseController {
 
 	protected $publishCommentForm;
 
@@ -15,34 +15,23 @@ class CommentController  extends BaseController {
 	}
 
 	/**
-	 * Store a newly created resource in storage.
+	 * Store a new comment by post id.
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store($postId)
 	{
-		$input = Input::only('reply-content','postId');
+		// TODO: validate $postId
+		$input = Input::only('reply-content');
 
 		$this->publishCommentForm->validate($input);
 
-		$command = new PublishCommentCommand($input['reply-content'], $input['postId'], Auth::id());
+		$command = new PublishCommentCommand($input['reply-content'], $postId, Auth::id());
 		$this->commandBus->execute($command);
 
-		return Redirect::route('getFeed');
+		return Redirect::back();
 	}
 
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-        return View::make('users.edit');
-	}
 
 	/**
 	 * Update the specified resource in storage.
