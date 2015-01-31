@@ -63,7 +63,7 @@ Route::group(array('before' => 'auth'), function()
     /* ======================================= */
     Route::get('@{username}', [
         'as' => 'profile',
-        'uses' => 'UserController@show'
+        'uses' => 'UsersController@show'
     ]);
 
 });
