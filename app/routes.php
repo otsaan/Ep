@@ -1,8 +1,10 @@
-
 <?php
+
 App::bind('Laracasts\Commander\CommandTranslator','Laracasts\Commander\BasicCommandTranslator');
 // Example of a notifier who listens to all event and echo a simple message
 Event::listen('Ep.*','Ep\Listeners\Notifier');
+
+
 /* ============== Home ================*/
 Route::get('/', [
     'as' => 'home',
@@ -13,12 +15,16 @@ Route::get('timeline', [
     'uses' => "pagesController@index"
 ]);
 /*=======================================*/
+
+
 /* ============== Logout ================*/
 Route::get('/signout',  [
     'as'=>'signout_path',
     'uses'=>'sessionsController@destroy'
 ]);
 /*=======================================*/
+
+
 /*============== Login ==================*/
 Route::get('/login',  [
     'as'=>'login_path',
@@ -29,6 +35,8 @@ Route::post('/login', [
     'uses'=>'sessionsController@store'
 ]);
 /*=======================================*/
+
+
 /*=============== Signup ================*/
 Route::get('/signup', [
     'as' => 'register_path',
@@ -38,46 +46,37 @@ Route::post('/signup', [
     'as' => 'register_path',
     'uses' => 'RegistrationController@store'
 ]);
-/*=======================================*/
-// POST for creating a new channel
-/* ======================================= */
-Route::post('/channels', [
-    'as' => 'postChannel',
-    'uses' => 'ChannelController@store'
-]);
-// GET showing all posts on a channel (feed)
-/* ======================================= */
-Route::get('/feed', [
-    'before' => 'auth',
-    'as' => 'getFeed',
-    'uses' => 'ChannelController@index'
-]);
-// POST create a new post
-Route::post('/feed', [
-    'as' => 'postFeed',
-    'uses' => 'PostController@store'
-]);
-/* ======================================= */
-// POST create a new comment
-/* ======================================= */
-Route::post('/comments', [
-    'as' => 'postComment',
-    'uses' => 'CommentController@store'
-]);
-/* ======================================= */
-// Show profile
 /* ======================================= */
 
-Route::get('@{username}', [
-    'before' => 'auth',
-    'as' => 'profile',
-    'uses' => 'UserController@show'
-]);
-/* ======================================= */
+
+/*========================ROUTES PROTECTED BY AUTH===================*/
+Route::group(array('before' => 'auth'), function()
+{
+    Route::resource('channels','ChannelsController');
+    Route::resource('channels.posts','PostsController');
+
+    Route::get('feed','PostsController@all');
+    Route::post('/{postId}/comments','CommentsController@store');
+
+
+    // Show profile
+    /* ======================================= */
+    Route::get('@{username}', [
+        'as' => 'profile',
+        'uses' => 'UserController@show'
+    ]);
+
+});
+/*=====================================================================*/
+
+
+
 // reset password
 /* ======================================= */
 Route::controller('password', 'RemindersController');
 /* ======================================= */
+
+
 // 404 not found
 /* ======================================= */
 App::missing(function($exception)
@@ -85,3 +84,4 @@ App::missing(function($exception)
     return Response::view('missing', array(), 404);
     // App::abort(404);
 });
+/* ======================================= */

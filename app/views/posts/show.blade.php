@@ -39,7 +39,7 @@
                 @include('comments.show', array('post' => $post))
 
                 <!-- reply form -->
-                @include('comments.create', array('postId' => $post->id, 'userId' => $userId))
+                @include('comments.create', array('postId' => $post->id))
 
 
             </div>
