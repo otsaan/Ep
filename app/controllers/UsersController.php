@@ -2,7 +2,7 @@
 
 use Ep\Users\UserRepository;
 
-class UserController extends \BaseController {
+class UsersController extends \BaseController {
 
 	/**
      * @var UserRepository
