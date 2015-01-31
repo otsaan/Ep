@@ -165,4 +165,9 @@
         {{Form::close()}}
 
     </div>
+
+    <div class="ui feed">
+        <?php $posts = $user->posts; ?>
+            @include ('posts.show')
+    </div>
 @stop
