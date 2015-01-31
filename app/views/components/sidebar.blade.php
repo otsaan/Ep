@@ -5,7 +5,7 @@
             <img src="img/avatar2.png" class="img" alt="User Image" />
         </div>
         <div class="pull-left info">
-            <p>Jhon Doe</p>
+            <p>{{ Auth::user()->present()->fullName() }}</p>
 
             <a href="#"><i class="ion ion-ios-gear-outline"></i> Settings</a>
         </div>

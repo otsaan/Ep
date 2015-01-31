@@ -191,14 +191,14 @@
     <li class="dropdown user user-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="ion ion-ios-person"></i>
-            <span>Jane Doe <i class="caret"></i></span>
+            <span>{{ Auth::user()->present()->fullName() }} <i class="caret"></i></span>
         </a>
         <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header bg-light-blue">
                 <img src="img/avatar3.png" class="img-circle" alt="User Image" />
                 <p>
-                    Jane Doe - Web Developer
+                    {{ Auth::user()->present()->fullName() }}
                     <small>Member since Nov. 2012</small>
                 </p>
             </li>
