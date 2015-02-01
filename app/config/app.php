@@ -127,6 +127,7 @@ return array(
 		'Laracasts\Validation\ValidationServiceProvider',
         'Laracasts\Commander\CommanderServiceProvider',
         'Laracasts\Flash\FlashServiceProvider',
+        'Fenos\Notifynder\NotifynderServiceProvider',
 	),
 
 	/*
@@ -194,6 +195,7 @@ return array(
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
         'Flash'             => 'Laracasts\Flash\Flash',
+        'Notifynder'        => 'Fenos\Notifynder\Facades\Notifynder',
 
 	),
 

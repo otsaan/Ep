@@ -22,10 +22,10 @@ class PostsController extends BaseController {
 	 */
 	public function index($channelId)
 	{
-		$userId = Auth::id();
-		$posts = Channel::findOrFail($channelId)->posts()->orderBy('created_at','desc')->get();
-
-		return View::make('posts.index', compact('posts', 'userId', 'channelId'));
+        $userId = Auth::id();
+        $posts = Channel::findOrFail($channelId)->posts()->orderBy('created_at','desc')->get();
+        $notifications=Notifynder::getNotRead(Auth::user()->id);
+        return View::make('posts.index', compact('posts', 'userId', 'channelId','notifications'));
 	}
 
 
@@ -37,9 +37,10 @@ class PostsController extends BaseController {
 	 */
 	public function all()
 	{
-		$posts = Post::with('comments.user')->orderBy('created_at', 'desc')->paginate(10);
+        $posts = Post::with('comments.user')->orderBy('created_at', 'desc')->paginate(10);
+        $notifications=Notifynder::getNotRead(Auth::user()->id);
 
-		return View::make('posts.all', compact('posts'));
+        return View::make('posts.all', compact('posts','notifications'));
 	}
 
 	/**

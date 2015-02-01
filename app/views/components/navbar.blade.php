@@ -79,39 +79,31 @@
     <li class="dropdown notifications-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="ion ion-ios-information-outline"></i>
-            <span class="label bg-dark-gray">10</span>
+            @if($notifications)
+            <span class="label bg-dark-gray">{{$notifications->count()}}</span>
+            @else
+            <span class="label bg-dark-gray">0</span>
+            @endif
         </a>
         <ul class="dropdown-menu">
-            <li class="header">You have 10 notifications</li>
+            @if($notifications)
+            <li class="header">You have {{$notifications->count()}} notification(s)</li>
+            @else
+            <li class="header">You have 0 notification</li>
+            @endif
+
             <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
+                    @foreach($notifications as $notification)
                     <li>
-                        <a href="#">
-                            <i class="ion ion-ios7-people info"></i> 5 new members joined today
+                        <a href="{{$notification['url']}}">
+                            <i class="fa fa-users warning"></i>
+                            {{$notification['body']['text']}} by {{$notification['from']['first_name']}}
+                            {{$notification['from']['last_name']}}s
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-warning danger"></i> Very long description here that may not fit into the page and may cause design problems
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-users warning"></i> 5 new members joined
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <i class="ion ion-ios7-cart success"></i> 25 sales made
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="ion ion-ios7-person danger"></i> You changed your username
-                        </a>
-                    </li>
+                    @endforeach
                 </ul>
             </li>
             <li class="footer"><a href="#">View all</a></li>
