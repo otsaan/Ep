@@ -66,9 +66,17 @@ class PostsController extends BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($channelID,$postID)
 	{
-        return "nothing here from PostsController@show";
+        //TODO
+        /*
+         * verify that the user has access to the post
+         * verify comments order
+         */
+        $post = Post::findOrFail($postID);
+        $notifications=Notifynder::getNotRead(Auth::user()->id);
+
+        return View::make('posts.singlePost', compact('post','notifications'));
 	}
 
 	/**
