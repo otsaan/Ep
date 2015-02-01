@@ -2248,6 +2248,19 @@ namespace {
         }
         
         /**
+         * Dynamically handle calls to the class.
+         *
+         * @param string $method
+         * @param array $parameters
+         * @return mixed 
+         * @throws \BadMethodCallException
+         * @static 
+         */
+        public static function macroCall($method, $parameters){
+            return \Illuminate\Cache\Repository::macroCall($method, $parameters);
+        }
+        
+        /**
          * Increment the value of an item in the cache.
          *
          * @param string $key

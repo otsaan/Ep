@@ -60,4 +60,5 @@
 
 @section('bottom-script')
     @include('likes.post')
+    @include('likes.comment')
 @stop
