@@ -22,6 +22,14 @@ class BaseController extends Controller {
 		{
 			$this->layout = View::make($this->layout);
 		}
+
+        //get notifications only if the user is connected
+        if(Auth::user())
+        {
+            $notifications = Notifynder::getNotRead(Auth::user()->id);
+            View::share('notifications',$notifications);
+        }
+
 	}
 
 }
