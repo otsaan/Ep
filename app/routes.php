@@ -65,7 +65,10 @@ Route::group(array('before' => 'auth'), function()
         'as' => 'profile',
         'uses' => 'UsersController@show'
     ]);
-
+    // Likes
+    /* ======================================= */
+    Route::post('like', array('as' => 'like', 'uses' => 'PostsController@like'));
+    Route::post('clike', array('as' => 'clike', 'uses' => 'CommentsController@like'));
 });
 /*=====================================================================*/
 
@@ -84,5 +87,3 @@ App::missing(function($exception)
     return Response::view('missing', array(), 404);
     // App::abort(404);
 });
-/* ======================================= */
-Route::post('like', array('as' => 'like', 'uses' => 'PostsController@like'));

@@ -55,4 +55,28 @@ class CommentsController  extends BaseController {
 		//
 	}
 
+    public function like()
+    {
+        if (Request::ajax()) {
+            $id = Input::get('id');
+            $comment = Comment::findOrFail($id);
+            if (!$comment->liked()) {
+                $comment->like();
+                return Response::json(array(
+                    'success' => true,
+                    'status' => 'OK',
+                    'like' => true
+                ));
+            } else {
+                $comment->unlike();
+                return Response::json(array(
+                    'success' => true,
+                    'status' => 'OK',
+                    'like' => false
+                ));
+            }
+        }
+        return App::abort(403);
+    }
+
 }

@@ -12,4 +12,9 @@ class CommentPresenter extends Presenter {
         return $this->time_elapsed_string($this->updated_at);
 
     }
+
+    public function liked()
+    {
+        return $this->entity->liked();
+    }
 }

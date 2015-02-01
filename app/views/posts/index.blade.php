@@ -32,9 +32,9 @@
                     <div class="meta">
                         <a class="like-btn like" data-post-id="{{{ $post->id }}}" id="{{{ $post->id }}}">
                             @if($post->present()->liked())
-                                <i class="icon ion-android-favorite already" id="l{{{ $post->id }}}"></i> {{$post->present()->likes}} Likes
+                                <i class="icon ion-android-favorite already"></i> {{$post->present()->likes}} Likes
                             @else
-                                <i class="icon ion-android-favorite-outline" id="l{{{ $post->id }}}"></i> {{$post->present()->likes}} Likes
+                                <i class="icon ion-android-favorite-outline"></i> {{$post->present()->likes}} Likes
                             @endif
                         </a>
 
@@ -59,5 +59,5 @@
 @stop
 
 @section('bottom-script')
-    @include('likes.like')
+    @include('likes.post')
 @stop
