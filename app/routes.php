@@ -80,6 +80,17 @@ Route::controller('password', 'RemindersController');
 /* ======================================= */
 
 
+// Mark notifications as read
+/* ======================================= */
+Route::get('notifications/read',[
+    'as'=>'read_notifications',
+   'uses'=> 'notificationsController@read'
+]);
+/* ======================================= */
+
+
+
+
 // 404 not found
 /* ======================================= */
 App::missing(function($exception)
