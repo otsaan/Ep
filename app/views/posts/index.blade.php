@@ -16,12 +16,12 @@
 
                 <div class="content">
                     <div class="summary">
-                        <a> {{ link_to("@{$post->user->username}", $post->user->present()->fullName(), $post->user->username) }}
-                            <div class="date">{{ $post->present()->recentTime() }}</div>
+                        {{ link_to("@{$post->user->username}", $post->user->present()->fullName(), $post->user->username) }}
+                        <div class="date">{{ $post->present()->recentTime() }}</div>
                     </div>
 
                     <div class="extra text">
-                        {{ $post->content }}
+                        {{ nl2br($post->content) }}
                     </div>
 
                     {{--<div class="extra images">--}}
@@ -30,14 +30,20 @@
                     {{--</div>--}}
 
                     <div class="meta">
-                        <a class="like">
-                            <i class="ion ion-android-favorite"></i> 1 Like
+                        <a class="like-btn like" data-post-id="{{{ $post->id }}}" id="{{{ $post->id }}}">
+                            @if($post->present()->liked())
+                                <i class="icon ion-android-favorite already" id="l{{{ $post->id }}}"></i> {{$post->present()->likes}} Likes
+                            @else
+                                <i class="icon ion-android-favorite-outline" id="l{{{ $post->id }}}"></i> {{$post->present()->likes}} Likes
+                            @endif
                         </a>
+
                         <!--  commentsCount -->
                         <a class="comment">
                             {{ $post->present()->commentsCount() }}
                         </a>
                     </div>
+
 
                     @include('comments.show', array('post' => $post))
 
@@ -50,4 +56,8 @@
 
 
     </div>
+@stop
+
+@section('bottom-script')
+    @include('likes.like')
 @stop

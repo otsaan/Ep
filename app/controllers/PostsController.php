@@ -105,4 +105,31 @@ class PostsController extends BaseController {
 		return "nothing here from PostsController@destroy";
 	}
 
+
+    public function like()
+    {
+        if (Request::ajax()) {
+            $id = Input::get('id');
+            $post = Post::findOrFail($id);
+            if (!$post->liked()) {
+                $post->like();
+                return Response::json(array(
+                    'success' => true,
+                    'status' => 'OK',
+                    'like' => true
+                ));
+            } else {
+                $post->unlike();
+                return Response::json(array(
+                    'success' => true,
+                    'status' => 'OK',
+                    'like' => false
+                ));
+            }
+        }
+        return App::abort(403);
+
+    }
+
+
 }

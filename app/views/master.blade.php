@@ -81,7 +81,6 @@
         </div><!-- ./wrapper -->
 
 
-
         {{ HTML::script('http://code.jquery.com/jquery-2.1.0.min.js') }}
         {{ HTML::script('js/jquery.textarea_autosize.min.js') }}
         <script>
@@ -96,5 +95,6 @@
         <!-- App js -->
         {{ HTML::script('js/app.js') }}
 
+        @yield('bottom-script')
     </body>
 </html>
