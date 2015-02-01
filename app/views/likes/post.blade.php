@@ -17,9 +17,9 @@ $(document).ready(function() {
                         var sd=$("#"+postId).text();
                         sd=parseInt(sd);
                         if(data.like) {
-                            $("#"+postId).html('<i class="icon ion-android-favorite" id="l{{{ $post->id }}}"></i> '+ (sd+1) +' Likes');
+                            $("#"+postId).html('<i class="icon ion-android-favorite"></i> '+ (sd+1) +' Likes');
                         } else {
-                            $("#"+postId).html('<i class="icon ion-android-favorite-outline" id="l{{{ $post->id }}}"></i> '+ (sd-1) +' Likes');
+                            $("#"+postId).html('<i class="icon ion-android-favorite-outline"></i> '+ (sd-1) +' Likes');
                         }
                     }
                 }
