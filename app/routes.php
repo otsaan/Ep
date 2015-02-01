@@ -85,3 +85,4 @@ App::missing(function($exception)
     // App::abort(404);
 });
 /* ======================================= */
+Route::post('like', array('as' => 'like', 'uses' => 'PostsController@like'));

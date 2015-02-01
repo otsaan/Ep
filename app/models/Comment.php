@@ -3,10 +3,11 @@
 use Ep\Comments\CommentWasPublished;
 use Laracasts\Commander\Events\EventGenerator;
 use Laracasts\Presenter\PresentableTrait;
+use Conner\Likeable\LikeableTrait;
 
 class Comment extends \Eloquent {
 
-    use EventGenerator, PresentableTrait;
+    use EventGenerator, PresentableTrait, LikeableTrait;
 
     protected $fillable = [];
     protected $presenter = 'Ep\Comments\CommentPresenter';

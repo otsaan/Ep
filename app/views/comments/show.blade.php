@@ -21,7 +21,13 @@
 
                 <!-- comment content  -->
                 <div class="text">
-                    {{ $comment->content }}
+                    {{ nl2br($comment->content) }}
+                </div>
+
+                <div class="meta">
+                    <a class="like">
+                         <i class="ion ion-android-favorite"></i> {{$comment->present()->likes}} Likes
+                    </a>
                 </div>
 
             </div>
