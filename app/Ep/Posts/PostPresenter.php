@@ -32,5 +32,8 @@ class PostPresenter extends Presenter {
         return $output;
     }
 
-
+    public function liked()
+    {
+        return $this->entity->liked();
+    }
 }
