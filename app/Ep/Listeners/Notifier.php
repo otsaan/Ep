@@ -12,12 +12,16 @@ class Notifier extends EventListener
         $users = $event->post->channel->users;
 
         $channelId = $event->post->channel->id;
-
-        $MultiNotificationsArray = Notifynder::builder()->loop($users, function ($builder, $key, $data) use ($channelId) {
-            return $builder->from(\Auth::user()->id)
-                ->to($data->id)
-                ->category('post')
-                ->url("http://localhost:8000/channels/{$channelId}/posts");
+        $postId = $event->post->id;
+        $channel=$event->post->channel->name;
+        $MultiNotificationsArray = Notifynder::builder()->loop($users, function ($builder, $key, $data) use ($channelId, $postId,$channel) {
+            if ($data->id != \Auth::user()->id) {
+                return $builder->from(\Auth::user()->id)
+                    ->to($data->id)
+                    ->category('post')
+                    ->extra($channel)
+                    ->url("http://localhost:8000/channels/{$channelId}/posts/{$postId}");
+            }
         });
 
         Notifynder::sendMultiple($MultiNotificationsArray);
