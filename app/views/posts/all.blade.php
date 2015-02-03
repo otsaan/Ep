@@ -52,40 +52,17 @@
                         <!-- reply form -->
                         @include('comments.create', array('postId' => $post->id))
                     </div>
-
                 </div>
-                </li>
             @endforeach
+            {{$posts->links()}}
         </div>
 
-        {{$posts->links()}}
     </div>
 
 @stop
 
 @section('bottom-script')
-    {{ HTML::script('js/jquery.jscroll.min.js') }}
-    <script>
-        $(document).ready(function(){
-            //hides the default paginator
-            $('ul.pagination:visible:first').hide();
-
-            //init jscroll and tell it a few key configuration details
-            $('div.scroller').jscroll({
-                debug: true,
-                autoTrigger: true,
-                nextSelector: '.pagination li.active + li a',
-                contentSelector: 'div.scroller',
-                callback: function() {
-
-                    //again hide the paginator from view
-                    $('ul.pagination:visible:first').hide();
-
-                }
-            });
-        });
-    </script>
-
+    @include('components.scroll')
     @include('likes.post')
     @include('likes.comment')
 @stop

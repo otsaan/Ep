@@ -24,7 +24,7 @@ class PostsController extends BaseController
     public function index($channelId)
     {
         $userId = Auth::id();
-        $posts = Channel::findOrFail($channelId)->posts()->orderBy('created_at', 'desc')->get();
+        $posts = Channel::findOrFail($channelId)->posts()->orderBy('created_at', 'desc')->paginate(10);
 
         return View::make('posts.index', compact('posts', 'userId', 'channelId'));
     }

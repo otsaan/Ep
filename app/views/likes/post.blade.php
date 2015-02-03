@@ -5,7 +5,6 @@ $(document).ready(function() {
     {
         var pos = $(this);
         var sd = pos.text();
-        var postId = pos.data('post-id');
         $.ajax({
             url: "{{{ URL::route('like') }}}",
             type:'POST',
@@ -18,9 +17,9 @@ $(document).ready(function() {
                 if (data.success) {
                     sd = parseInt(sd);
                     if(data.like) {
-                        $(pos).html('<a class="like-btn like" data-post-id="postId"><i class="icon ion-android-favorite"></i> '+ (sd+1) +' Likes</a>');
+                        $(pos).html('<i class="icon ion-android-favorite"></i> '+ (sd+1) +' Likes');
                     } else {
-                        $(pos).html('<a class="like-btn like" data-post-id="postId"><i class="icon ion-android-favorite-outline"></i> '+ (sd-1) +' Likes</a>');
+                        $(pos).html('<i class="icon ion-android-favorite-outline"></i> '+ (sd-1) +' Likes');
                     }
                 }
             }

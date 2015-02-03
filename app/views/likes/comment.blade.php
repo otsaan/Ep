@@ -5,7 +5,6 @@ $(document).ready(function() {
     {
         var com = $(this);
         var sd = com.text();
-        var commentId = com.data('comment-id');
         $.ajax({
             url: "{{{ URL::route('clike') }}}",
             type:'POST',
@@ -16,12 +15,11 @@ $(document).ready(function() {
             },
             success: function(data) {
                 if (data.success) {
-                console.log(commentId);
                     sd = parseInt(sd);
                     if(data.like) {
-                        $(com).html('<a class="like" data-comment-id="commentId"><i class="icon ion-android-favorite"></i> '+ (sd+1) +' Likes </a>');
+                        $(com).html('<i class="icon ion-android-favorite"></i> '+ (sd+1) +' Likes');
                     } else {
-                        $(com).html('<a class="like" data-comment-id="commentId"><i class="icon ion-android-favorite-outline"></i> '+ (sd-1) +' Likes </a>');
+                        $(com).html('<i class="icon ion-android-favorite-outline"></i> '+ (sd-1) +' Likes');
                     }
                 }
             }

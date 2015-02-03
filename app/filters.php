@@ -85,3 +85,15 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+Route::filter('liking-comment', function()
+{
+    if (Request::ajax()) {
+        $id = Input::get('id');
+        $comment = Comment::find($id);
+        if(!isset($comment))
+        {
+            return Redirect::back();
+        }
+    }
+});

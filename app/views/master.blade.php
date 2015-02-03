@@ -83,6 +83,7 @@
 
         {{ HTML::script('http://code.jquery.com/jquery-2.1.0.min.js') }}
         {{ HTML::script('js/jquery.textarea_autosize.min.js') }}
+        {{ HTML::script('js/jquery.jscroll.min.js') }}
         <script>
             $('textarea.js-auto-size').textareaAutoSize();
         </script>
