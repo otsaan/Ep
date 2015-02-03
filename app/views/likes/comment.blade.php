@@ -3,7 +3,9 @@ $(document).ready(function() {
     var csrfToken = "{{{ Session::get('_token') }}}";
     $(".like").click(function()
     {
-        var commentId = $(this).data('comment-id');
+        var com = $(this);
+        var sd = com.text();
+        var commentId = com.data('comment-id');
         $.ajax({
             url: "{{{ URL::route('clike') }}}",
             type:'POST',
@@ -14,12 +16,12 @@ $(document).ready(function() {
             },
             success: function(data) {
                 if (data.success) {
-                    var sd = $("#c"+commentId).text();
+                console.log(commentId);
                     sd = parseInt(sd);
                     if(data.like) {
-                        $("#c"+commentId).html('<i class="icon ion-android-favorite"></i> '+ (sd+1) +' Likes');
+                        $(com).html('<a class="like" data-comment-id="commentId"><i class="icon ion-android-favorite"></i> '+ (sd+1) +' Likes </a>');
                     } else {
-                        $("#c"+commentId).html('<i class="icon ion-android-favorite-outline"></i> '+ (sd-1) +' Likes');
+                        $(com).html('<a class="like" data-comment-id="commentId"><i class="icon ion-android-favorite-outline"></i> '+ (sd-1) +' Likes </a>');
                     }
                 }
             }

@@ -30,7 +30,7 @@
                     {{--</div>--}}
 
                     <div class="meta">
-                        <a class="like-btn like" data-post-id="{{{ $post->id }}}" id="{{{ $post->id }}}">
+                        <a class="like-btn like" data-post-id="{{{ $post->id }}}">
                             @if($post->present()->liked())
                                 <i class="icon ion-android-favorite already"></i> {{$post->present()->likes}} Likes
                             @else

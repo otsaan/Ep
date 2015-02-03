@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="meta">
-                    <a class="like" data-comment-id="{{{ $comment->id }}}" id="c{{{ $comment->id }}}">
+                    <a class="like" data-comment-id="{{{ $comment->id }}}">
                         @if($comment->present()->liked())
                             <i class="icon ion-android-favorite"></i> {{$comment->present()->likes}} Likes
                         @else
