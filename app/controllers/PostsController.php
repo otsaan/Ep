@@ -4,107 +4,125 @@ use Ep\Forms\PublishPostForm;
 use Ep\Posts\PublishPostCommand;
 use Laracasts\Commander\DefaultCommandBus;
 
-class PostsController extends BaseController {
+class PostsController extends BaseController
+{
 
-	protected $publishPostForm;
+    protected $publishPostForm;
 
-	function __construct(PublishPostForm $publishPostForm, DefaultCommandBus $commandBus)
-	{
-		parent::__construct($commandBus);
-		$this->publishPostForm = $publishPostForm;
-	}
-
-
-	/**
-	 * Display all posts by channel id
-	 * GET channels/{channelId}/posts/
-	 * @return Response
-	 */
-	public function index($channelId)
-	{
-		$userId = Auth::id();
-		$posts = Channel::findOrFail($channelId)->posts()->orderBy('created_at','desc')->get();
-
-		return View::make('posts.index', compact('posts', 'userId', 'channelId'));
-	}
+    function __construct(PublishPostForm $publishPostForm, DefaultCommandBus $commandBus)
+    {
+        parent::__construct($commandBus);
+        $this->publishPostForm = $publishPostForm;
+    }
 
 
-	/**
-	 * Display all existing posts on the database
-	 * IN ALL CHANNELS !!
-	 * GET channels/posts/
-	 * @return Response
-	 */
-	public function all()
-	{
-		// $posts is an instance of the Paginator class
-		$posts = Post::with('comments.user')->orderBy('created_at', 'desc')->paginate(10);
+    /**
+     * Display all posts by channel id
+     * GET channels/{channelId}/posts/
+     * @return Response
+     */
+    public function index($channelId)
+    {
+        $userId = Auth::id();
+        $posts = Channel::findOrFail($channelId)->posts()->orderBy('created_at', 'desc')->paginate(10);
 
-		return View::make('posts.all', compact('posts'));
-	}
+        return View::make('posts.index', compact('posts', 'userId', 'channelId'));
+    }
 
-	/**
-	 * Store a newly created post whithin a channel
-	 * POST channels/{channelId}/posts/
-	 * @return Response
-	 */
-	public function store($channelId)
-	{
-		$input = Input::only('post-content');
 
-		$this->publishPostForm->validate($input);
+    /**
+     * Display all existing posts on the database
+     * IN ALL CHANNELS !!
+     * GET channels/posts/
+     * @return Response
+     */
+    public function all()
+    {
+        $posts = Post::with('comments.user')->orderBy('created_at', 'desc')->paginate(10);
+        return View::make('posts.all', compact('posts'));
+    }
 
-		$command = new PublishPostCommand($input['post-content'], $channelId, Auth::id());
-		$this->commandBus->execute($command);
+    /**
+     * Store a newly created post whithin a channel
+     * POST channels/{channelId}/posts/
+     * @return Response
+     */
+    public function store($channelId)
+    {
+        $input = Input::only('post-content');
 
-		return Redirect::back();
-	}
+        $this->publishPostForm->validate($input);
 
-	/**
-	 * Show detailed single post
-	 * GET channels/{channels}/posts/{posts}
-	 * @param $channelId
-	 * @param $postId
-	 * @return Response
-	 */
-	public function show($channelId, $postId)
-	{
-        return "nothing here from PostsController@show";
-	}
+        $command = new PublishPostCommand($input['post-content'], $channelId, Auth::id());
+        $this->commandBus->execute($command);
 
-	/**
-	 * Show the form for editing the specified resource. (OPTIONAL)
-	 * * GET channels/{channels}/posts/{posts}/edit
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		return "nothing here from PostsController@edit";
-	}
+        return Redirect::back();
+    }
 
-	/**
-	 * Update the specified resource in storage.
-	 * * PUT channels/{channels}/posts/{posts}
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		return "nothing here from PostsController@update";
-	}
+    /**
+     * Show single post
+     * GET channels/{channels}/posts/{posts}
+     * @param $channelID
+     * @param $postID
+     * @return Response
+     * @internal param int $id
+     */
+    public function show($channelID, $postID)
+    {
+        //TODO
+        /*
+         * verify that the user has access to the post
+         * validate the input
+         */
 
-	/**
-	 * Remove the specified resource from storage.
-	 * * DELETE channels/{channels}/posts/{posts}
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		return "nothing here from PostsController@destroy";
-	}
+        $notifId = Input::get('notifId');
 
+        if ($notifId) {
+            try {
+                Notifynder::readOne($notifId);
+            } catch (Fenos\Notifynder\Exceptions\NotificationNotFoundException $e) {
+                return Redirect::back();
+            }
+        }
+
+        $notifications = Notifynder::getNotRead(Auth::user()->id);
+        $post = Post::findOrFail($postID);
+
+        return View::make('posts.singlePost', compact('post','notifications'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        return "nothing here from PostsController@edit";
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        return "nothing here from PostsController@update";
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        return "nothing here from PostsController@destroy";
+    }
 
     public function like()
     {
@@ -127,8 +145,8 @@ class PostsController extends BaseController {
                 ));
             }
         }
-        return App::abort(403);
 
+        return App::abort(403);
     }
 
 

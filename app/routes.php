@@ -65,7 +65,10 @@ Route::group(array('before' => 'auth'), function()
         'as' => 'profile',
         'uses' => 'UsersController@show'
     ]);
-
+    // Likes
+    /* ======================================= */
+    Route::post('like', array('as' => 'like', 'uses' => 'PostsController@like'));
+    Route::post('clike', array('before' => 'liking-comment', 'as' => 'clike', 'uses' => 'CommentsController@like'));
 });
 /*=====================================================================*/
 
@@ -77,6 +80,17 @@ Route::controller('password', 'RemindersController');
 /* ======================================= */
 
 
+// Mark notifications as read
+/* ======================================= */
+Route::get('notifications/read',[
+    'as'=>'read_notifications',
+   'uses'=> 'notificationsController@read'
+]);
+/* ======================================= */
+
+
+
+
 // 404 not found
 /* ======================================= */
 App::missing(function($exception)
@@ -84,5 +98,3 @@ App::missing(function($exception)
     return Response::view('missing', array(), 404);
     // App::abort(404);
 });
-/* ======================================= */
-Route::post('like', array('as' => 'like', 'uses' => 'PostsController@like'));

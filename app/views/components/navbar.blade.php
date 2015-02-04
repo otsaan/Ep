@@ -21,7 +21,8 @@
                             </h4>
                             <p>Why not buy a new awesome theme?</p>
                         </a>
-                    </li><!-- end message -->
+                    </li>
+                    <!-- end message -->
                     <li>
                         <a href="#">
                             <div class="pull-left">
@@ -76,47 +77,7 @@
         </ul>
     </li>
     <!-- Notifications: style can be found in dropdown.less -->
-    <li class="dropdown notifications-menu">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="ion ion-ios-information-outline"></i>
-            <span class="label bg-dark-gray">10</span>
-        </a>
-        <ul class="dropdown-menu">
-            <li class="header">You have 10 notifications</li>
-            <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                    <li>
-                        <a href="#">
-                            <i class="ion ion-ios7-people info"></i> 5 new members joined today
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-warning danger"></i> Very long description here that may not fit into the page and may cause design problems
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-users warning"></i> 5 new members joined
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <i class="ion ion-ios7-cart success"></i> 25 sales made
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="ion ion-ios7-person danger"></i> You changed your username
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="footer"><a href="#">View all</a></li>
-        </ul>
-    </li>
+    @include('components.partials.notifications')
     <!-- Tasks: style can be found in dropdown.less -->
     <li class="dropdown tasks-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -135,12 +96,14 @@
                                 <small class="pull-right">20%</small>
                             </h3>
                             <div class="progress xs">
-                                <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
+                                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                                     <span class="sr-only">20% Complete</span>
                                 </div>
                             </div>
                         </a>
-                    </li><!-- end task item -->
+                    </li>
+                    <!-- end task item -->
                     <li><!-- Task item -->
                         <a href="#">
                             <h3>
@@ -148,12 +111,14 @@
                                 <small class="pull-right">40%</small>
                             </h3>
                             <div class="progress xs">
-                                <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar"
+                                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                                     <span class="sr-only">40% Complete</span>
                                 </div>
                             </div>
                         </a>
-                    </li><!-- end task item -->
+                    </li>
+                    <!-- end task item -->
                     <li><!-- Task item -->
                         <a href="#">
                             <h3>
@@ -161,12 +126,14 @@
                                 <small class="pull-right">60%</small>
                             </h3>
                             <div class="progress xs">
-                                <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar"
+                                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                                     <span class="sr-only">60% Complete</span>
                                 </div>
                             </div>
                         </a>
-                    </li><!-- end task item -->
+                    </li>
+                    <!-- end task item -->
                     <li><!-- Task item -->
                         <a href="#">
                             <h3>
@@ -174,12 +141,14 @@
                                 <small class="pull-right">80%</small>
                             </h3>
                             <div class="progress xs">
-                                <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar"
+                                     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                                     <span class="sr-only">80% Complete</span>
                                 </div>
                             </div>
                         </a>
-                    </li><!-- end task item -->
+                    </li>
+                    <!-- end task item -->
                 </ul>
             </li>
             <li class="footer">
@@ -191,14 +160,15 @@
     <li class="dropdown user user-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="ion ion-ios-person"></i>
-            <span>{{ Auth::user()->present()->fullName() }} <i class="caret"></i></span>
+            <span>Jane Doe <i class="caret"></i></span>
         </a>
         <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header bg-light-blue">
-                <img src="img/avatar3.png" class="img-circle" alt="User Image" />
+                <img src="img/avatar3.png" class="img-circle" alt="User Image"/>
+
                 <p>
-                    {{ Auth::user()->present()->fullName() }}
+                    Jane Doe - Web Developer
                     <small>Member since Nov. 2012</small>
                 </p>
             </li>
@@ -218,18 +188,17 @@
             <li class="user-footer">
                 <div class="pull-left">
                     <?php
-                        if (Auth::check())
-                        {
-                            $id = Auth::user()->id;
-                            $user = User::find($id);
-                        }
-                    ?>  
+                    if (Auth::check()) {
+                        $id = Auth::user()->id;
+                        $user = User::find($id);
+                    }
+                    ?>
                     <div class="btn btn-default btn-flat">
-                    {{ link_to("@{$user->username}", "Profile", $user->username) }}
+                        {{ link_to("@{$user->username}", "Profile", $user->username) }}
                     </div>
                 </div>
                 <div class="pull-right">
-                    <a href="signout" class="btn btn-default btn-flat">Sign out</a>
+                    <a href="{{route('signout_path')}}" class="btn btn-default btn-flat">Sign out</a>
                 </div>
             </li>
         </ul>

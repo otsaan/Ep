@@ -171,3 +171,8 @@
             @include ('posts.show')
     </div>
 @stop
+
+@section('bottom-script')
+    @include('likes.post')
+    @include('likes.comment')
+@stop
