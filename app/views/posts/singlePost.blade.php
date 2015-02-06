@@ -29,7 +29,7 @@
                 {{--</div>--}}
 
             <div class="meta">
-                <a class="like-btn like" data-post-id="{{{ $post->id }}}" id="{{{ $post->id }}}">
+                <a class="like-btn like" data-post-id="{{{ $post->id }}}">
                     @if($post->present()->liked())
                     <i class="icon ion-android-favorite"></i> {{$post->present()->likes}} Likes
                     @else
@@ -56,6 +56,6 @@
 @stop
 
 @section('bottom-script')
-@include('likes.post')
-@include('likes.comment')
+    @include('likes.post')
+    @include('likes.comment')
 @stop

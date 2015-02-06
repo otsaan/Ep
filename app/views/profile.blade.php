@@ -4,19 +4,20 @@
     <h1>{{ $user->username }}'s profile</h1>
     <div class="col-md-12">
 
-        {{Form::open(['route'=>'profile'])}}
             <div class="form-group">
 
                 <!-- ======== Photo de profile ============-->
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img src="img/avatar2.png" width="230" height="230"/>
+                        <img src="{{ $user->photo }}" width="230" class="profileImg" height="230"/>
 
+                                {{ Form::open() }}
                         <div class="text-center profile-pic-change">
                             <div class="btn bg-gray btn-file">
-                                <i class="fa fa-edit"></i> Modifier {{ Form::file('photo') }}
+                                <i class="fa fa-edit"></i> Modifier {{ Form::file('photo', ['id' => 'thePhoto']) }}
                                 <progress id="progressBar" value="0" max="100" style="width:150px;display:none;"></progress>
                             </div>
+                                {{ Form::close() }}
                         </div>
                     </div>
                     <h3 id="status"></h3>
@@ -69,7 +70,7 @@
                             </div><!-- /.tab-pane -->
 
                             <div class="tab-pane" id="tab_2">
-
+                              {{Form::open(['route'=>'profile'])}}
                               <table class="table table-hover">
                                  Entrez les champs que vous voulez modifier puis cliquez sur enregistrer:<br><br>
                                 <tr>
@@ -170,4 +171,9 @@
         <?php $posts = $user->posts; ?>
             @include ('posts.show')
     </div>
+@stop
+
+@section('bottom-script')
+    @include('likes.post')
+    @include('likes.comment')
 @stop

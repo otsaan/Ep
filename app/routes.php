@@ -68,7 +68,7 @@ Route::group(array('before' => 'auth'), function()
     // Likes
     /* ======================================= */
     Route::post('like', array('as' => 'like', 'uses' => 'PostsController@like'));
-    Route::post('clike', array('as' => 'clike', 'uses' => 'CommentsController@like'));
+    Route::post('clike', array('before' => 'liking-comment', 'as' => 'clike', 'uses' => 'CommentsController@like'));
 });
 /*=====================================================================*/
 

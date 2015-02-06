@@ -4,7 +4,7 @@
         <div class="event">
 
             <a class="label no-padding">
-                <img src="http://dummyimage.com/40x40">
+                <img src="{{$post->user->photo}}">
             </a>
 
             <div class="content">
@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="extra text">
-                    {{ nl2br($post->content) }}
+                    {{{ nl2br($post->content) }}}
                 </div>
 
                 {{--<div class="extra images">--}}
@@ -25,7 +25,7 @@
                 {{--</div>--}}
 
                 <div class="meta">
-                    <a class="like-btn like" data-post-id="{{{ $post->id }}}" id="{{{ $post->id }}}">
+                    <a class="like-btn like" data-post-id="{{{ $post->id }}}">
                     @if($post->present()->liked())
                         <i class="icon ion-android-favorite"></i> {{$post->present()->likes}} Likes
                     @else

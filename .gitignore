@@ -12,3 +12,6 @@ Thumbs.db
 # General CodeKit files to ignore
 config.codekit
 /min d
+_ide_helper.php
+
+_ide_helper.php

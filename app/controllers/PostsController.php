@@ -17,6 +17,7 @@ class PostsController extends BaseController
 
 
     /**
+     * TODO: restrict from professor to access channel which he does not belong
      * Display all posts by channel id
      * GET channels/{channelId}/posts/
      * @return Response
@@ -24,7 +25,12 @@ class PostsController extends BaseController
     public function index($channelId)
     {
         $userId = Auth::id();
-        $posts = Channel::findOrFail($channelId)->posts()->orderBy('created_at', 'desc')->get();
+        if (Auth::user()->is_type == "Professor") {
+            $posts = Channel::findOrFail($channelId)->posts()->where('user_id', '=', Auth::id())->orderBy('created_at', 'desc')->paginate(10);
+        } else {
+            $posts = Channel::findOrFail($channelId)->posts()->orderBy('created_at', 'desc')->paginate(10);
+        }
+
 
         return View::make('posts.index', compact('posts', 'userId', 'channelId'));
     }

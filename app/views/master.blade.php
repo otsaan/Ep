@@ -33,7 +33,7 @@
         <header class="header">
 
             <a href="/feed" class="logo">
-                <img src="img/small_logo.png">
+                <img src={{asset('img/small_logo.png')}}>
             </a>
 
             <!-- Header Navbar: style can be found in header.less -->
@@ -84,6 +84,7 @@
 
         {{ HTML::script('http://code.jquery.com/jquery-2.1.0.min.js') }}
         {{ HTML::script('js/jquery.textarea_autosize.min.js') }}
+        {{ HTML::script('js/jquery.jscroll.min.js') }}
         <script>
             $('textarea.js-auto-size').textareaAutoSize();
         </script>

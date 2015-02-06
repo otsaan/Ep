@@ -128,6 +128,7 @@ return array(
         'Laracasts\Commander\CommanderServiceProvider',
         'Laracasts\Flash\FlashServiceProvider',
         'Fenos\Notifynder\NotifynderServiceProvider',
+        'Intervention\Image\ImageServiceProvider',
 	),
 
 	/*
@@ -196,7 +197,7 @@ return array(
 		'View'              => 'Illuminate\Support\Facades\View',
         'Flash'             => 'Laracasts\Flash\Flash',
         'Notifynder'        => 'Fenos\Notifynder\Facades\Notifynder',
-
+        'Image' => 'Intervention\Image\Facades\Image',
 	),
 
 );

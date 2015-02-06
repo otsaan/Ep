@@ -3323,3 +3323,30 @@ fieldset[disabled] .btn-vk.active {
   color: #587ea3;
   background-color: #ffffff;
 }
+
+.dropzone {
+  border: 2px dashed #ccc;
+}
+
+.dropzone.dragover {
+  border-color: #000;
+}
+
+.input-group {
+  width: 65%;
+  margin-right: 20px;
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-file input[type=file] {
+  font-size: 12px;
+  text-align: right;
+  outline: none;
+  background: blue;
+  cursor: inherit;
+  display: block;
+}

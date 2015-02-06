@@ -5,7 +5,7 @@
 
             <!-- user avatar 35x35 -->
             <a class="avatar">
-                <img src="http://dummyimage.com/35x35">
+                <img src="{{$comment->user->photo}}">
             </a>
 
             <div class="content">
@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="meta">
-                    <a class="like" data-comment-id="{{{ $comment->id }}}" id="c{{{ $comment->id }}}">
+                    <a class="like-cmnt like" data-comment-id="{{{ $comment->id }}}">
                         @if($comment->present()->liked())
                             <i class="icon ion-android-favorite"></i> {{$comment->present()->likes}} Likes
                         @else
