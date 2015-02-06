@@ -11,7 +11,7 @@
                     <div class="thumbnail">
                         <img src="{{ $user->photo }}" width="230" class="profileImg" height="230"/>
 
-                                {{ Form::open(['route'=>'modifier', 'files' => true]) }}
+                                {{ Form::open() }}
                         <div class="text-center profile-pic-change">
                             <div class="btn bg-gray btn-file">
                                 <i class="fa fa-edit"></i> Modifier {{ Form::file('photo', ['id' => 'thePhoto']) }}
