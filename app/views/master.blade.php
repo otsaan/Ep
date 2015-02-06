@@ -32,7 +32,7 @@
         <header class="header">
 
             <a href="/feed" class="logo">
-                <img src="img/small_logo.png">
+                <img src={{asset('img/small_logo.png')}}>
             </a>
 
             <!-- Header Navbar: style can be found in header.less -->
