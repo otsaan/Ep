@@ -4,7 +4,7 @@
         <div class="event">
 
             <a class="label no-padding">
-                <img src="http://dummyimage.com/40x40">
+                <img src="{{$post->user->photo}}">
             </a>
 
             <div class="content">

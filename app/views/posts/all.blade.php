@@ -13,13 +13,15 @@
                 <div class="event">
 
                     <a class="label no-padding">
-                        <img src="http://dummyimage.com/40x40">
+                        <img src="{{$post->user->photo}}">
                     </a>
 
                     <div class="content">
                         <div class="summary">
                             {{ link_to("@{$post->user->username}", $post->user->present()->fullName(), $post->user->username) }}
-                            <div class="date">{{ $post->present()->recentTime() }}</div> &nbsp;in
+                            <div class="date">
+                                {{ link_to_route("channels.posts.show", $post->present()->recentTime(), [$post->channel->id, $post->id]); }}
+                            </div> &nbsp;in
                             {{ link_to_route('channels.posts.index', '#' .$post->channel->name , $post->channel->id ); }}
                         </div>
 

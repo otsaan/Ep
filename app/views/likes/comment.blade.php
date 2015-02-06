@@ -1,7 +1,7 @@
 <script>
 $(document).ready(function() {
     var csrfToken = "{{{ Session::get('_token') }}}";
-    $(".like").click(function()
+    $(".like-cmnt").click(function()
     {
         var com = $(this);
         var sd = com.text();

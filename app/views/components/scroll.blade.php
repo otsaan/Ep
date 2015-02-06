@@ -7,6 +7,7 @@
         $('div.scroller').jscroll({
             debug: false,
             autoTrigger: true,
+            loadingHtml: ' ',
             nextSelector: '.pagination li.active + li a',
             contentSelector: 'div.scroller',
             callback: function() {
