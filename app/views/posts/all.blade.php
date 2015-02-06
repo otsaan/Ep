@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="extra text">
-                            {{ nl2br($post->content) }}
+                            {{{ nl2br($post->content) }}}
                         </div>
 
                         {{--<div class="extra images">--}}
