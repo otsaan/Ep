@@ -70,9 +70,13 @@ class User extends Eloquent implements UserInterface,RemindableInterface,Present
         return $this->hasMany('Post');
     }
 
+    public  function channel()
+    {
+        return $this->hasMany('Channel');
+    }
     public function channels()
     {
-        return $this->belongsToMany('Channel');
+        return $this->belongsToMany('Channel','user_channel');
     }
 
 }

@@ -6073,7 +6073,8 @@ namespace {
 
 
     class Input extends \Illuminate\Support\Facades\Input{
-        
+    class Input extends \Illuminate\Support\Facades\Input{
+
         /**
          * Return the Request instance.
          *

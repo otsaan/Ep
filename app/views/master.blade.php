@@ -24,6 +24,7 @@
         {{ HTML::style('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js') }}
         {{ HTML::style('https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js') }}
         <![endif]-->
+        @yield('topScript')
     </head>
 
     <body class="skin-black">
