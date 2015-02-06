@@ -11,7 +11,7 @@ class Professor extends Eloquent {
 
     public function courses()
     {
-        return $this->belongsToMany();
+        return $this->belongsToMany('Course');
     }
 }
 
