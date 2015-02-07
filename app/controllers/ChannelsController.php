@@ -2,14 +2,24 @@
 
 class ChannelsController extends BaseController {
 
-	/**
+
+     function __construct()
+    {
+
+        $this->beforeFilter('auth');
+
+    }
+
+
+    /**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		return "list of all channels and their descriptions only (without posts)";
+		$data= Channel::with('users','user')->where("public","=",1,"and")->where("user_id","!=",Auth::user()->id)->orderBy('id','desc')->take(100)->get();
+        return $data;
 	}
 
 	/**
@@ -30,7 +40,17 @@ class ChannelsController extends BaseController {
 	 */
 	public function store()
 	{
-		return "nothing here from ChannelsController@store";
+        //Todo
+        /*
+         * validation
+         */
+        $channel = new Channel();
+        $channel->name = Input::get('name');
+        $channel->description = Input::get('description');
+        $channel->public = Input::get('public');
+
+        Auth::user()->channel()->save($channel);
+        $channel->users()->attach(Auth::user());
 	}
 
 	/**
@@ -76,5 +96,50 @@ class ChannelsController extends BaseController {
 	{
 		return "nothing here from ChannelsController@destroy";
 	}
+
+    public function manage()
+    {
+        return View::make('channels.index');
+    }
+    public function search()
+    {
+        //TODO
+        /*
+         * Input validation
+         */
+        $channelName =  Input::get('name');
+
+        $data= Channel::where('name', 'like', "%{$channelName}%")->with('users','user')->where("public","=",1)->orderBy('id','desc')->take(100)->get();
+        return $data;
+
+    }
+
+    public function join()
+    {
+        //TODO
+        /*
+         * verify that the channel is public
+         * and the user has not already join it
+         */
+        $channelId = Input::get('id');
+
+        Channel::findOrFail($channelId)->users()->attach(Auth::user());
+    }
+
+    public function userChannels()
+    {
+        $data= Auth::user()->channels()->with('users','user')->orderBy('id','desc')->get();
+        return $data;
+    }
+
+    public function withdraw()
+    {
+        $channelId = Input::get('id');
+
+        Channel::findOrFail($channelId)->users()->detach(Auth::user());
+
+        $data= Auth::user()->channels()->with('users','user')->orderBy('id','desc')->get();
+        return $data;
+    }
 
 }

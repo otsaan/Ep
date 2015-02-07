@@ -102,3 +102,33 @@ App::missing(function($exception)
     return Response::view('missing', array(), 404);
     // App::abort(404);
 });
+
+route::get('manageChannels',[
+    'as' => 'manageChannels_path',
+    'uses' => 'ChannelsController@manage'
+]);
+route::post('/channels/search',[
+    'as' => 'search_channels_path',
+    'uses' => 'ChannelsController@search'
+]);
+route::post('/channels/join',[
+    'as' => 'join_path',
+    'uses' => 'ChannelsController@join'
+]);
+
+route::get('/user/channels',[
+    'as' => 'user_channels',
+    'uses' => 'ChannelsController@userChannels'
+]);
+route::post('channel/withdraw',[
+    'as' => 'withdraw_path',
+    'uses' => 'ChannelsController@withdraw'
+]);
+route::get('test',function(){
+
+
+    return $userGroups = Auth::user()->channels()->select(['id']);
+
+
+});
+

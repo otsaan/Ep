@@ -24,6 +24,7 @@
         {{ HTML::style('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js') }}
         {{ HTML::style('https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js') }}
         <![endif]-->
+        @yield('topScript')
     </head>
 
     <body class="skin-black">
@@ -32,7 +33,7 @@
         <header class="header">
 
             <a href="/feed" class="logo">
-                <img src="img/small_logo.png">
+                <img src={{asset('img/small_logo.png')}}>
             </a>
 
             <!-- Header Navbar: style can be found in header.less -->
