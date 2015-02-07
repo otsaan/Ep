@@ -1,11 +1,17 @@
+<?php
+    if (Auth::check()) {
+        $id = Auth::user()->id;
+        $user = User::find($id);
+    }
+?>
 <section class="sidebar">
     <!-- Sidebar user panel -->
     <div class="user-panel">
         <div class="pull-left image">
-            <img src={{asset('img/avatar2.png')}} class="img" alt="User Image" />
+            <img src={{$user->photo}} class="img" alt="User Image" />
         </div>
         <div class="pull-left info">
-            <p>Jhon Doe</p>
+            <p>{{$user->first_name." ".$user->last_name}}</p>
 
             <a href="#"><i class="ion ion-ios-gear-outline"></i> Settings</a>
         </div>

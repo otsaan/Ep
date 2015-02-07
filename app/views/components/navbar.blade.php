@@ -1,3 +1,9 @@
+<?php
+    if (Auth::check()) {
+        $id = Auth::user()->id;
+        $user = User::find($id);
+    }
+?>
 <ul class="nav navbar-nav">
 <!-- Messages: style can be found in dropdown.less-->
 <li class="dropdown messages-menu">
@@ -160,20 +166,20 @@
 <li class="dropdown user user-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         <i class="ion ion-ios-person"></i>
-        <span>Jane Doe <i class="caret"></i></span>
+        <span>{{$user->first_name." ".$user->last_name}} <i class="caret"></i></span>
     </a>
     <ul class="dropdown-menu">
         <!-- User image -->
         <li class="user-header bg-light-blue">
-            <img src={{asset('img/avatar3.png')}} class="img-circle" alt="User Image"/>
+            <img src={{$user->photo}} class="img-circle" alt="User Image"/>
 
             <p>
-                Jane Doe - Web Developer
+                {{$user->first_name." ".$user->last_name}} - Web Developer
                 <small>Member since Nov. 2012</small>
             </p>
         </li>
         <!-- Menu Body -->
-        <li class="user-body">
+        <!-- <li class="user-body">
             <div class="col-xs-4 text-center">
                 <a href="#">Followers</a>
             </div>
@@ -183,16 +189,10 @@
             <div class="col-xs-4 text-center">
                 <a href="#">Friends</a>
             </div>
-        </li>
+        </li> -->
         <!-- Menu Footer-->
         <li class="user-footer">
             <div class="pull-left">
-                <?php
-                if (Auth::check()) {
-                    $id = Auth::user()->id;
-                    $user = User::find($id);
-                }
-                ?>
                 <div class="btn btn-default btn-flat">
                     {{ link_to("@{$user->username}", "Profile", $user->username) }}
                 </div>
