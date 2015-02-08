@@ -65,14 +65,25 @@ class UsersController extends \BaseController {
 
 
 	/**
-	 * Show the form for editing the specified resource.
+	 * Edit the user picture
 	 *
-	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function editImg()
 	{
-		//
+		$image = Input::file('photo');
+        if (Auth::check()) {
+            $id = Auth::user()->id;
+            $user = User::find($id);
+        }
+        $filename = date('Y-m-d-H.i.s')."-".$image->getClientOriginalName();
+        $user->photo = 'uploads/'.$filename;
+        $user->save();
+        $move = $image->move('uploads', $filename);
+        if($move) {
+            return Response::json(['success' => true]);
+        }
+        return Response::json(['success' => false]);
 	}
 
 

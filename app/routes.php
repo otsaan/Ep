@@ -90,6 +90,10 @@ Route::get('notifications/read',[
 
 
 
+Route::post('modifierimg', [
+    'as'=>'modifier-img', 
+    'uses'=>'UsersController@editImg'
+]);
 
 // 404 not found
 /* ======================================= */
