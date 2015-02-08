@@ -102,6 +102,14 @@ class MessagesController extends BaseController
     {
         $input = Input::all();
 
+        $validator = Validator::make(Input::all(),['message'=>'required','subject'=>'required','recipients'=>'required']);
+
+        if($validator->fails())
+        {
+            return Redirect::back();
+        }
+
+
         $thread = Thread::create(
             [
                 'subject' => $input['subject'],
@@ -152,7 +160,14 @@ class MessagesController extends BaseController
 
         $thread->activateAllParticipants();
 
-        // Message
+        //validation
+        $validator = Validator::make(Input::all(),['message'=>'required']);
+
+        if($validator->fails())
+        {
+            return Redirect::back();
+        }
+
         Message::create(
             [
                 'thread_id' => $thread->id,

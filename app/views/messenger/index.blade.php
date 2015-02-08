@@ -2,7 +2,7 @@
 
 @section('feed')
 
-<h3>Last Active threads <a href="messages/create" class=" class="btn btn-default">New thread</a></h3>
+<h3>Last Active threads <a href="/messages/create" class=" class="btn btn-default">New thread</a></h3>
 @if (Session::has('error_message'))
 <div class="alert alert-danger" role="alert">
     {{Session::get('error_message')}}
