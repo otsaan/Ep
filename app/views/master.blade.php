@@ -17,6 +17,10 @@
         {{ HTML::style('css/semantic/button.css') }}
         {{ HTML::style('css/semantic/message.css') }}
         {{ HTML::style('css/custom.css') }}
+        {{ HTML::style("//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css") }}
+        {{ HTML::style("css/style.css") }}
+        <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+        {{ HTML::style("css/jquery.fileupload.css") }}
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

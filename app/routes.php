@@ -132,3 +132,33 @@ route::get('test',function(){
 
 });
 
+Route::post('upload', function()
+{
+    // Grab our files input
+    $files = Input::file('files');
+    // We will store our uploads in public/uploads/basic
+    $assetPath = 'uploads/basic';
+    $uploadPath = public_path($assetPath);
+    // We need an empty array for us to put the files back into
+    $results = array();
+
+    foreach ($files as $file) {
+        // store our uploaded file in our uploads folder
+        $filename = date('Y-m-d-H.i.s')."-".$file->getClientOriginalName();
+        $file->move($uploadPath, $filename);
+        // set our results to have our asset path
+        $name = $assetPath . '/' . $filename;
+        $results[] = compact('name');
+
+        $att = new Attachment;
+        $att->path = $name;
+        $att->file_type = $file->getClientOriginalExtension();
+        $att->save();
+    }
+
+    // return our results in a files object
+    return array(
+        'files' => $results
+    );
+});
+

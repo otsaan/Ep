@@ -56,7 +56,7 @@
                 <li>
                     <a href="#">
                         <div class="pull-left">
-                            <img src="img/avatar2.png" class="img-circle" alt="user image"/>
+                            <img src={{asset('img/avatar2.png')}} class="img-circle" alt="user image"/>
                         </div>
                         <h4>
                             Sales Department
@@ -171,7 +171,7 @@
     <ul class="dropdown-menu">
         <!-- User image -->
         <li class="user-header bg-light-blue">
-            <img src={{$user->photo}} class="img-circle" alt="User Image"/>
+            <img src="{{asset($user->photo)}}" class="img-circle" alt="User Image"/>
 
             <p>
                 {{$user->first_name." ".$user->last_name}} - Web Developer

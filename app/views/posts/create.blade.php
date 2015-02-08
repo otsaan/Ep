@@ -24,8 +24,24 @@
 		<div class="box-footer clearfix no-border">
 
 			{{ Form::button('Publier', array('class' => 'btn btn-default pull-right','type' => 'submit')); }}
-			<div type="file" class="btn btn-default pull-right" style="margin-right:5px"> <i class="fa fa-paperclip"></i></div>
-			{{ Form::reset('Cancel', ['class' => 'btn btn-default pull-left']) }}
+			<span class="btn btn-success fileinput-button">
+		        <i class="glyphicon glyphicon-plus"></i>
+		        <span>Select files...</span>
+		        <!-- The file input field used as target for the file upload widget -->
+		        <input id="fileupload" type="file" name="files[]" multiple>
+		    </span>
+		    <br>
+		    <br>
+		    <!-- The global progress bar -->
+		    <div id="progress" class="progress">
+		        <div class="progress-bar progress-bar-success"></div>
+		    </div>
+		    <!-- The container for the uploaded files -->
+		    <div id="files" class="files" style="width:15%;white-space:nowrap"></div>
+		    <br>
+
+			<!-- <div type="file" class="btn btn-default pull-right" style="margin-right:5px"> <i class="fa fa-paperclip"></i></div> -->
+			
 		</div>
 
 	{{ Form::close() }}

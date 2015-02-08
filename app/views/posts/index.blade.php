@@ -12,7 +12,7 @@
                 <div class="event">
 
                     <a class="label no-padding">
-                        <img src="{{$post->user->photo}}">
+                        <img src="{{asset($post->user->photo)}}">
                     </a>
 
                     <div class="content">
@@ -25,10 +25,18 @@
                             {{{ nl2br($post->content) }}}
                         </div>
 
-                        {{--<div class="extra images">--}}
-                        {{--<a><img src="img/avatar2.png"></a>--}}
-                        {{--<a><img src="img/avatar2.png"></a>--}}
-                        {{--</div>--}}
+                        <div class="extra images">
+                            @foreach ($post->attachments as $attachment)
+                                <?php 
+                                    $extensions = array("jpg", "jpeg", "png", "bmp", "gif");
+                                    if(in_array($attachment->file_type, $extensions)) {?>
+                                        <img src={{asset($attachment->path)}}>
+                                    <?php } else { ?>
+                                        <br><a href="{{asset($attachment->path)}}">{{$attachment->path}}</a>
+                                <?php }
+                                 ?>
+                            @endforeach
+                        </div>
 
                         <div class="meta">
                             <a class="like-btn like" data-post-id="{{{ $post->id }}}">
@@ -61,7 +69,48 @@
 @stop
 
 @section('bottom-script')
-    @include('components.scroll')
     @include('likes.post')
     @include('likes.comment')
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+    <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+    <script src="/js/jquery.ui.widget.js"></script>
+    <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+    <script src="/js/jquery.iframe-transport.js"></script>
+    <!-- The basic File Upload plugin -->
+    <script src="/js/jquery.fileupload.js"></script>
+<script>
+/*jslint unparam: true */
+/*global window, $ */
+$(function () {
+    'use strict';
+    // Change this to the location of your server-side upload handler:
+    var url = window.location.hostname === 'blueimp.github.io' ?
+                '//jquery-file-upload.appspot.com/' : '/upload';
+    var ct =0
+    $('#fileupload').fileupload({
+        url: url,
+        dataType: 'json',
+        done: function (e, data) {
+            ct += data.result.files.length;
+            $.each(data.result.files, function (index, file) {
+                if (file.name.match(/\.(jpg|jpeg|png|gif)$/)) {
+                    $('<img style="display:inline;"/>').attr('src', '/'+file.name).appendTo('#files');
+                } else {
+                    $('<p/>').text(file.name).appendTo('#files');
+                }
+            });
+            $('<input type="hidden" name="nbfiles" value="'+ ct +'">').appendTo('#files');
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress .progress-bar').css(
+                'width',
+                progress + '%'
+            );
+        }
+    }).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+});
+</script>
+    @include('components.scroll')
 @stop

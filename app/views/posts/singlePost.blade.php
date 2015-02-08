@@ -9,7 +9,7 @@
     <div class="event">
 
         <a class="label no-padding">
-            <img src="http://dummyimage.com/40x40">
+            <img src={{asset('img/avatar2.png')}}>
         </a>
 
         <div class="content">

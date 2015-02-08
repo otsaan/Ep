@@ -5,7 +5,7 @@
 
             <!-- user avatar 35x35 -->
             <a class="avatar">
-                <img src="{{$comment->user->photo}}">
+                <img src="{{asset($comment->user->photo)}}">
             </a>
 
             <div class="content">

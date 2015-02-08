@@ -57,13 +57,32 @@ class PostsController extends BaseController
      */
     public function store($channelId)
     {
-        $input = Input::only('post-content');
+        // $input = Input::only('post-content');
+        $input = Input::all();
+        // $hidinput = Input::
+        // $this->publishPostForm->validate($input);
 
-        $this->publishPostForm->validate($input);
+        // $command = new PublishPostCommand($input['post-content'], $channelId, Auth::id());
+        // $this->commandBus->execute($command);
 
-        $command = new PublishPostCommand($input['post-content'], $channelId, Auth::id());
-        $this->commandBus->execute($command);
+        
+        $post = new Post;
+        $post->content = $input['post-content'];
+        $post->channel_id = $channelId;
+        $post->user_id = Auth::id();
+        $post->save();
 
+        $files = DB::table('attachments')->orderBy('id', 'desc')->take($input['nbfiles'])->get();
+       
+        if (is_array($files))
+        {
+            foreach ($files as $file) {
+                $att = new Attachment;
+                $att->path = $file->path;
+                $att->file_type = $file->file_type;
+                $post->attachments()->save($att);
+            }
+        }
         return Redirect::back();
     }
 
