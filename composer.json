@@ -12,7 +12,8 @@
         "laracasts/flash": "~1.0",
         "rtconner/laravel-likeable": "0.1.*",
         "fenos/notifynder": "2.1.9",
-		"intervention/image": "~2.1"
+		"intervention/image": "~2.1",
+        "cmgmyr/messenger": "~1.0"
 	},
 	"require-dev": {
 		"way/generators": "~2.0",

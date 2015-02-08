@@ -1,3 +1,41 @@
+<li class="dropdown messages-menu">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="ion ion-ios-email-outline"></i>
+        @if($threadsNotifications->count()>0)
+        <span class="label bg-blue">{{ $threadsNotifications->count() }}</span>
+        @else
+        <span class="label  bg-blue">0</span>
+        @endif
+    </a>
+    <ul class="dropdown-menu">
+        <li class="header">You have  {{ $threadsNotifications->count() }} messages</li>
+        <li>
+            <!-- inner menu: contains the actual data -->
+            <ul class="menu">
+                @foreach($threadsNotifications as $threadsNotification)
+                <li><!-- start message -->
+                    <a href="messages/{{ $threadsNotification->id}}">
+                        <div class="pull-left">
+                            <i class="fa fa-weixin"></i>
+                        </div>
+                        <h4>
+                           You have new msg in  {{ $threadsNotification->subject }}
+<!--                            <small><i class="fa fa-clock-o"></i> 5 mins</small>-->
+                        </h4>
+                        <p>{{$threadsNotification->latestMessage()->body}}</p>
+                    </a>
+                </li>
+                @endforeach
+
+            </ul>
+        </li>
+        <li class="footer"><a href="#">See All Messages</a></li>
+    </ul>
+</li>
+
+
+
+
 <li class="dropdown notifications-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         <i class="ion ion-ios-information-outline"></i>
