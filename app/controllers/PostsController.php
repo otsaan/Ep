@@ -72,14 +72,12 @@ class PostsController extends BaseController
         $post->user_id = Auth::id();
         $post->save();
 
-        $files = DB::table('attachments')->orderBy('id', 'desc')->take($input['nbfiles'])->get();
        
-        if (is_array($files))
+        if (isset($input['nbfiles']))
         {
+            $files = DB::table('attachments')->orderBy('id', 'desc')->take($input['nbfiles'])->get();
             foreach ($files as $file) {
-                $att = new Attachment;
-                $att->path = $file->path;
-                $att->file_type = $file->file_type;
+                $att = Attachment::find($file->id);
                 $post->attachments()->save($att);
             }
         }
@@ -178,6 +176,37 @@ class PostsController extends BaseController
         }
         return App::abort(403);
 
+    }
+
+    public function upload()
+    {
+            // Grab our files input
+        $files = Input::file('files');
+        // We will store our uploads in public/uploads/basic
+        $assetPath = 'uploads';
+        $uploadPath = public_path($assetPath);
+        // We need an empty array for us to put the files back into
+        $results = array();
+
+        foreach ($files as $file) {
+            // store our uploaded file in our uploads folder
+            $name = str_replace(' ', '_', $file->getClientOriginalName());
+            $filename = date('Y-m-d-H.i.s')."-".$name;
+            $file->move($uploadPath, $filename);
+            // set our results to have our asset path
+            $name = $assetPath . '/' . $filename;
+            $results[] = compact('name');
+
+            $att = new Attachment;
+            $att->path = $name;
+            $att->file_type = $file->getClientOriginalExtension();
+            $att->save();
+        }
+
+        // return our results in a files object
+        return array(
+            'files' => $results
+        );
     }
 
 

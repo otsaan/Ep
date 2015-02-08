@@ -21,7 +21,7 @@
 
                         <div class="media">
                             <a class="pull-left" href="#">
-                                <img src="{{$message->user->photo}}"
+                                <img src="{{asset($message->user->photo)}}"
                                      alt="{{$message->user->first_name}}" class="img-circle" style="width: 75px;height: 75px;">
                             </a>
                             <div class="media-body" >
@@ -72,7 +72,7 @@
 
                     <div class="media">
                         <a class="pull-left" href="#">
-                            <img src="{{$participant->photo}}"
+                            <img src="{{asset($participant->photo)}}"
                                  alt="{{$participant->first_name}}" class="img-circle" style="width: 75px;height: 75px;">
                         </a>
 

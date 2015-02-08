@@ -18,7 +18,9 @@
                     <div class="content">
                         <div class="summary">
                             {{ link_to("@{$post->user->username}", $post->user->present()->fullName(), $post->user->username) }}
-                            <div class="date">{{ $post->present()->recentTime() }}</div>
+                            <div class="date">
+                                {{ link_to_route("channels.posts.show", $post->present()->recentTime(), [$post->channel->id, $post->id], array('style'=>'color:gray')) }}
+                            </div>
                         </div>
 
                         <div class="extra text">
@@ -28,11 +30,17 @@
                         <div class="extra images">
                             @foreach ($post->attachments as $attachment)
                                 <?php 
-                                    $extensions = array("jpg", "jpeg", "png", "bmp", "gif");
-                                    if(in_array($attachment->file_type, $extensions)) {?>
+                                    $img_exts = array("jpg", "jpeg", "png", "bmp", "gif");
+                                    $vid_exts = array("mp4", "ogg", "webm");
+                                    if(in_array($attachment->file_type, $img_exts)) {?>
                                         <img src={{asset($attachment->path)}}>
+                                    <?php } elseif (in_array($attachment->file_type, $vid_exts)) {?>
+                                        <video width="320" height="240" controls>
+                                          <source src="{{asset($attachment->path)}}" type="video/mp4">
+                                          <!-- <source src="movie.ogg" type="video/ogg"> -->
+                                        </video>
                                     <?php } else { ?>
-                                        <br><a href="{{asset($attachment->path)}}">{{$attachment->path}}</a>
+                                        <br><a href="{{asset($attachment->path)}}">{{substr($attachment->path, 28)}}</a><br>
                                 <?php }
                                  ?>
                             @endforeach
@@ -96,7 +104,7 @@ $(function () {
                 if (file.name.match(/\.(jpg|jpeg|png|gif)$/)) {
                     $('<img style="display:inline;"/>').attr('src', '/'+file.name).appendTo('#files');
                 } else {
-                    $('<p/>').text(file.name).appendTo('#files');
+                    $('<p/>').text(file.name.substr(28)).appendTo('#files');
                 }
             });
             $('<input type="hidden" name="nbfiles" value="'+ ct +'">').appendTo('#files');

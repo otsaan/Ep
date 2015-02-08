@@ -76,7 +76,8 @@ class UsersController extends \BaseController {
             $id = Auth::user()->id;
             $user = User::find($id);
         }
-        $filename = date('Y-m-d-H.i.s')."-".$image->getClientOriginalName();
+        $name = str_replace(' ', '_', $image->getClientOriginalName());
+        $filename = date('Y-m-d-H.i.s')."-".$name;
         $user->photo = 'uploads/'.$filename;
         $user->save();
         $move = $image->move('uploads', $filename);

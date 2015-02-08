@@ -15,7 +15,7 @@
                 <!-- ======== Photo de profile ============-->
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img src="{{ $user->photo }}" width="230" id="profileImg" height="230"/>
+                        <img src="{{asset($user->photo)}}" width="230" id="profileImg" height="230"/>
                             @if($thisUser->username === $user->username)
                                 {{ Form::open(['route'=>'modifier-img', 'files' => true, 'id'=>'modform']) }}
                                 <div class="text-center profile-pic-change">
