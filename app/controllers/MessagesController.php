@@ -66,8 +66,9 @@ class MessagesController extends BaseController
         $userId = Auth::user()->id;
         $participants =User::whereIn('id', $thread->participantsUserIds($userId))->get();
         $thread->markAsRead($userId);
+        $threadsNotifications=   \Cmgmyr\Messenger\Models\Thread::forUserWithNewMessages(Auth::user()->id);
 
-        return View::make('messenger.show', compact('thread','participants'));
+        return View::make('messenger.show', compact('thread','participants','threadsNotifications'));
     }
 
     /**

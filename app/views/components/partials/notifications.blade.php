@@ -1,10 +1,12 @@
+
+
 <li class="dropdown messages-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         <i class="ion ion-ios-email-outline"></i>
         @if($threadsNotifications->count()>0)
         <span class="label bg-blue">{{ $threadsNotifications->count() }}</span>
         @else
-        <span class="label  bg-blue">0</span>
+        <span class="label  bg-dark-gray">0</span>
         @endif
     </a>
     <ul class="dropdown-menu">
@@ -14,7 +16,7 @@
             <ul class="menu">
                 @foreach($threadsNotifications as $threadsNotification)
                 <li><!-- start message -->
-                    <a href="messages/{{ $threadsNotification->id}}">
+                    <a href="/messages/{{ $threadsNotification->id}}">
                         <div class="pull-left">
                             <i class="fa fa-weixin"></i>
                         </div>
