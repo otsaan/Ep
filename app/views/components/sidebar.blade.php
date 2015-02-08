@@ -8,7 +8,7 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
         <div class="pull-left image">
-            <img src="{{asset($user->photo)}}" class="img" alt="User Image" />
+            <img src="{{ isset($user->photo) ? asset($user->photo) : asset('img/avatar5.png') }}" class="img" alt="User Image" />
         </div>
         <div class="pull-left info">
             <p>{{$user->first_name." ".$user->last_name}}</p>

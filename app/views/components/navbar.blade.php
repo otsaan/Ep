@@ -95,8 +95,7 @@
     <ul class="dropdown-menu">
         <!-- User image -->
         <li class="user-header bg-light-blue">
-            <img src="{{asset($user->photo)}}" class="img-circle" alt="User Image"/>
-
+            <img src="{{ isset($user->photo) ? asset($user->photo) : asset('img/avatar5.png') }}" class="img-circle" alt="User Image"/>
             <p>
                 {{$user->first_name." ".$user->last_name}} - Web Developer
                 <small>Member since Nov. 2012</small>

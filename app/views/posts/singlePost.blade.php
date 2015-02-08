@@ -9,7 +9,7 @@
     <div class="event">
 
         <a class="label no-padding">
-            <img src={{asset($post->user->photo)}}>
+            <img src="{{ isset($post->user->photo) ? asset($post->user->photo) : asset('img/avatar5.png') }}">
         </a>
 
         <div class="content">
