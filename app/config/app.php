@@ -129,6 +129,7 @@ return array(
         'Laracasts\Flash\FlashServiceProvider',
         'Fenos\Notifynder\NotifynderServiceProvider',
         'Intervention\Image\ImageServiceProvider',
+        'Cmgmyr\Messenger\MessengerServiceProvider',
 	),
 
 	/*

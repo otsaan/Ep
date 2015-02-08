@@ -63,17 +63,11 @@
                     <!-- Main row -->
                     <div class="row">
                         <!-- Left col -->
-                        <section class="col-lg-8">
+
 
                             @yield('feed')
 
-                        </section><!-- /.Left col -->
-                        <!-- Left col -->
-                        <section class="col-lg-4">
 
-                            @yield('right')
-
-                        </section><!-- /.Left col -->
 
                         <!-- right col -->
                         <section class="col-lg-4">
@@ -89,20 +83,9 @@
 
 
         {{ HTML::script('http://code.jquery.com/jquery-2.1.0.min.js') }}
-        {{ HTML::script('js/jquery.textarea_autosize.min.js') }}
-        {{ HTML::script('js/jquery.jscroll.min.js') }}
-        <script>
-            $('textarea.js-auto-size').textareaAutoSize();
-        </script>
-        {{ HTML::script('//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js') }}
-        {{ HTML::script('//code.jquery.com/ui/1.11.1/jquery-ui.min.js') }}
 
-        <!-- datepicker -->
-        {{ HTML::script('js/plugins/datepicker/bootstrap-datepicker.js') }}
 
-        <!-- App js -->
-        {{ HTML::script('js/app.js') }}
 
-        @yield('bottom-script')
+
     </body>
 </html>

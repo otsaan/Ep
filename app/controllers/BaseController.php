@@ -27,8 +27,12 @@ class BaseController extends Controller {
         if(Auth::user())
         {
             $notifications = Notifynder::getNotRead(Auth::user()->id);
+            $threadsNotifications=   \Cmgmyr\Messenger\Models\Thread::forUserWithNewMessages(Auth::user()->id);
             View::share('notifications',$notifications);
+            View::share('threadsNotifications',$threadsNotifications);
+
         }
+
 
 	}
 
