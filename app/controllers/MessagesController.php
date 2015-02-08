@@ -33,6 +33,8 @@ class MessagesController extends BaseController
 
         // All threads, ignore deleted/archived participants
         $threads = Thread::getAllLatest();
+        $threads = new Thread;
+        $threads = $threads->scopeForUser($threads,$currentUserId);
 
         // All threads that user is participating in
         // $threads = Thread::forUser($currentUserId);
@@ -59,11 +61,18 @@ class MessagesController extends BaseController
             return Redirect::to('messages');
         }
 
+        // don't show the current user in list
+        $userId = Auth::user()->id;
+
+        //redirect back if the user is not a participante
+        if(!in_array($userId,$thread->participantsUserIds())){
+            return Redirect::to('/messages');
+        }
+
         // show current user in list if not a current participant
         // $users = User::whereNotIn('id', $thread->participantsUserIds())->get();
 
-        // don't show the current user in list
-        $userId = Auth::user()->id;
+
         $participants =User::whereIn('id', $thread->participantsUserIds($userId))->get();
         $thread->markAsRead($userId);
         $threadsNotifications=   \Cmgmyr\Messenger\Models\Thread::forUserWithNewMessages(Auth::user()->id);
