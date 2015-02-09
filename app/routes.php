@@ -61,6 +61,12 @@ Route::group(array('before' => 'auth'), function()
 
     // Show profile
     /* ======================================= */
+    Route::post('user/add', [
+        'as' => 'add_user_path',
+        'uses' => 'ChannelsController@AddUser'
+    ]);
+    // Show profile
+    /* ======================================= */
     Route::get('@{username}', [
         'as' => 'profile',
         'uses' => 'UsersController@show'
@@ -133,7 +139,10 @@ route::post('channel/withdraw',[
 route::get('test',function(){
 
 
-    return \Cmgmyr\Messenger\Models\Thread::forUserWithNewMessages(Auth::user()->id);
+    $users = Channel::find(1)->users;
+   foreach($users as $user){
+       var_dump($user->id);
+   }
 
 });
 

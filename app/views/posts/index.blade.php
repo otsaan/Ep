@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('feed')
-
+@include('flash::message')
     @include('posts.create', array('channelId' => $channelId, 'userId' => $userId))
     <div class="scroller">
         <div class="ui feed">
@@ -74,6 +74,21 @@
 
         </div>
     </div>
+@stop
+
+@section('right')
+<h3>Add user</h3>
+{{Form::open(['url'=>'user/add', 'Route'=>'add_user_path']) }}
+        <input type="hidden" value="{{ $channelId }}" name="channelId">
+        <div class="input-group">
+        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+        {{ Form::text('username',null,['class'=>'form-control','placeholder'=>'username']) }}
+
+        </div>
+        <input type="submit" class="btn btn-primary"  value="Ajouter" style="margin-top: 15px;">
+
+
+{{ Form::close() }}
 @stop
 
 @section('bottom-script')

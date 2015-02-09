@@ -142,4 +142,45 @@ class ChannelsController extends BaseController {
         return $data;
     }
 
+    public function AddUser()
+    {
+        //dd(Input::all());
+        ///get username channel
+        //verify that the user belong to channel
+        //verify that the user exest
+        //add the new user
+        //fire an event to the user
+        $username = Input::get('username');
+        $channelId = Input::get('channelId');
+
+        $users = Channel::find($channelId)->users;
+        $found = false;
+        foreach ($users as $user) {
+           // echo $user->id."   ".Auth::user()->id."<br>";
+            if ($user->id == Auth::user()->id) {
+
+                $found = true;
+                break;
+
+            }
+        }
+
+
+        if ($found) {
+            $newUser= User::where('username', '=',$username)->firstOrFail();
+
+            $newUser->channels()->attach($channelId);
+
+            Flash::message('user has been added');
+           return  Redirect::back();
+        } else {
+
+            Flash::error('there was an error');
+            return Redirect::back();
+        }
+
+
+
+    }
+
 }
