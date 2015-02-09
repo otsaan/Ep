@@ -1,6 +1,9 @@
 @extends('master')
 
 @section('feed')
+
+@include('flash::message')
+
     <?php
         if (Auth::check()) {
             $id = Auth::user()->id;
@@ -81,7 +84,7 @@
                                 
                             @if($thisUser->username === $user->username)    
                                 <div class="tab-pane" id="tab_2">
-                                  {{Form::open(['route'=>'profile'])}}
+                                  {{Form::open(['route'=>'user_update_path'])}}
                                   <table class="table table-hover">
                                      Entrez les champs que vous voulez modifier puis cliquez sur enregistrer:<br><br>
                                     <tr>
@@ -115,7 +118,7 @@
                                         <td><h4><b>{{Form::label('birthdate', 'Date de naissance')}}</b></h4></td>
                                         <td>
                                             <div class="input-group">
-                                                {{ Form::text('first_name',$user->birthdate,['class'=>'form-control']) }}
+                                                {{ Form::text('birthDate',$user->birthdate,['class'=>'form-control']) }}
                                             </div>
                                         </td>
 

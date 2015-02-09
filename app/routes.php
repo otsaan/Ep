@@ -65,6 +65,12 @@ Route::group(array('before' => 'auth'), function()
         'as' => 'profile',
         'uses' => 'UsersController@show'
     ]);
+    // user's profile update
+    /* ======================================= */
+    Route::post('user/update', [
+        'as' => 'user_update_path',
+        'uses' => 'UsersController@update'
+    ]);
     // Likes
     /* ======================================= */
     Route::post('like', array('as' => 'like', 'uses' => 'PostsController@like'));
