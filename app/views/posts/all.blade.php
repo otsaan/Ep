@@ -10,7 +10,7 @@
 
             @foreach ($posts as $post)
 
-                <div class="event">
+                <div class="event" id="{{ $post->id }}">
 
                     <a class="label no-padding">
                         <img src="{{ isset($post->user->photo) ? asset($post->user->photo) : asset('img/avatar5.png') }}">
@@ -18,6 +18,13 @@
 
                     <div class="content">
                         <div class="summary">
+                        <div class="pull-right">
+                            @if ($post->user->id == Auth::id())
+                                <div style="cursor: pointer" id="remove-post">
+                                    <i onclick="remove_post({{ $post->id }})" style="color:gray;" class="fa fa-times"></i>
+                                </div>
+                            @endif
+                        </div>
                             {{ link_to("@{$post->user->username}", $post->user->present()->fullName(), $post->user->username) }}
                              &nbsp;a publié dans
                             {{ link_to_route('channels.posts.index', '#' .$post->channel->name , $post->channel->id ); }}
@@ -32,7 +39,7 @@
 
                         <div class="extra images">
                             @foreach ($post->attachments as $attachment)
-                                <?php 
+                                <?php
                                     $img_exts = array("jpg", "jpeg", "png", "bmp", "gif");
                                     $vid_exts = array("mp4", "ogg", "webm");
                                     if(in_array($attachment->file_type, $img_exts)) {?>
@@ -81,6 +88,30 @@
 @stop
 
 @section('bottom-script')
+<script>
+
+
+function remove_post(id) {
+    console.log("remove clicked"+ id);
+    var request = $.ajax({
+                    type: "POST",
+                    url: "/deletepost",
+                    data: { "ps_id": id },
+                    success: function(Data){
+                       $("#"+id).remove();
+                       }
+                    });
+
+    request.done(function( msg ) {
+     console.log("request done");
+    });
+
+    request.fail(function( jqXHR, textStatus ) {
+      console.log( "Request failed: " + textStatus );
+    });
+}
+
+</script>
 {{--    @include('components.scroll')--}}
     @include('likes.post')
     @include('likes.comment')

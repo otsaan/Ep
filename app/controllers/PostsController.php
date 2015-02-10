@@ -103,14 +103,14 @@ class PostsController extends BaseController
         // $command = new PublishPostCommand($input['post-content'], $channelId, Auth::id());
         // $this->commandBus->execute($command);
 
-        
+
         $post = new Post;
         $post->content = $input['post-content'];
         $post->channel_id = $channelId;
         $post->user_id = Auth::id();
         $post->save();
 
-       
+
         if (isset($input['nbfiles']))
         {
             $files = DB::table('attachments')->orderBy('id', 'desc')->take($input['nbfiles'])->get();
@@ -219,9 +219,15 @@ class PostsController extends BaseController
      * @param  int $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        return "nothing here from PostsController@destroy";
+        $postToDelete = Post::find(Input::get('ps_id'));
+
+        foreach ($postToDelete->comments() as $comment) {
+            $comment->delete();
+        }
+
+        $postToDelete->delete();
     }
 
 

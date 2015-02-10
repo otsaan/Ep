@@ -103,7 +103,7 @@ Route::get('notifications/read',[
 
 
 Route::post('modifierimg', [
-    'as'=>'modifier-img', 
+    'as'=>'modifier-img',
     'uses'=>'UsersController@editImg'
 ]);
 
@@ -149,4 +149,6 @@ Route::post('upload', [
     'as' => 'upload',
     'uses' => 'PostsController@upload'
 ]);
+
+Route::post('deletepost', 'PostsController@destroy');
 
