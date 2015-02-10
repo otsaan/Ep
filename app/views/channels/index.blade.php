@@ -31,7 +31,7 @@
     <div class="ui cards">
         <div class="card" style="width: 47%;" ng-repeat="channel in channels" >
             <div class="content">
-                <div class="header"> {[{channel.name}]}</div>
+                <div class="header"><a href={{url('channels/{[{channel.id}]}/posts')}}>{[{channel.name}]} <i class="ion-ios-people pull-right"></i></a></div>
                 <div class="description">
                     {[{channel.description}]}.
                 </div>
@@ -55,11 +55,11 @@
             Création du nouveau groupe
         </div>
         <div class="content ui fluid  left icon action input">
-            <input type="text" placeholder="Channel name" ng-model="createName" >
+            <input type="text" placeholder="Nom du groupe" ng-model="createName" >
             <div class="ui horizontal divider">
 
             </div>
-            <textarea placeholder="description" ng-model="createDescription"></textarea>
+            <textarea placeholder="Description" ng-model="createDescription"></textarea>
             <div class="ui horizontal divider">
 
             </div>

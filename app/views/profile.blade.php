@@ -60,7 +60,7 @@
 
                                 </tr>
                                 <tr>
-                                    <td><h4><b>Preénom</b></h4></td>
+                                    <td><h4><b>Prénom</b></h4></td>
                                     <td><h4>{{ $user->first_name }}</h4></td>
 
                                 </tr>

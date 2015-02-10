@@ -82,7 +82,11 @@ class PostsController extends BaseController
      */
     public function all()
     {
-        $posts = Post::with('comments.user')->orderBy('created_at', 'desc')->paginate(30);
+        $userId = Auth::user()->id;
+        $channels = User::find($userId)->channels();
+
+        $posts = Post::with('comments.user')->whereIn('channel_id', $channels->getRelatedIds())->orderBy('created_at', 'desc')->paginate(30);
+//            Post::with('comments.user')->where('channel_id', '=', '')->orderBy('created_at', 'desc')->paginate(30);
 
 
         return View::make('posts.all', compact('posts'));
