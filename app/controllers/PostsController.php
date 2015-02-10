@@ -25,6 +25,26 @@ class PostsController extends BaseController
     public function index($channelId)
     {
 
+        /*
+         * restrict access
+         */
+        $users = Channel::find($channelId)->users;
+        $found = false;
+        foreach ($users as $user) {
+            // echo $user->id."   ".Auth::user()->id."<br>";
+            if ($user->id == Auth::user()->id) {
+
+                $found = true;
+                break;
+
+            }
+        }
+        if(!$found)
+        {
+            return Redirect::home();
+        }
+
+
         $notifId = Input::get('notifId');
 
         if ($notifId) {
@@ -115,6 +135,22 @@ class PostsController extends BaseController
          * verify that the user has access to the post
          * validate the input
          */
+
+        $users = Channel::find($channelID)->users;
+        $found = false;
+        foreach ($users as $user) {
+            // echo $user->id."   ".Auth::user()->id."<br>";
+            if ($user->id == Auth::user()->id) {
+
+                $found = true;
+                break;
+
+            }
+        }
+        if(!$found)
+        {
+            return Redirect::home();
+        }
 
         $notifId = Input::get('notifId');
 
