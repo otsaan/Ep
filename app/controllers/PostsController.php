@@ -24,6 +24,22 @@ class PostsController extends BaseController
      */
     public function index($channelId)
     {
+
+        $notifId = Input::get('notifId');
+
+        if ($notifId) {
+
+            try {
+
+                Notifynder::readOne($notifId);
+
+            } catch (Fenos\Notifynder\Exceptions\NotificationNotFoundException $e) {
+
+                return Redirect::back();
+
+            }
+        }
+
         $userId = Auth::id();
         if (Auth::user()->is_type == "Professor") {
             $posts = Channel::findOrFail($channelId)->posts()->where('user_id', '=', Auth::id())->orderBy('created_at', 'desc')->paginate(10);
@@ -31,8 +47,10 @@ class PostsController extends BaseController
             $posts = Channel::findOrFail($channelId)->posts()->orderBy('created_at', 'desc')->paginate(10);
         }
 
+        $notifications = Notifynder::getNotRead(Auth::user()->id);
 
-        return View::make('posts.index', compact('posts', 'userId', 'channelId'));
+
+        return View::make('posts.index', compact('posts', 'userId', 'channelId','notifications'));
     }
 
 

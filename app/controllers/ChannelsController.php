@@ -18,6 +18,7 @@ class ChannelsController extends BaseController {
 	 */
 	public function index()
 	{
+
 		$data= Channel::with('users','user')->where("public","=",1,"and")->where("user_id","!=",Auth::user()->id)->orderBy('id','desc')->take(100)->get();
         return $data;
 	}
@@ -170,6 +171,18 @@ class ChannelsController extends BaseController {
             $newUser= User::where('username', '=',$username)->firstOrFail();
 
             $newUser->channels()->attach($channelId);
+
+            if ($newUser->id != \Auth::user()->id) {
+
+                $notificationData = Notifynder::builder()->from('User', \Auth::user()->id)
+                    ->to('User', $newUser->id )
+                    ->category('invitation')
+                    ->url("http://localhost:8000/channels/{$channelId}/posts")
+                    ->extra(Channel::find($channelId)->name)
+                    ->getArray();
+
+                Notifynder::send($notificationData);
+            }
 
             Flash::message('user has been added');
            return  Redirect::back();

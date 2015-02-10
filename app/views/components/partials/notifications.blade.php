@@ -60,6 +60,8 @@
                         <i class="fa fa-users warning"></i>
                         @elseif($notification['body']['name']=="comment")
                         <i class="fa fa fa-comments"></i>
+                        @elseif($notification['body']['name']=="invitation")
+                        <i class="fa fa fa-users warning"></i>
                         @endif
                         <b> {{ $notification['from']['first_name'] }} {{ $notification['from']['last_name'] }}</b>
                         {{ $notification['body']['text'] }}<b> #{{ $notification['extra'] }}</b>
