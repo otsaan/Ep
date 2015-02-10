@@ -13,20 +13,20 @@
         <div class="pull-left info">
             <p>{{$user->first_name." ".$user->last_name}}</p>
 
-            <a href="/{{ "@" }}{{$user->username }}"><i class="ion ion-ios-gear-outline"></i> Settings</a>
+            <a href="/{{ "@" }}{{$user->username }}"><i class="ion ion-ios-gear-outline"></i> Paramètres</a>
         </div>
     </div>
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
         <li class="active">
             <a href="/feed">
-                <i class="ion ion-ios-home-outline"></i> <span>Home</span>
+                <i class="ion ion-ios-home-outline"></i> <span>Accueil</span>
             </a>
         </li>
         <li class="treeview">
             <a href="#">
                 <i class="ion ion-ios-browsers-outline"></i>
-                <span>My channels</span>
+                <span>Mes groupes</span>
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
@@ -38,12 +38,14 @@
         <li>
             <a href="/messages">
                 <i class="ion ion-email-unread"></i> <span>Messages</span>
-                <small class="badge pull-right bg-dark-gray text-black">{{ $threadsNotifications->count() }}</small>
+                @if($threadsNotifications->count())
+                    <small class="badge pull-right bg-dark-gray text-black">{{ $threadsNotifications->count() }}</small>
+                @endif
             </a>
         </li>
         <li>
             <a href="/manageChannels">
-                <i class="ion ion-settings"></i> <span>Manage channels</span>
+                <i class="ion ion-settings"></i> <span>Gestion des groupes</span>
             </a>
         </li>
     </ul>

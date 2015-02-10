@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="extra text">
-                            {{{ nl2br($post->content) }}}
+                            {{ nl2br(e($post->content)) }}
                         </div>
 
                         <div class="extra images">
@@ -40,7 +40,9 @@
                                           <!-- <source src="movie.ogg" type="video/ogg"> -->
                                         </video>
                                     <?php } else { ?>
-                                        <br><a href="{{asset($attachment->path)}}">{{substr($attachment->path, 28)}}</a><br>
+                                        <br><a class="btn btn-default btn-xs" href="{{asset($attachment->path)}}"><i class="fa fa-file"></i>
+                                            {{substr($attachment->path, 28)}}
+                                        <i class="fa fa-download"></i></a><br>
                                 <?php }
                                  ?>
                             @endforeach
@@ -77,7 +79,7 @@
 @stop
 
 @section('right')
-<h3>Add user</h3>
+<h3>Inviter un utilisateur</h3>
 {{Form::open(['url'=>'user/add', 'Route'=>'add_user_path']) }}
         <input type="hidden" value="{{ $channelId }}" name="channelId">
         <div class="input-group">

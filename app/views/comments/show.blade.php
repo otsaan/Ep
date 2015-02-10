@@ -21,7 +21,7 @@
 
                 <!-- comment content  -->
                 <div class="text">
-                    {{ nl2br($comment->content) }}
+                    {{ nl2br(e($comment->content)) }}
                 </div>
 
                 <div class="meta">

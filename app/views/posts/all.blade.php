@@ -19,14 +19,15 @@
                     <div class="content">
                         <div class="summary">
                             {{ link_to("@{$post->user->username}", $post->user->present()->fullName(), $post->user->username) }}
+                             &nbsp;a publié dans
+                            {{ link_to_route('channels.posts.index', '#' .$post->channel->name , $post->channel->id ); }}
                             <div class="date">
                                 {{ link_to_route("channels.posts.show", $post->present()->recentTime(), [$post->channel->id, $post->id], array('style'=>'color:gray')) }}
-                            </div> &nbsp;in
-                            {{ link_to_route('channels.posts.index', '#' .$post->channel->name , $post->channel->id ); }}
+                            </div>
                         </div>
 
                         <div class="extra text">
-                            {{{ nl2br($post->content) }}}
+                            {{ nl2br(e($post->content)) }}
                         </div>
 
                         <div class="extra images">
@@ -42,7 +43,9 @@
                                           <!-- <source src="movie.ogg" type="video/ogg"> -->
                                         </video>
                                     <?php } else { ?>
-                                        <br><a href="{{asset($attachment->path)}}">{{substr($attachment->path, 28)}}</a><br>
+                                    <br><a class="btn btn-default btn-xs" href="{{asset($attachment->path)}}"><i class="fa fa-file"></i>
+                                        {{substr($attachment->path, 28)}}
+                                    <i class="fa fa-download"></i></a><br>
                                 <?php }
                                  ?>
                             @endforeach

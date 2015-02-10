@@ -5,7 +5,7 @@
     <!--           -->
     <div class="panel panel-info">
         <div class="panel-heading">
-            RECENT CHAT HISTORY
+            Historique récent
         </div>
         <div class="panel-body">
             <ul class="media-list">
@@ -21,7 +21,7 @@
 
                         <div class="media">
                             <a class="pull-left" href="#">
-                                <img src="{{asset($message->user->photo)}}"
+                                <img src="{{ isset($message->user->photo) ? asset($message->user->photo) : asset('img/avatar5.png')}}"
                                      alt="{{$message->user->first_name}}" class="img-circle" style="width: 75px;height: 75px;">
                             </a>
                             <div class="media-body" >
@@ -40,13 +40,13 @@
                 {{Form::open(['route' => ['messages.update', $thread->id], 'method' => 'PUT'])}}
                 <!-- Message Form Input -->
                 <div class="form-group">
-                    {{ Form::textarea('message', null, ['class' => 'form-control','placeholder'=>'Enter Message']) }}
+                    {{ Form::textarea('message', null, ['class' => 'form-control','placeholder'=>'Tapez votre message']) }}
                 </div>
 
 
                 <!-- Submit Form Input -->
                 <div class="form-group">
-                    {{ Form::submit('Send', ['class' => 'btn btn-primary form-control']) }}
+                    {{ Form::submit('Envoyer', ['class' => 'btn btn-primary form-control']) }}
                 </div>
                 {{Form::close()}}
             </ul>
@@ -58,7 +58,7 @@
 @section('right')
 <div class="panel panel-primary">
     <div class="panel-heading">
-        USERS In This Thread
+        Utilisateurs dans cette discussion
     </div>
     <div class="panel-body">
         <ul class="media-list">
@@ -72,7 +72,7 @@
 
                     <div class="media">
                         <a class="pull-left" href="#">
-                            <img src="{{asset($participant->photo)}}"
+                            <img src="{{ isset($participant->photo) ? asset($participant->photo) : asset('img/avatar5.png') }}"
                                  alt="{{$participant->first_name}}" class="img-circle" style="width: 75px;height: 75px;">
                         </a>
 

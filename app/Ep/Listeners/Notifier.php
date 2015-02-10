@@ -21,7 +21,7 @@ class Notifier extends EventListener
                     ->to($data->id)
                     ->category('post')
                     ->extra($channel)
-                    ->url("http://localhost:8000/channels/{$channelId}/posts/{$postId}");
+                    ->url("/channels/{$channelId}/posts/{$postId}");
             }
         });
 
@@ -40,7 +40,7 @@ class Notifier extends EventListener
             $notificationData = Notifynder::builder()->from('User', \Auth::user()->id)
                 ->to('User', $toUserId)
                 ->category('comment')
-                ->url("http://localhost:8000/channels/{$postChannel->id}/posts/{$post->id}")
+                ->url("/channels/{$postChannel->id}/posts/{$post->id}")
                 ->extra($postChannel->name)
                 ->getArray();
 

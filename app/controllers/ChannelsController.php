@@ -177,7 +177,7 @@ class ChannelsController extends BaseController {
                 $notificationData = Notifynder::builder()->from('User', \Auth::user()->id)
                     ->to('User', $newUser->id )
                     ->category('invitation')
-                    ->url("http://localhost:8000/channels/{$channelId}/posts")
+                    ->url("/channels/{$channelId}/posts")
                     ->extra(Channel::find($channelId)->name)
                     ->getArray();
 

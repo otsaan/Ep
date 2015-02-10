@@ -10,21 +10,21 @@
     <div class="ui center aligned  segment">
         <div class="ui fluid  left icon action input ">
             <i class="search icon"></i>
-            <input type="text" placeholder="Search for a public channel" ng-model="name">
+            <input type="text" placeholder="Rechercher un groupe public" ng-model="name">
 
-            <div class="ui blue submit button" ng-click="search()">Search</div>
+            <div class="ui blue submit button" ng-click="search()">Rechercher</div>
         </div>
         <div class="ui horizontal divider">
-            Or
+            Ou
         </div>
 
-        <div class="positive ui button" ng-click="allChannels()">All channels</div>
+        <div class="positive ui button" ng-click="allChannels()">Tous les groupes</div>
 
         <div class="ui teal labeled icon button" onclick="pupit()">
-            Create New channel
+            Créer un nouveau groupe
             <i class="add icon"></i>
         </div>
-        <div class="negative ui button" ng-click="myChannels()">My channels</div>
+        <div class="negative ui button" ng-click="myChannels()">Mes groupes</div>
     </div>
 
 
@@ -38,11 +38,11 @@
             </div>
             <div class="ui bottom attached button" data-ng-init="btnId='asd';"  ng-click="joinChannel(channel)" ng-hide="join">
                 <i class="add icon"></i>
-                Join the channel
+                Rejoindre ce groupe
             </div>
             <div class="ui bottom attached button" data-ng-init="btnId='asd';"  ng-click="withdrawChannel(channel)" ng-hide="withdraw">
                 <i class="minus icon"></i>
-                Withdraw
+                Quitter ce groupe
             </div>
         </div>
     </div>
@@ -52,7 +52,7 @@
     <div class="ui modal">
         <i class="close icon"></i>
         <div class="header">
-            Add new channel
+            Création du nouveau groupe
         </div>
         <div class="content ui fluid  left icon action input">
             <input type="text" placeholder="Channel name" ng-model="createName" >
@@ -67,7 +67,7 @@
 
             <select ng-model="createPublic">
                 <option value="1"selected>Public</option>
-                <option value="0" >Private</option>
+                <option value="0" >Privé</option>
             </select>
 
 
@@ -77,7 +77,7 @@
         </div>
         <div class="actions">
 
-            <div class="ui button ok"  >Create</div>
+            <div class="ui button ok"  >Créer</div>
 
         </div>
     </div>

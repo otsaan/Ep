@@ -10,7 +10,7 @@
             $thisUser = User::find($id);
         }
     ?>
-    <h1>{{ $user->username }}'s profile</h1>
+    <h1>{{ $user->present()->fullName() }}</h1>
     <div class="col-md-12">
 
             <div class="form-group">
@@ -44,9 +44,9 @@
                     <div class="nav-tabs-custom">
 
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#tab_1" data-toggle="tab"><i class="fa fa-user"></i> Profile</a></li>
+                            <li class="active"><a href="#tab_1" data-toggle="tab"><i class="fa fa-user"></i> Profil</a></li>
                             @if($thisUser->username === $user->username)
-                                <li><a href="#tab_2" data-toggle="tab"> <i class="fa fa-cog"></i> Parametres</a></li>
+                                <li><a href="#tab_2" data-toggle="tab"> <i class="fa fa-cog"></i> Paramètres</a></li>
                             @endif
                         </ul>
 
@@ -60,7 +60,7 @@
 
                                 </tr>
                                 <tr>
-                                    <td><h4><b>Prenom</b></h4></td>
+                                    <td><h4><b>Preénom</b></h4></td>
                                     <td><h4>{{ $user->first_name }}</h4></td>
 
                                 </tr>
@@ -69,16 +69,19 @@
                                     <td><h4>{{ $user->email }}</h4></td>
 
                                 </tr>
-                                 <tr>
-                                    <td><h4><b>Date de naissance</b></h4></td>
-                                    <td><h4>{{ $user->birthdate }}</h4></td>
+                                @if(isset($user->birthdate))
+                                     <tr>
+                                        <td><h4><b>Date de naissance</b></h4></td>
+                                        <td><h4>{{ $user->birthdate }}</h4></td>
+                                    </tr>
+                                @endif
 
-                                </tr>
+                                @if(isset($user->phone))
                                 <tr>
                                     <td><h4><b>Num Tel</b></h4></td>
                                     <td><h4>{{ $user->phone }}</h4></td>
-
                                 </tr>
+                                @endif
                               </table>
                             </div><!-- /.tab-pane -->
                                 
@@ -136,7 +139,7 @@
                                         <td><h4><b>Mot de passe</b></h4></td>
                                          <td>
                                             <div class="input-group">
-                                                {{ Form::password('pass_actuel',['class'=>'form-control','placeholder'=>'Mot de passe actuel']) }}
+                                                {{ Form::password('pass_actuel',['class'=>'form-control','placeholder'=>'Actuel']) }}
                                             </div>
                                         </td>
 
@@ -145,7 +148,7 @@
                                         <td></td>
                                          <td>
                                             <div class="input-group">
-                                                {{ Form::password('pass',['class'=>'form-control','placeholder'=>'Nouveau mot de passe']) }}
+                                                {{ Form::password('pass',['class'=>'form-control','placeholder'=>'Nouveau']) }}
                                             </div>
                                         </td>
 

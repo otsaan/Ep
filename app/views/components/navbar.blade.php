@@ -26,11 +26,11 @@
         <li class="user-footer">
             <div class="pull-left">
                 <div class="btn btn-default btn-flat">
-                    {{ link_to("@{$user->username}", "Profile", $user->username) }}
+                    {{ link_to("@{$user->username}", "Profil", $user->username) }}
                 </div>
             </div>
             <div class="pull-right">
-                <a href="{{route('signout_path')}}" class="btn btn-default btn-flat">Sign out</a>
+                <a href="{{route('signout_path')}}" class="btn btn-default btn-flat">Déconnexion</a>
             </div>
         </li>
     </ul>

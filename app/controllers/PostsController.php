@@ -119,6 +119,24 @@ class PostsController extends BaseController
                 $post->attachments()->save($att);
             }
         }
+
+        $users = $post->channel->users;
+
+        $channelId = $post->channel_id;
+        $postId = $post->id;
+        $channel=$post->channel->name;
+        $MultiNotificationsArray = Notifynder::builder()->loop($users, function ($builder, $key, $data) use ($channelId, $postId,$channel) {
+            if ($data->id != \Auth::user()->id) {
+                return $builder->from(\Auth::user()->id)
+                    ->to($data->id)
+                    ->category('post')
+                    ->extra($channel)
+                    ->url("/channels/{$channelId}/posts/{$postId}");
+            }
+        });
+
+        Notifynder::sendMultiple($MultiNotificationsArray);
+
         return Redirect::back();
     }
 

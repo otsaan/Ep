@@ -5,12 +5,12 @@
         <i class="ion ion-ios-email-outline"></i>
         @if($threadsNotifications->count()>0)
         <span class="label bg-blue">{{ $threadsNotifications->count() }}</span>
-        @else
-        <span class="label  bg-dark-gray">0</span>
+        {{--@else--}}
+        {{--<span class="label  bg-dark-gray"></span>--}}
         @endif
     </a>
     <ul class="dropdown-menu">
-        <li class="header">You have  {{ $threadsNotifications->count() }} messages</li>
+        <li class="header">Vous avez {{ $threadsNotifications->count() }} messages</li>
         <li>
             <!-- inner menu: contains the actual data -->
             <ul class="menu">
@@ -21,7 +21,7 @@
                             <i class="fa fa-weixin"></i>
                         </div>
                         <h4>
-                           You have new msg in  {{ $threadsNotification->subject }}
+                           Vous avez un nouveau msg dans {{ $threadsNotification->subject }}
 <!--                            <small><i class="fa fa-clock-o"></i> 5 mins</small>-->
                         </h4>
                         <p>{{$threadsNotification->latestMessage()->body}}</p>
@@ -31,7 +31,7 @@
 
             </ul>
         </li>
-        <li class="footer"><a href="#">See All Messages</a></li>
+        <li class="footer"><a href="#">Voir tous les messages</a></li>
     </ul>
 </li>
 
@@ -43,8 +43,8 @@
         <i class="ion ion-ios-information-outline"></i>
         @if($notifications->count()>0)
         <span class="label bg-blue">{{$notifications->count()}}</span>
-        @else
-        <span class="label bg-dark-gray">0</span>
+        {{--@else--}}
+        {{--<span class="label bg-dark-gray">0</span>--}}
         @endif
     </a>
     <ul class="dropdown-menu">
@@ -72,6 +72,6 @@
                 @endforeach
             </ul>
         </li>
-        <li class="footer"><a href="{{route('read_notifications')}}">Mark as read</a></li>
+        <li class="footer"><a href="{{route('read_notifications')}}">Marquer comme lu</a></li>
     </ul>
 </li>

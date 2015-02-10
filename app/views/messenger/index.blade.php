@@ -2,7 +2,8 @@
 
 @section('feed')
 
-<h3>Last Active threads <a href="/messages/create" class=" class="btn btn-default">New thread</a></h3>
+<h3>Dernières discussions<a href="/messages/create" class="btn btn-primary pull-right">Nouvelle discussion</a></h3>
+<br>
 @if (Session::has('error_message'))
 <div class="alert alert-danger" role="alert">
     {{Session::get('error_message')}}
@@ -14,7 +15,7 @@
 <div class="panel panel-default {{$class}}">
     <div class="panel-heading">{{link_to('messages/' . $thread->id, $thread->subject)}}</div>
     <div class="panel-body">
-        <label>Last msg :</label>{{$thread->latestMessage()->body}}
+        <label>Dernier message: <br></label>{{$thread->latestMessage()->body}}
     </div>
 </div>
 
