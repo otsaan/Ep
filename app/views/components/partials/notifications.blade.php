@@ -72,6 +72,6 @@
                 @endforeach
             </ul>
         </li>
-        <li class="footer"><a href="{{route('read_notifications')}}">Marquer comme lu</a></li>
+        <li class="footer"><a href="{{route('read_notifications')}}">Marquer tous comme lu</a></li>
     </ul>
 </li>

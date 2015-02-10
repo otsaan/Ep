@@ -136,15 +136,6 @@ route::post('channel/withdraw',[
     'as' => 'withdraw_path',
     'uses' => 'ChannelsController@withdraw'
 ]);
-route::get('test',function(){
-
-
-    $users = Channel::find(1)->users;
-   foreach($users as $user){
-       var_dump($user->id);
-   }
-
-});
 
 Route::group(['prefix' => 'messages'], function () {
     Route::get('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);

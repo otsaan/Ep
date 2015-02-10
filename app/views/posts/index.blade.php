@@ -121,7 +121,7 @@ $(function () {
                 if (file.name.match(/\.(jpg|jpeg|png|gif)$/)) {
                     $('<img style="display:inline;"/>').attr('src', '/'+file.name).appendTo('#files');
                 } else {
-                    $('<p/>').text(file.name.substr(28)).appendTo('#files');
+                    $('<i class="fa fa-file"></i><p class="btn-default btn-xs"/><i class="fa fa-download"></i>').text(file.name.substr(28)).appendTo('#files');
                 }
             });
             $('<input type="hidden" name="nbfiles" value="'+ ct +'">').appendTo('#files');

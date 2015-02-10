@@ -1,8 +1,14 @@
 <?php
+    use Cmgmyr\Messenger\Models\Thread;
+
     if (Auth::check()) {
-        $id = Auth::user()->id;
-        $user = User::find($id);
+        $currentUserId = Auth::user()->id;
+        $user = User::find($currentUserId);
     }
+
+$threads = Thread::getAllLatest();
+$threads = new Thread;
+$threads = Thread::forUserWithNewMessages($currentUserId);
 ?>
 <section class="sidebar">
     <!-- Sidebar user panel -->
@@ -18,7 +24,7 @@
     </div>
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
-        <li class="active">
+        <li>
             <a href="/feed">
                 <i class="ion ion-ios-home-outline"></i> <span>Accueil</span>
             </a>
@@ -35,13 +41,25 @@
                 @endforeach
             </ul>
         </li>
-        <li>
-            <a href="/messages">
+        <li class="treeview">
+            <a href="#">
                 <i class="ion ion-email-unread"></i> <span>Messages</span>
+                <i class="fa fa-angle-left pull-right"></i>
                 @if($threadsNotifications->count())
                     <small class="badge pull-right bg-dark-gray text-black">{{ $threadsNotifications->count() }}</small>
                 @endif
             </a>
+            <ul class="treeview-menu">
+                <li><a href="/messages/create"><i class="ion-forward"></i> Nouveau message</a></li>
+
+                @foreach($threads as $thread)
+                    @if($thread->isUnread($currentUserId))
+                        <li><a href={{url('messages/' . $thread->id)}}>&nbsp;&nbsp;&nbsp;&nbsp; <i class="ion ion-ios-arrow-right"></i><i class="ion-email-unread"></i>  {{ $thread->subject }} </a></li>
+                    @endif
+                @endforeach
+
+                <li><a href="/messages"><i class="ion-email"></i>  Tous les messages</a></li>
+            </ul>
         </li>
         <li>
             <a href="/manageChannels">
