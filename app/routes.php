@@ -8,7 +8,7 @@ Event::listen('Ep.*','Ep\Listeners\Notifier');
 /* ============== Home ================*/
 Route::get('/', [
     'as' => 'home',
-    'uses' => "sessionsController@index"
+    'uses' => "SessionsController@index"
 ]);
 Route::get('timeline', [
     'as' => 'timeline',
@@ -20,7 +20,7 @@ Route::get('timeline', [
 /* ============== Logout ================*/
 Route::get('/signout',  [
     'as'=>'signout_path',
-    'uses'=>'sessionsController@destroy'
+    'uses'=>'SessionsController@destroy'
 ]);
 /*=======================================*/
 
@@ -28,11 +28,11 @@ Route::get('/signout',  [
 /*============== Login ==================*/
 Route::get('/login',  [
     'as'=>'login_path',
-    'uses'=>'sessionsController@index'
+    'uses'=>'SessionsController@index'
 ]);
 Route::post('/login', [
     'as'=>'login_path',
-    'uses'=>'sessionsController@store'
+    'uses'=>'SessionsController@store'
 ]);
 /*=======================================*/
 
