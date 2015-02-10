@@ -191,7 +191,7 @@
 @section('bottom-script')
     @include('likes.post')
     @include('likes.comment')
-    @include('components.scroll')
+{{--    @include('components.scroll')--}}
     @if($thisUser->username === $user->username)
         @include('components.imgedit')
     @endif

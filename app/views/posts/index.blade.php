@@ -135,5 +135,5 @@ $(function () {
         .parent().addClass($.support.fileInput ? undefined : 'disabled');
 });
 </script>
-    @include('components.scroll')
+{{--    @include('components.scroll')--}}
 @stop

@@ -78,7 +78,7 @@
 @stop
 
 @section('bottom-script')
-    @include('components.scroll')
+{{--    @include('components.scroll')--}}
     @include('likes.post')
     @include('likes.comment')
 @stop

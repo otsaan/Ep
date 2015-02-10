@@ -519,9 +519,9 @@ body > .header .navbar .nav > li > a > .label {
   text-align: center;
   padding: 2px;
 }
-body > .header .navbar .nav > li > a:hover > .label {
+/*body > .header .navbar .nav > li > a:hover > .label {
   top: 3px;
-}
+}*/
 body > .header .logo {
   float: left;
   font-size: 20px;
