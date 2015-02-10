@@ -14,9 +14,9 @@ class AddUniqueConstraintToUserChannelTable extends Migration {
 	{
 		Schema::table('user_channel', function(Blueprint $table)
 		{
-            $table->unique('channel_id','user_id');
+			$table->unique(array('channel_id','user_id'));
 
-        });
+		});
 	}
 
 
@@ -29,7 +29,7 @@ class AddUniqueConstraintToUserChannelTable extends Migration {
 	{
 		Schema::table('user_channel', function(Blueprint $table)
 		{
-			
+			$table->dropUnique(array('channel_id','user_id'));
 		});
 	}
 
