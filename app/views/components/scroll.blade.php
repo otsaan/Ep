@@ -1,5 +1,5 @@
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         //hides the default paginator
         $('ul.pagination:visible:first').hide();
 
@@ -13,10 +13,17 @@
             callback: function() {
                 //again hide the paginator from view
                 $('ul.pagination:visible:first').hide();
-                $(document).ready(function() {
-                    $.getScript('{{asset("js/postl.js")}}');
-                    $.getScript('{{asset("js/commentl.js")}}');
-                });
+                // $(document).ready(function() {
+                //     $.getScript('{{asset("js/postl.js")}}');
+                //     $.getScript('{{asset("js/commentl.js")}}');
+                    
+                //     $('script').each(function() {
+                //         var str = this.id.substring(0, 10);
+                //         if ( str === 'post-likes' || str === 'comt-likes') {
+                //             $(this).remove();
+                //         }
+                //     });
+                // });
             }
         });
     });

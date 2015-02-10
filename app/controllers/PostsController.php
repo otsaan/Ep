@@ -28,7 +28,7 @@ class PostsController extends BaseController
         if (Auth::user()->is_type == "Professor") {
             $posts = Channel::findOrFail($channelId)->posts()->where('user_id', '=', Auth::id())->orderBy('created_at', 'desc')->paginate(10);
         } else {
-            $posts = Channel::findOrFail($channelId)->posts()->orderBy('created_at', 'desc')->paginate(10);
+            $posts = Channel::findOrFail($channelId)->posts()->orderBy('created_at', 'desc')->paginate(30);
         }
 
 
@@ -44,7 +44,7 @@ class PostsController extends BaseController
      */
     public function all()
     {
-        $posts = Post::with('comments.user')->orderBy('created_at', 'desc')->paginate(10);
+        $posts = Post::with('comments.user')->orderBy('created_at', 'desc')->paginate(30);
 
 
         return View::make('posts.all', compact('posts'));
