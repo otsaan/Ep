@@ -13,7 +13,7 @@
         <div class="pull-left info">
             <p>{{$user->first_name." ".$user->last_name}}</p>
 
-            <a href="#"><i class="ion ion-ios-gear-outline"></i> Settings</a>
+            <a href="/{{ "@" }}{{$user->username }}"><i class="ion ion-ios-gear-outline"></i> Settings</a>
         </div>
     </div>
     <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -26,41 +26,25 @@
         <li class="treeview">
             <a href="#">
                 <i class="ion ion-ios-browsers-outline"></i>
-                <span>Example</span>
+                <span>My channels</span>
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-                <li><a href="#"><i class="ion ion-ios-arrow-right"></i> Content</a></li>
-                <li><a href="#"><i class="ion ion-ios-arrow-right"></i> Content</a></li>
-                <li><a href="#"><i class="ion ion-ios-arrow-right"></i> Content</a></li>
+                @foreach(Auth::user()->channels as $channel)
+                <li><a href="/channels/{{$channel->id}}/posts"><i class="ion ion-ios-arrow-right"></i> {{$channel->name}} </a></li>
+                @endforeach
             </ul>
         </li>
         <li>
-            <a href="#">
-                <i class="ion ion-ios-paper-outline"></i> <span>Example 1</span>
-                <small class="badge pull-right bg-dark-gray text-black">3</small>
+            <a href="/messages">
+                <i class="ion ion-email-unread"></i> <span>Messages</span>
+                <small class="badge pull-right bg-dark-gray text-black">{{ $threadsNotifications->count() }}</small>
             </a>
         </li>
         <li>
-            <a href="#">
-                <i class="ion ion-ios-timer-outline"></i> <span>Example 2</span>
-                <small class="badge pull-right bg-dark-gray text-black">12</small>
+            <a href="/manageChannels">
+                <i class="ion ion-settings"></i> <span>Manage channels</span>
             </a>
-        </li>
-        <li class="treeview">
-            <a href="#">
-                <i class="ion ion-ios-photos-outline"></i> <span>Examples</span>
-                <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-                <li><a href="#"><i class="ion ion-ios-arrow-right"></i> Invoice</a></li>
-                <li><a href="#"><i class="ion ion-ios-arrow-right"></i> Login</a></li>
-                <li><a href="#"><i class="ion ion-ios-arrow-right"></i> Register</a></li>
-                <li><a href="#"><i class="ion ion-ios-arrow-right"></i> Lockscreen</a></li>
-                <li><a href="#"><i class="ion ion-ios-arrow-right"></i> 404 Error</a></li>
-                <li><a href="#"><i class="ion ion-ios-arrow-right"></i> 500 Error</a></li>
-                <li><a href="#"><i class="ion ion-ios-arrow-right"></i> Blank Page</a></li>
-            </ul>
         </li>
     </ul>
 </section>
