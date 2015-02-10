@@ -29,7 +29,7 @@
 
 
     <div class="ui cards">
-        <div class="card" style="width: 48%;" ng-repeat="channel in channels" >
+        <div class="card" style="width: 47%;" ng-repeat="channel in channels" >
             <div class="content">
                 <div class="header"> {[{channel.name}]}</div>
                 <div class="description">
