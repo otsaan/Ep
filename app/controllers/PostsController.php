@@ -76,7 +76,6 @@ class PostsController extends BaseController
 
     /**
      * Display all existing posts on the database
-     * IN ALL CHANNELS !!
      * GET channels/posts/
      * @return Response
      */
@@ -84,8 +83,11 @@ class PostsController extends BaseController
     {
         $userId = Auth::user()->id;
         $channels = User::find($userId)->channels();
+        $posts = null;
+        if($channels->getRelatedIds()) {
+            $posts = Post::with('comments.user')->whereIn('channel_id', $channels->getRelatedIds())->orderBy('created_at', 'desc')->paginate(30);
+        }
 
-        $posts = Post::with('comments.user')->whereIn('channel_id', $channels->getRelatedIds())->orderBy('created_at', 'desc')->paginate(30);
 //            Post::with('comments.user')->where('channel_id', '=', '')->orderBy('created_at', 'desc')->paginate(30);
 
 
