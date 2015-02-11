@@ -2,7 +2,6 @@
 /vendor
 /tmp
 composer.phar
-
 .env.*.php
 .env.php
 .DS_Store
