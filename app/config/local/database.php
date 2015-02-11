@@ -8,14 +8,13 @@ return array(
 
         'mysql' => array(
             'driver'    => 'mysql',
-            'host'      => 'sql3.freemysqlhosting.net',
-            'database'  => 'sql367154',
-            'username'  => 'sql367154',
-            'password'  => 'eU8*fQ5!',
+            'host'     => getenv('DB_HOST'),
+            'database'  => getenv('DB_NAME'),
+            'username'  => getenv('DB_USER'),
+            'password'  => getenv('DB_PASSWORD'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
-            'prefix'    => '',
-            'port'      => '3306',
+            'prefix'    => ''
         ),
 
     )
