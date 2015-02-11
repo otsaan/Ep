@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="extra text">
-                    {{ nl2br(e($post->content)) }}
+                    {{ nl2br(Functs::clickableLinks(e($post->content))) }}
                 </div>
 
                 <div class="extra images">

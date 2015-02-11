@@ -21,7 +21,7 @@
 
                 <!-- comment content  -->
                 <div class="text">
-                    {{ nl2br(e($comment->content)) }}
+                    {{ nl2br(Functs::clickableLinks(e($comment->content))) }}
                 </div>
 
                 <div class="meta">

@@ -15,7 +15,7 @@
 <div class="panel panel-default {{$class}}">
     <div class="panel-heading">{{link_to('messages/' . $thread->id, $thread->subject)}}</div>
     <div class="panel-body">
-        <label>Dernier message: <br></label>{{$thread->latestMessage()->body}}
+        <label>Dernier message: <br></label>{{Functs::clickableLinks($thread->latestMessage()->body)}}
     </div>
 </div>
 
@@ -24,7 +24,7 @@
 
 
 @else
-<p>Sorry, no threads.</p>
+<p>Désolé, il n'y a pas de discussions.</p>
 @endif
 {{ $threads->links()  }}
 @stop

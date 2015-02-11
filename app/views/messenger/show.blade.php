@@ -25,7 +25,7 @@
                                      alt="{{$message->user->first_name}}" class="img-circle" style="width: 75px;height: 75px;">
                             </a>
                             <div class="media-body" >
-                                {{{$message->body}}}
+                                {{ nl2br(Functs::clickableLinks(e($message->body))) }}
                                 <br />
                                 <small class="text-muted">{{$message->user->first_name}} {{$message->user->last_name}} | Posted {{$message->created_at->diffForHumans()}}</small>
                                 <hr />

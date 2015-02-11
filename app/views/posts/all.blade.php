@@ -8,6 +8,7 @@
 
             <!-- show all posts -->
 
+          @if ($posts) 
             @foreach ($posts as $post)
 
                 <div class="event" id="{{ $post->id }}">
@@ -34,7 +35,7 @@
                         </div>
 
                         <div class="extra text">
-                            {{ nl2br(e($post->content)) }}
+                            {{ nl2br(Functs::clickableLinks(e($post->content))) }}
                         </div>
 
                         <div class="extra images">
@@ -43,7 +44,7 @@
                                     $img_exts = array("jpg", "jpeg", "png", "bmp", "gif");
                                     $vid_exts = array("mp4", "ogg", "webm");
                                     if(in_array($attachment->file_type, $img_exts)) {?>
-                                        <img src={{asset($attachment->path)}}>
+                                        <a href={{asset($attachment->path)}} data-lightbox="image"></a>
                                     <?php } elseif (in_array($attachment->file_type, $vid_exts)) {?>
                                         <video width="320" height="240" controls>
                                           <source src="{{asset($attachment->path)}}" type="video/mp4">
@@ -81,6 +82,10 @@
                 </div>
             @endforeach
             {{$posts->links()}}
+          @else
+            <h2>Pas de publications dans votre feed.</h2>
+            <p>Veuillez rejoindre des <a href="/manageGroups">groupes</a></p>
+          @endif
         </div>
 
     </div>
