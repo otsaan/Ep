@@ -3,10 +3,13 @@ Ep is a mini social network buit with [Laravel](http://laravel.com), allowing st
 
 ###Configuration
 
-clone this repo
-	`https://github.com/OTSAAN/Ep-2.0.git`
+- clone this repo `https://github.com/OTSAAN/Ep-2.0.git`
+- run `composer install` to resolve project dependencies.
+- create a MySQL database called `ep`.
 
-run `composer install` to resolve project dependencies
 
-create a MySQL database called `ep` and run the migration `php artisan migrate` add to it the `--seed` flag if you want to fill the database with fake data.
-or run it independetly `php artisan db:seed`
+### Migrations
+
+ - `php artisan migrate --seed`
+ - `php artisan migrate --package=fenos/notifynder`
+ - `php artisan migrate --package=cmgmyr/messenger`
