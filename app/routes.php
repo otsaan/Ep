@@ -156,3 +156,4 @@ Route::post('deletepost', 'PostsController@destroy');
 
 /* ======================================= */
 Route::get('admin', 'AdminController@index');
+Route::get('admin/{id}/delete', 'AdminController@destroy');

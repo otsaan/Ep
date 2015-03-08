@@ -1,3 +1,46 @@
-<?php
+@extends('master')
 
- echo "welcome admin";
+@section('topScript')
+{{ HTML::style('css/semantic/semantic.min.css') }}
+@stop
+
+@section('feed')
+@include('flash::message')
+<table class="table">
+    <td>Nom</td>
+    <td>Prenom</td>
+    <td>Username</td>
+    <td>Date de création</td>
+    <td>Action</td>
+    @foreach($users as $user)
+        <tr>
+            <td>{{ $user->last_name }}</td>
+            <td>{{ $user->first_name }}</td>
+            <td>{{ $user->username }}</td>
+            <td>{{ $user->created_at }}</td>
+            <td><a href="/admin/{{$user->id}}/delete " class="btn btn-default" onclick="return myConfirm()">Supp</a></td>
+        </tr>
+
+
+    @endforeach
+</table>
+{{  $users->links()}}
+@stop
+
+@section('bottom-script')
+{{ HTML::script('js/semantic.min.js') }}
+{{ HTML::script('https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js') }}
+{{ HTML::script('js/channels.js') }}
+
+@stop
+<script>
+    function myConfirm()
+    {
+        var r = confirm("Vous êtes sure ?")
+        if(r == false)
+        {
+           return false;
+        }
+
+    }
+</script>

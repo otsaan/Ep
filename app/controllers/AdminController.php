@@ -23,7 +23,8 @@ class adminController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make("admin.index");
+        $users = User::latest()->paginate(15);
+		return View::make("admin.index",compact('users'));
 	}
 
 
@@ -93,7 +94,16 @@ class adminController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+        if(User::findOrFail($id)->delete())
+        {
+            Flash::message("Oppération effectuée avec succèe");
+
+        }else{
+
+            Flash::message("Opération non effectuée ");
+        }
+        return Redirect::back();
+
 	}
 
 
