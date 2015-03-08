@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ddddb0b3cd1913e5a75a003b03f02335",
+    "hash": "7cb1a92441067d9ab2253473d529757d",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -55,19 +55,20 @@
         },
         {
             "name": "cmgmyr/messenger",
-            "version": "1.0.5",
+            "version": "1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cmgmyr/laravel-messenger.git",
-                "reference": "f8166c5b58a116c02d425e7084eb32ed315d0c71"
+                "reference": "ad1be80e79436bd407c5342849ac7a4a348d9ef2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cmgmyr/laravel-messenger/zipball/f8166c5b58a116c02d425e7084eb32ed315d0c71",
-                "reference": "f8166c5b58a116c02d425e7084eb32ed315d0c71",
+                "url": "https://api.github.com/repos/cmgmyr/laravel-messenger/zipball/ad1be80e79436bd407c5342849ac7a4a348d9ef2",
+                "reference": "ad1be80e79436bd407c5342849ac7a4a348d9ef2",
                 "shasum": ""
             },
             "require": {
+                "illuminate/config": "~4.0",
                 "illuminate/database": "~4.0",
                 "illuminate/support": "~4.0",
                 "nesbot/carbon": "~1.0",
@@ -104,19 +105,19 @@
                 "messaging",
                 "user messaging"
             ],
-            "time": "2015-02-04 18:34:05"
+            "time": "2015-03-06 17:34:28"
         },
         {
             "name": "d11wtq/boris",
             "version": "v1.0.8",
             "source": {
                 "type": "git",
-                "url": "https://github.com/d11wtq/boris.git",
+                "url": "https://github.com/borisrepl/boris.git",
                 "reference": "125dd4e5752639af7678a22ea597115646d89c6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/d11wtq/boris/zipball/125dd4e5752639af7678a22ea597115646d89c6e",
+                "url": "https://api.github.com/repos/borisrepl/boris/zipball/125dd4e5752639af7678a22ea597115646d89c6e",
                 "reference": "125dd4e5752639af7678a22ea597115646d89c6e",
                 "shasum": ""
             },
@@ -674,16 +675,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.12.0",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "1fbe8c2641f2b163addf49cc5e18f144bec6b19f"
+                "reference": "c41c218e239b50446fd883acb1ecfd4b770caeae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1fbe8c2641f2b163addf49cc5e18f144bec6b19f",
-                "reference": "1fbe8c2641f2b163addf49cc5e18f144bec6b19f",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/c41c218e239b50446fd883acb1ecfd4b770caeae",
+                "reference": "c41c218e239b50446fd883acb1ecfd4b770caeae",
                 "shasum": ""
             },
             "require": {
@@ -700,6 +701,7 @@
                 "phpunit/phpunit": "~4.0",
                 "raven/raven": "~0.5",
                 "ruflin/elastica": "0.90.*",
+                "swiftmailer/swiftmailer": "~5.3",
                 "videlalvaro/php-amqplib": "~2.4"
             },
             "suggest": {
@@ -716,7 +718,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12.x-dev"
+                    "dev-master": "1.13.x-dev"
                 }
             },
             "autoload": {
@@ -742,7 +744,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2014-12-29 21:29:35"
+            "time": "2015-03-05 01:12:12"
         },
         {
             "name": "mustache/mustache",
@@ -791,16 +793,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.14.0",
+            "version": "1.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "bb87460c995d97fe55b39e65f6ffb7f64b0a941e"
+                "reference": "9b7665041754eaa9bb2622349bc9adbc1cf61cb8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/bb87460c995d97fe55b39e65f6ffb7f64b0a941e",
-                "reference": "bb87460c995d97fe55b39e65f6ffb7f64b0a941e",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/9b7665041754eaa9bb2622349bc9adbc1cf61cb8",
+                "reference": "9b7665041754eaa9bb2622349bc9adbc1cf61cb8",
                 "shasum": ""
             },
             "require": {
@@ -827,13 +829,13 @@
                 }
             ],
             "description": "A simple API extension for DateTime.",
-            "homepage": "https://github.com/briannesbitt/Carbon",
+            "homepage": "http://carbon.nesbot.com",
             "keywords": [
                 "date",
                 "datetime",
                 "time"
             ],
-            "time": "2015-02-06 05:07:29"
+            "time": "2015-03-04 04:50:11"
         },
         {
             "name": "nikic/php-parser",
@@ -2616,12 +2618,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "80c1424e6522a3303d320b611647fa6fbc29a8e4"
+                "reference": "40426f77f030b6fb45951be920ff1036b2f423d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/80c1424e6522a3303d320b611647fa6fbc29a8e4",
-                "reference": "80c1424e6522a3303d320b611647fa6fbc29a8e4",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/40426f77f030b6fb45951be920ff1036b2f423d2",
+                "reference": "40426f77f030b6fb45951be920ff1036b2f423d2",
                 "shasum": ""
             },
             "require": {
@@ -2651,7 +2653,7 @@
             ],
             "authors": [
                 {
-                    "name": "François Zaninotto"
+                    "name": "Francois Zaninotto"
                 }
             ],
             "description": "Faker is a PHP library that generates fake data for you.",
@@ -2660,7 +2662,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2015-02-12 21:08:01"
+            "time": "2015-02-27 08:30:07"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -2815,12 +2817,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Xethron/migrations-generator.git",
-                "reference": "3f2c5b29fad94d547b27114b7bea5b75e5630be0"
+                "reference": "953d3db746e0f96ecfb73e87a9add37d1973f860"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Xethron/migrations-generator/zipball/3f2c5b29fad94d547b27114b7bea5b75e5630be0",
-                "reference": "3f2c5b29fad94d547b27114b7bea5b75e5630be0",
+                "url": "https://api.github.com/repos/Xethron/migrations-generator/zipball/953d3db746e0f96ecfb73e87a9add37d1973f860",
+                "reference": "953d3db746e0f96ecfb73e87a9add37d1973f860",
                 "shasum": ""
             },
             "require": {
@@ -2859,7 +2861,7 @@
                 "migration",
                 "migrations"
             ],
-            "time": "2014-12-05 12:59:58"
+            "time": "2015-02-24 17:27:19"
         }
     ],
     "aliases": [],

@@ -150,5 +150,9 @@ Route::post('upload', [
     'uses' => 'PostsController@upload'
 ]);
 
+
+//Admin page
 Route::post('deletepost', 'PostsController@destroy');
 
+/* ======================================= */
+Route::get('admin', 'AdminController@index');
