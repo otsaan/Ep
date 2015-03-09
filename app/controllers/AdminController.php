@@ -10,7 +10,7 @@ class adminController extends \BaseController {
          * if the user is not admin
          * redirect back
          */
-        if(!Auth::user()->is_type == "Admin")
+        if(Auth::user()->is_type != "Admin")
         {
             Redirect::back();
         }
@@ -106,5 +106,20 @@ class adminController extends \BaseController {
 
 	}
 
+    public function changeType($id,$type)
+    {
+        //TODO validation
+        $user = User::findOrFail($id);
+        $user->is_type = $type;
+        if($user->save())
+        {
+            Flash::message("Oppération effectuée avec succèe");
+
+        }else{
+
+            Flash::message("Opération non effectuée ");
+        }
+        return Redirect::back();
+    }
 
 }
