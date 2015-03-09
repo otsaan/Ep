@@ -1,6 +1,6 @@
 <?php
 
-class adminController extends \BaseController {
+class AdminController extends \BaseController {
 
     function __construct()
     {
@@ -49,11 +49,6 @@ class adminController extends \BaseController {
 			$groups = Channel::latest()->paginate(15);
         }
 		return View::make("admin.groups",compact('groups'));
-	}
-
-	public function index()
-	{
-		return View::make("admin.index",compact('users'));
 	}
 
 

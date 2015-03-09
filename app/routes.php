@@ -155,7 +155,7 @@ Route::post('upload', [
 Route::post('deletepost', 'PostsController@destroy');
 
 /* ======================================= */
-Route::get('admin', 'AdminController@index');
+Route::get('admin', 'AdminController@users');
 Route::get('admin/users', 'AdminController@users');
 Route::get('admin/groups', 'AdminController@groups');
 Route::get('admin/groups/{id}/delete', 'AdminController@destroyChannel');
