@@ -23,7 +23,17 @@ class adminController extends \BaseController {
 	 */
 	public function index()
 	{
-        $users = User::latest()->paginate(15);
+        $q = Input::get("q");
+        if($q)
+        {
+            $users = User::where("username","LIKE","%$q%")
+                ->orWhere("last_name","LIKE","%$q%")
+                ->orWhere("first_name","LIKE","%$q%")
+                ->latest()
+                ->paginate(15);
+        }else{
+            $users = User::latest()->paginate(15);
+        }
 		return View::make("admin.index",compact('users'));
 	}
 

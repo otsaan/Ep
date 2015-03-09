@@ -6,6 +6,14 @@
 
 @section('feed')
 @include('flash::message')
+
+{{Form::open(['method'=>'get'])}}
+<div class="">
+    <div class="form-group">
+        {{ Form::text('q',null,['class'=>'form-control','placeholder'=>'Search']) }}
+    </div>
+    {{ Form::Submit('Recherche',['class'=>'btn bg-olive btn-block']) }}
+{{Form::close()}}
 <table class="table">
     <td>Nom</td>
     <td>Prenom</td>
@@ -38,7 +46,7 @@
 
     @endforeach
 </table>
-{{  $users->links()}}
+{{  $users->appends(Request::except("page"))->links()}}
 @stop
 
 @section('bottom-script')
