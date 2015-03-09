@@ -19,12 +19,12 @@
     <div class="checkbox">
         <h4>Etudiants / Lauréats</h4>
         @foreach($users as $user)
-            <label title="{{$user->first_name}} {{$user->last_name}}"><input type="checkbox" name="recipients[]" value="{{$user->id}}">{{$user->first_name}}</label>
+            <label title="{{$user->first_name}} {{$user->last_name}}"><input type="checkbox" name="recipients[]" value="{{$user->id}}">{{$user->first_name}} {{$user->last_name}}</label>
         @endforeach
     </div><div class="checkbox">
         <br><h4>Professeurs</h4>
         @foreach($professors as $professor)
-            <label title="{{$professor->first_name}} {{$professor->last_name}}"><input type="checkbox" name="recipients[]" value="{{$professor->id}}">{{$professor->first_name}}</label>
+            <label title="{{$professor->first_name}} {{$professor->last_name}}"><input type="checkbox" name="recipients[]" value="{{$professor->id}}">{{$professor->first_name}}  {{$professor->last_name}}</label>
         @endforeach
         <br><br>
     </div>

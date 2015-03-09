@@ -10,7 +10,7 @@
         @endif
     </a>
     <ul class="dropdown-menu">
-        <li class="header">Vous avez {{ $threadsNotifications->count() }} messages</li>
+        <li class="header">Vous avez {{ $threadsNotifications->count() }} message(s)</li>
         <li>
             <!-- inner menu: contains the actual data -->
             <ul class="menu">
@@ -21,7 +21,7 @@
                             <i class="fa fa-weixin"></i>
                         </div>
                         <h4>
-                           Vous avez un nouveau msg dans {{ $threadsNotification->subject }}
+                           Nouveau msg dans {{ $threadsNotification->subject }}
 <!--                            <small><i class="fa fa-clock-o"></i> 5 mins</small>-->
                         </h4>
                         <p>{{$threadsNotification->latestMessage()->body}}</p>
@@ -48,7 +48,7 @@
         @endif
     </a>
     <ul class="dropdown-menu">
-        <li class="header">You have {{$notifications->count()}} notification(s)</li>
+        <li class="header">Vous avez {{$notifications->count()}} notification(s)</li>
 
         <li>
             <!-- inner menu: contains the actual data -->

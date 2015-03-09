@@ -1,5 +1,6 @@
 @extends('master')
 
+
 @section('feed')
 
     <div class="scroller">
@@ -44,7 +45,7 @@
                                     $img_exts = array("jpg", "jpeg", "png", "bmp", "gif");
                                     $vid_exts = array("mp4", "ogg", "webm");
                                     if(in_array($attachment->file_type, $img_exts)) {?>
-                                        <a href={{asset($attachment->path)}} data-lightbox="image"></a>
+                                        <img src={{asset($attachment->path)}}>
                                     <?php } elseif (in_array($attachment->file_type, $vid_exts)) {?>
                                         <video width="320" height="240" controls>
                                           <source src="{{asset($attachment->path)}}" type="video/mp4">
@@ -84,7 +85,7 @@
             {{$posts->links()}}
           @else
             <h2>Pas de publications dans votre feed.</h2>
-            <p>Veuillez rejoindre des <a href="/manageGroups">groupes</a></p>
+            <p>Veuillez rejoindre des <a href="/manageChannels">groupes</a></p>
           @endif
         </div>
 

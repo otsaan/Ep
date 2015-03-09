@@ -21,7 +21,7 @@ class adminController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function users()
 	{
         $q = Input::get("q");
         if($q)
@@ -34,6 +34,25 @@ class adminController extends \BaseController {
         }else{
             $users = User::latest()->paginate(15);
         }
+		return View::make("admin.users",compact('users'));
+	}
+
+	public function groups()
+	{
+		$q = Input::get("q");
+        if($q)
+        {
+            $groups = Channel::where("name","LIKE","%$q%")
+                ->latest()
+                ->paginate(15);
+        }else{
+			$groups = Channel::latest()->paginate(15);
+        }
+		return View::make("admin.groups",compact('groups'));
+	}
+
+	public function index()
+	{
 		return View::make("admin.index",compact('users'));
 	}
 
@@ -116,6 +135,19 @@ class adminController extends \BaseController {
 
 	}
 
+	public function destroyChannel($id)
+	{
+        if(Channel::findOrFail($id)->delete())
+        {
+            Flash::message("Oppération effectuée avec succèe");
+
+        }else{
+
+            Flash::message("Opération non effectuée ");
+        }
+        return Redirect::back();
+
+	}
     public function changeType($id,$type)
     {
         //TODO validation

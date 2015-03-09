@@ -19,8 +19,8 @@
     <td>Prenom</td>
     <td>Username</td>
     <td>Type</td>
-    <td>Date de création</td>
     <td>Action</td>
+    <td>Date de création</td>
     @foreach($users as $user)
         <tr>
             <td>{{ $user->last_name }}</td>

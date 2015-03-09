@@ -66,5 +66,13 @@ $threads = Thread::forUserWithNewMessages($currentUserId);
                 <i class="ion ion-settings"></i> <span>Gestion des groupes</span>
             </a>
         </li>
+        @if (Auth::user()->is_type == "Admin")
+            <li>
+        
+                <a href="/admin">
+                    <i class="ion ion-settings"></i> <span>Administration</span>
+                </a>
+            </li>
+        @endif
     </ul>
 </section>
