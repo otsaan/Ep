@@ -1,3 +1,4 @@
+
 @extends('master')
 @section('topScript')
 {{ HTML::style('css/semantic/semantic.min.css') }}
@@ -10,22 +11,23 @@
 <div class="">
     <div class="form-group">
         {{ Form::text('q',null,['class'=>'form-control','placeholder'=>'Rechercher ......', 'style'=>'width:500px;float:left;']) }}
-        {{ Form::Submit('Recherche',['class'=>'btn bg-olive btn-block','style'=>'margin-left:20px;width:200px;float:left;']) }}
+        {{ Form::Submit('Recherche',['class'=>'btn bg-olive btn-block','style'=>'margin-left:15px;width:180px;float:left;']) }}
     </div>
     {{Form::close()}}
-    <br/><br/><br/>
     <table class="table table-stri<ped">
-        <td><b>UserName</b></td>
-        <td><b>UserId</b></td>
-        <td><b>Channel</b></td>
-        <td><b>Contenue</b></td>
-        <td><b>Supprimer</b></td>
+        <tr>
+            <td><b>UserName</b></td>
+            <td><b>UserId</b></td>
+            <td><b>Channel</b></td>
+            <td><b>Contenue</b></td>
+            <td><b>Supprimer</b></td>
+        </tr>
         @foreach($posts as $post)
         <tr>
             <td>{{ $post->user->username }}</td>
             <td>{{ $post->user->id }}</td>
             <td>{{ $post->channel->name }}</td>
-            <td><p  style=" width: 220 px; height: 80px; overflow: scroll ">{{ $post->content }}</p></td>
+            <td><p   style=" width: 220px; height: 80px; overflow: scroll">{{ $post->content }}</p></td>
             <td><a href="/admin/posts/{{$post->id}}/delete " class="btn btn-default" onclick="return myConfirm()"><i class="fa fa-times"></i></a></td>
         </tr>
 
@@ -58,6 +60,7 @@
 
         </div>
     </div>
+
     @stop
 
 
@@ -72,3 +75,4 @@
 
         }
     </script>
+
