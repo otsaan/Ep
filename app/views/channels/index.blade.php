@@ -36,14 +36,15 @@
                     {[{channel.description}]}.
                 </div>
             </div>
-            <div class="ui bottom attached button" data-ng-init="btnId='asd';"  ng-click="joinChannel(channel)" ng-hide="join">
+            <a  href="/channel/{[{channel.id}]}/join" class="ui bottom attached button" data-ng-init="btnId='asd';" ng-hide="join">
                 <i class="add icon"></i>
                 Rejoindre ce groupe
-            </div>
-            <div class="ui bottom attached button" data-ng-init="btnId='asd';"  ng-click="withdrawChannel(channel)" ng-hide="withdraw">
+                {[{channel.id}]}
+            </a>
+            <a  href="/channel/{[{channel.id}]}/withdraw" class="ui bottom attached button" data-ng-init="btnId='asd';"  ng-hide="withdraw">
                 <i class="minus icon"></i>
                 Quitter ce groupe
-            </div>
+            </a>
         </div>
     </div>
 
