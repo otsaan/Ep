@@ -51,6 +51,22 @@ class AdminController extends \BaseController {
 		return View::make("admin.groups",compact('groups'));
 	}
 
+    public function posts()
+    {
+        $q = Input::get("q");
+        if($q)
+        {
+            $posts = Post::where("content","LIKE","%$q%")->with('comments.user')
+                ->latest()
+                ->paginate(15);
+        }else{
+            $posts = Post::latest()->paginate(15);
+        }
+        return View::make("admin.posts",compact('posts'));
+    }
+
+
+
 
 	/**
 	 * Show the form for creating a new resource.
@@ -133,6 +149,19 @@ class AdminController extends \BaseController {
 	public function destroyChannel($id)
 	{
         if(Channel::findOrFail($id)->delete())
+        {
+            Flash::message("Oppération effectuée avec succèe");
+
+        }else{
+
+            Flash::message("Opération non effectuée ");
+        }
+        return Redirect::back();
+
+	}
+    public function destroyPost($id)
+	{
+        if(Post::findOrFail($id)->delete())
         {
             Flash::message("Oppération effectuée avec succèe");
 

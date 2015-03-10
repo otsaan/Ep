@@ -159,5 +159,7 @@ Route::get('admin', 'AdminController@users');
 Route::get('admin/users', 'AdminController@users');
 Route::get('admin/groups', 'AdminController@groups');
 Route::get('admin/groups/{id}/delete', 'AdminController@destroyChannel');
+Route::get('admin/posts/{id}/delete', 'AdminController@destroyPost');
+Route::get('admin/posts', 'AdminController@posts');
 Route::get('admin/{id}/delete', 'AdminController@destroy');
 Route::get('/Type/{id}/{type}', 'AdminController@changeType');
