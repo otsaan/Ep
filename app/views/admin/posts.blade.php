@@ -27,7 +27,7 @@
             <td>{{ $post->user->username }}</td>
             <td>{{ $post->user->id }}</td>
             <td>{{ $post->channel->name }}</td>
-            <td><p   style=" width: 220px; height: 80px; overflow: scroll">{{ $post->content }}</p></td>
+            <td><p   style=" width: 250px; height: 80px; overflow: scroll">{{ $post->content }}</p></td>
             <td><a href="/admin/posts/{{$post->id}}/delete " class="btn btn-default" onclick="return myConfirm()"><i class="fa fa-times"></i></a></td>
         </tr>
 

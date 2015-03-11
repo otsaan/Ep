@@ -11,7 +11,7 @@
 <div class="">
     <div class="form-group">
         {{ Form::text('q',null,['class'=>'form-control','placeholder'=>'Rechercher un utilisateur par nom, prenom ou username', 'style'=>'width:500px;float:left;']) }}
-        {{ Form::Submit('Recherche',['class'=>'btn bg-olive btn-block','style'=>'margin-left:20px;width:200px;float:left;']) }}
+        {{ Form::Submit('Recherche',['class'=>'btn bg-olive btn-block','style'=>'margin-left:15px;width:180px;float:left;']) }}
     </div>
 {{Form::close()}}
     <br/><br/><br/>
