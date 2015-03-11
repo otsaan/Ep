@@ -157,6 +157,7 @@ Route::post('deletepost', 'PostsController@destroy');
 /* ======================================= */
 Route::get('admin', 'AdminController@users');
 Route::get('admin/users', 'AdminController@users');
+Route::get('admin/stats', 'AdminController@stats');
 Route::get('admin/groups', 'AdminController@groups');
 Route::get('admin/groups/{id}/delete', 'AdminController@destroyChannel');
 Route::get('admin/posts/{id}/delete', 'AdminController@destroyPost');

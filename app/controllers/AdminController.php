@@ -66,6 +66,11 @@ class AdminController extends \BaseController {
     }
 
 
+    public function stats()
+    {
+        return View::make("admin.stats");
+    }
+
 
 
 	/**
