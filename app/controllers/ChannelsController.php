@@ -115,16 +115,17 @@ class ChannelsController extends BaseController {
 
     }
 
-    public function join()
+    public function join($id)
     {
         //TODO
         /*
          * verify that the channel is public
          * and the user has not already join it
          */
-        $channelId = Input::get('id');
+        $channelId = $id;
 
         Channel::findOrFail($channelId)->users()->attach(Auth::user());
+       return Redirect::back();
     }
 
     public function userChannels()
@@ -133,14 +134,13 @@ class ChannelsController extends BaseController {
         return $data;
     }
 
-    public function withdraw()
+    public function withdraw($id)
     {
-        $channelId = Input::get('id');
+        $channelId = $id;
 
         Channel::findOrFail($channelId)->users()->detach(Auth::user());
 
-        $data= Auth::user()->channels()->with('users','user')->orderBy('id','desc')->get();
-        return $data;
+       return Redirect::back();
     }
 
     public function AddUser()

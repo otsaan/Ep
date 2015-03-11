@@ -123,7 +123,7 @@ route::post('/channels/search',[
     'as' => 'search_channels_path',
     'uses' => 'ChannelsController@search'
 ]);
-route::post('/channels/join',[
+route::get('/channel/{id}/join',[
     'as' => 'join_path',
     'uses' => 'ChannelsController@join'
 ]);
@@ -132,7 +132,7 @@ route::get('/user/channels',[
     'as' => 'user_channels',
     'uses' => 'ChannelsController@userChannels'
 ]);
-route::post('channel/withdraw',[
+route::get('channel/{id}/withdraw',[
     'as' => 'withdraw_path',
     'uses' => 'ChannelsController@withdraw'
 ]);
