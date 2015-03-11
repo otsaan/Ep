@@ -39,7 +39,6 @@
             <a  href="/channel/{[{channel.id}]}/join" class="ui bottom attached button" data-ng-init="btnId='asd';" ng-hide="join">
                 <i class="add icon"></i>
                 Rejoindre ce groupe
-                {[{channel.id}]}
             </a>
             <a  href="/channel/{[{channel.id}]}/withdraw" class="ui bottom attached button" data-ng-init="btnId='asd';"  ng-hide="withdraw">
                 <i class="minus icon"></i>
