@@ -10,22 +10,20 @@
 {{Form::open(['method'=>'get'])}}
 <div class="">
     <div class="form-group">
-        {{ Form::text('q',null,['class'=>'form-control','placeholder'=>'Rechercher ......', 'style'=>'width:500px;float:left;']) }}
+        {{ Form::text('q',null,['class'=>'form-control','placeholder'=>'Rechercher ...', 'style'=>'width:500px;float:left;']) }}
         {{ Form::Submit('Recherche',['class'=>'btn bg-olive btn-block','style'=>'margin-left:15px;width:180px;float:left;']) }}
     </div>
     {{Form::close()}}
     <table class="table table-stri<ped">
         <tr>
             <td><b>UserName</b></td>
-            <td><b>UserId</b></td>
             <td><b>Channel</b></td>
-            <td><b>Contenue</b></td>
+            <td><b>Contenu</b></td>
             <td><b>Supprimer</b></td>
         </tr>
         @foreach($posts as $post)
         <tr>
             <td>{{ $post->user->username }}</td>
-            <td>{{ $post->user->id }}</td>
             <td>{{ $post->channel->name }}</td>
             <td><p   style=" width: 250px; height: 80px; overflow: scroll">{{ $post->content }}</p></td>
             <td><a href="/admin/posts/{{$post->id}}/delete " class="btn btn-default" onclick="return myConfirm()"><i class="fa fa-times"></i></a></td>
