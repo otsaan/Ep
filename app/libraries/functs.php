@@ -50,11 +50,39 @@ class Functs {
             $data[$i] = $monthCount;  
         }
 
-        $barChartData = array('labels' => array($date[11], $date[10], $date[9], $date[8], $date[7], $date[6], $date[5], $date[4], $date[3], $date[2], $date[1], $date[0]), 
+        $lineChartData = array('labels' => array($date[11], $date[10], $date[9], $date[8], $date[7], $date[6], $date[5], $date[4], $date[3], $date[2], $date[1], $date[0]), 
                               'datasets' => array(array('fillColor' => "rgba(151,187,205,0.5)", 
                                                  'strokeColor' => "rgba(151,187,205,1)", 
                                                  'data' => [$data[11], $data[10], $data[9], $data[8], $data[7], $data[6], $data[5], $data[4], $data[3], $data[2], $data[1], $data[0]])
          ) );
-        return $barChartData;
+        return $lineChartData;
+    }
+
+    static function plotNewUsers() {
+        $jour = date("Y-m-d"); 
+        for ($i=0; $i < 7; $i++) { 
+            $day = date('Y-m-d', strtotime($jour. ' - '.$i.' days'));
+            $nextDay = date('Y-m-d', strtotime($day. ' + 1 day'));
+
+            $date[$i] = date('l',strtotime($day));
+            
+            $dayCount = DB::table('users')
+                    ->where('created_at', '>=', $day)
+                    ->where('created_at', '<', $nextDay)
+                    ->count();
+
+            $data[$i] = $dayCount;  
+        }
+
+        $chData = array('labels' => array($date[6], $date[5], $date[4], $date[3], $date[2], $date[1], $date[0]), 
+                              'datasets' => array(array('fillColor' => "rgba(151,187,205,0.5)", 
+                                                 'strokeColor' => "rgba(151,187,205,1)", 
+                                                 'data' => [$data[6], $data[5], $data[4], $data[3], $data[2], $data[1], $data[0]]),
+                                            
+                                            array('fillColor' => "rgba(220,220,220,0.5)", 
+                                                  'strokeColor' => "rgba(220,220,220,1)", 
+                                                  'data' => [$data[6], $data[5], $data[4], $data[3], $data[2], $data[1], $data[0]])
+         ) );
+        return $chData;
     }
 }
